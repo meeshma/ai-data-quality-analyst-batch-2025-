@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">📘 C++ Programming Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to C++</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">What is C++?</a></li>
+      <li><a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">History of C++</a></li>
+      <li><a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">Applications of C++</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ C++ Basics</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/ZzaPdXTrSb8" target="_blank">Variables & Data Types</a></li>
+      <li><a href="https://youtu.be/ZzaPdXTrSb8" target="_blank">Input / Output (cin, cout)</a></li>
+      <li><a href="https://youtu.be/ZzaPdXTrSb8" target="_blank">Operators</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Control Statements</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/7dPdMtBX1d8" target="_blank">if / else</a></li>
+      <li><a href="https://youtu.be/7dPdMtBX1d8" target="_blank">switch statement</a></li>
+      <li><a href="https://youtu.be/7dPdMtBX1d8" target="_blank">Loops (for, while, do-while)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Functions</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/8jLOx1hD3_o" target="_blank">Function definition</a></li>
+      <li><a href="https://youtu.be/8jLOx1hD3_o" target="_blank">Function parameters & return</a></li>
+      <li><a href="https://youtu.be/8jLOx1hD3_o" target="_blank">Inline functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Arrays & Strings</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/8PopR3x-VMY" target="_blank">Arrays</a></li>
+      <li><a href="https://youtu.be/8PopR3x-VMY" target="_blank">Strings</a></li>
+      <li><a href="https://youtu.be/8PopR3x-VMY" target="_blank">Multidimensional arrays</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Pointers & References</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/Z_vX9Y8Jzqg" target="_blank">Pointers basics</a></li>
+      <li><a href="https://youtu.be/Z_vX9Y8Jzqg" target="_blank">Pointer arithmetic</a></li>
+      <li><a href="https://youtu.be/Z_vX9Y8Jzqg" target="_blank">References</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Object-Oriented Programming</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/wN0x9eZLix4" target="_blank">Classes & Objects</a></li>
+      <li><a href="https://youtu.be/wN0x9eZLix4" target="_blank">Constructors & Destructors</a></li>
+      <li><a href="https://youtu.be/wN0x9eZLix4" target="_blank">Encapsulation</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Inheritance & Polymorphism</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/5hR4D5k6fBc" target="_blank">Inheritance</a></li>
+      <li><a href="https://youtu.be/5hR4D5k6fBc" target="_blank">Function overriding</a></li>
+      <li><a href="https://youtu.be/5hR4D5k6fBc" target="_blank">Virtual functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ STL (Standard Template Library)</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/g-1Cn3ccwXY" target="_blank">Vectors</a></li>
+      <li><a href="https://youtu.be/g-1Cn3ccwXY" target="_blank">Maps & Sets</a></li>
+      <li><a href="https://youtu.be/g-1Cn3ccwXY" target="_blank">Algorithms</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 C++ Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">Clean code</a></li>
+      <li><a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">Debugging</a></li>
+      <li><a href="https://youtu.be/vLnPwxZdW4Y" target="_blank">Optimization tips</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>
+ </html>

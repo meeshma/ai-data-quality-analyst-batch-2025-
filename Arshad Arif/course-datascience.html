@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">📊 Data Science</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to Data Science</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What is Data Science?</a></li>
+      <li><a href="#" target="_blank">History of Data Science</a></li>
+      <li><a href="#" target="_blank">Applications of Data Science</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ Data Science Foundations</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Data, Information & Knowledge</a></li>
+      <li><a href="#" target="_blank">Types of Data (Structured & Unstructured)</a></li>
+      <li><a href="#" target="_blank">Data Science vs AI vs Machine Learning</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Data Collection & Preparation</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Data Sources</a></li>
+      <li><a href="#" target="_blank">Data Cleaning</a></li>
+      <li><a href="#" target="_blank">Data Preprocessing</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Exploratory Data Analysis (EDA)</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Descriptive Statistics</a></li>
+      <li><a href="#" target="_blank">Data Visualization</a></li>
+      <li><a href="#" target="_blank">Finding Patterns & Insights</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Statistics for Data Science</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Mean, Median & Mode</a></li>
+      <li><a href="#" target="_blank">Probability Basics</a></li>
+      <li><a href="#" target="_blank">Hypothesis Testing</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Machine Learning for Data Science</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Supervised Learning</a></li>
+      <li><a href="#" target="_blank">Unsupervised Learning</a></li>
+      <li><a href="#" target="_blank">Model Evaluation</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Data Visualization Tools</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Matplotlib & Seaborn</a></li>
+      <li><a href="#" target="_blank">Power BI</a></li>
+      <li><a href="#" target="_blank">Tableau</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Big Data Concepts</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What is Big Data?</a></li>
+      <li><a href="#" target="_blank">Hadoop & Spark</a></li>
+      <li><a href="#" target="_blank">Data Warehousing</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ Data Science Tools & Languages</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Python for Data Science</a></li>
+      <li><a href="#" target="_blank">R Programming</a></li>
+      <li><a href="#" target="_blank">SQL for Data Analysis</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 Ethics & Career in Data Science</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Data Privacy & Ethics</a></li>
+      <li><a href="#" target="_blank">Responsible Data Usage</a></li>
+      <li><a href="#" target="_blank">Careers in Data Science</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>

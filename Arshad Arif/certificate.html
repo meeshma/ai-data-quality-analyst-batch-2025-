@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Certificate | LearnHub</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #ececec;
+    margin: 0;
+    text-align: center;
+}
+header {
+    background: #111;
+    color: #fff;
+    padding: 16px;
+}
+.certificate-box {
+    background: #fff;
+    width: 420px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 15px;
+}
+button {
+    padding: 12px 28px;
+    font-size: 16px;
+    background: #1a73e8;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background: #0c5edb;
+}
+footer {
+    background: #111;
+    color: #fff;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>LearnHub</h1>
+</header>
+
+<div class="certificate-box">
+    <h2>Generate Certificate</h2>
+
+    <input id="studentName" placeholder="Student Full Name">
+    <input id="courseName" placeholder="Course / Program Name">
+
+    <br><br>
+    <button onclick="generatePDF()">Download Certificate</button>
+</div>
+
+<footer>© 2026 LearnHub</footer>
+
+<script>
+function generatePDF() {
+    const { jsPDF } = window.jspdf;
+
+    const name = studentName.value.trim();
+    const course = courseName.value.trim();
+
+    if (!name || !course) {
+        alert("Please enter all details");
+        return;
+    }
+
+    const doc = new jsPDF("landscape");
+
+    /* OUTER BORDER */
+    doc.setLineWidth(1.2);
+    doc.rect(10, 10, 277, 190);
+
+    /* GOLD ACCENT LINE */
+    doc.setDrawColor(180, 150, 90);
+    doc.setLineWidth(3);
+    doc.line(20, 45, 277, 45);
+
+    /* LOGO (OPTIONAL) */
+    try {
+        doc.addImage("images/logo.png", "PNG", 130, 20, 40, 20);
+    } catch {}
+
+    /* TITLE */
+    doc.setFont("times", "bold");
+    doc.setFontSize(34);
+    doc.text("Certificate of Completion", 148, 75, { align: "center" });
+
+    /* SUBTEXT */
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text("This is to formally certify that", 148, 95, { align: "center" });
+
+    /* STUDENT NAME */
+    doc.setFontSize(28);
+    doc.setFont("times", "bold");
+    doc.text(name, 148, 118, { align: "center" });
+
+    /* DESCRIPTION */
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");
+    doc.text(
+        "has successfully completed all the requirements of the program",
+        148,
+        138,
+        { align: "center" }
+    );
+
+    /* COURSE NAME */
+    doc.setFontSize(22);
+    doc.setFont("times", "italic");
+    doc.text(course, 148, 158, { align: "center" });
+
+    /* FOOTER */
+    doc.setFontSize(12);
+    doc.setFont("times", "normal");
+    doc.text("Issued by LearnHub • 2026", 30, 185);
+    doc.text("Authorized Signature", 230, 185);
+
+    /* OPEN PDF PREVIEW */
+    window.open(doc.output("bloburl"), "_blank");
+}
+</script>
+
+</body>
+</html>

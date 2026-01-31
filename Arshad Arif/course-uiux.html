@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">📘 MySQL Database Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to MySQL</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/7S_tz1z_5bA" target="_blank">What is MySQL?</a></li>
+      <li><a href="https://youtu.be/7S_tz1z_5bA" target="_blank">Why use MySQL?</a></li>
+      <li><a href="https://youtu.be/7S_tz1z_5bA" target="_blank">MySQL vs Other Databases</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ MySQL Setup & Basics</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/9ylj9NR0Lcg" target="_blank">Installing MySQL</a></li>
+      <li><a href="https://youtu.be/9ylj9NR0Lcg" target="_blank">MySQL Workbench</a></li>
+      <li><a href="https://youtu.be/9ylj9NR0Lcg" target="_blank">Connecting to Database</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Database & Tables</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/kbKty5ZVKMY" target="_blank">Creating databases</a></li>
+      <li><a href="https://youtu.be/kbKty5ZVKMY" target="_blank">Creating tables</a></li>
+      <li><a href="https://youtu.be/kbKty5ZVKMY" target="_blank">Data types</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ CRUD Operations</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/5OdVJbNCSso" target="_blank">INSERT data</a></li>
+      <li><a href="https://youtu.be/5OdVJbNCSso" target="_blank">SELECT data</a></li>
+      <li><a href="https://youtu.be/5OdVJbNCSso" target="_blank">UPDATE & DELETE</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Filtering & Sorting Data</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/2B6yE4dZ-2w" target="_blank">WHERE clause</a></li>
+      <li><a href="https://youtu.be/2B6yE4dZ-2w" target="_blank">ORDER BY</a></li>
+      <li><a href="https://youtu.be/2B6yE4dZ-2w" target="_blank">LIMIT</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Constraints & Keys</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/G2F5Db7n0jA" target="_blank">Primary Key</a></li>
+      <li><a href="https://youtu.be/G2F5Db7n0jA" target="_blank">Foreign Key</a></li>
+      <li><a href="https://youtu.be/G2F5Db7n0jA" target="_blank">UNIQUE & NOT NULL</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Joins</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/9yeOJ0ZMUYw" target="_blank">INNER JOIN</a></li>
+      <li><a href="https://youtu.be/9yeOJ0ZMUYw" target="_blank">LEFT & RIGHT JOIN</a></li>
+      <li><a href="https://youtu.be/9yeOJ0ZMUYw" target="_blank">FULL JOIN</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Functions & Aggregates</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/l8SgQe9JzKk" target="_blank">COUNT, SUM</a></li>
+      <li><a href="https://youtu.be/l8SgQe9JzKk" target="_blank">AVG, MIN, MAX</a></li>
+      <li><a href="https://youtu.be/l8SgQe9JzKk" target="_blank">GROUP BY</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ Subqueries & Indexes</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/Lj6Tt7hEW9E" target="_blank">Subqueries</a></li>
+      <li><a href="https://youtu.be/Lj6Tt7hEW9E" target="_blank">Indexes</a></li>
+      <li><a href="https://youtu.be/Lj6Tt7hEW9E" target="_blank">Query optimization</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 MySQL Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/7S_tz1z_5bA" target="_blank">Database normalization</a></li>
+      <li><a href="https://youtu.be/7S_tz1z_5bA" target="_blank">Backup & restore</a></li>
+      <li><a href="https://youtu.be/7S_tz1z_5bA" target="_blank">Security tips</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>
+ </html>

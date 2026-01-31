@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">🐍 Python Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to Python</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/rfscVS0vtbw" target="_blank">What is Python?</a></li>
+      <li><a href="https://youtu.be/rfscVS0vtbw" target="_blank">Why Python is popular</a></li>
+      <li><a href="https://youtu.be/rfscVS0vtbw" target="_blank">Python applications</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ Python Basics</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/kqtD5dpn9C8" target="_blank">Variables</a></li>
+      <li><a href="https://youtu.be/kqtD5dpn9C8" target="_blank">Data types</a></li>
+      <li><a href="https://youtu.be/kqtD5dpn9C8" target="_blank">Operators</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Control Flow</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/kqtD5dpn9C8" target="_blank">if / else</a></li>
+      <li><a href="https://youtu.be/kqtD5dpn9C8" target="_blank">for & while loops</a></li>
+      <li><a href="https://youtu.be/kqtD5dpn9C8" target="_blank">break & continue</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Functions</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/9Os0o3wzS_I" target="_blank">Defining functions</a></li>
+      <li><a href="https://youtu.be/9Os0o3wzS_I" target="_blank">Arguments & return</a></li>
+      <li><a href="https://youtu.be/9Os0o3wzS_I" target="_blank">Lambda functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Data Structures</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/W8KRzm-HUcc" target="_blank">Lists</a></li>
+      <li><a href="https://youtu.be/W8KRzm-HUcc" target="_blank">Tuples</a></li>
+      <li><a href="https://youtu.be/W8KRzm-HUcc" target="_blank">Dictionaries</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Strings & File Handling</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/W8KRzm-HUcc" target="_blank">String methods</a></li>
+      <li><a href="https://youtu.be/W8KRzm-HUcc" target="_blank">Reading files</a></li>
+      <li><a href="https://youtu.be/W8KRzm-HUcc" target="_blank">Writing files</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Object-Oriented Programming</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/JeznW_7DlB0" target="_blank">Classes & objects</a></li>
+      <li><a href="https://youtu.be/JeznW_7DlB0" target="_blank">Inheritance</a></li>
+      <li><a href="https://youtu.be/JeznW_7DlB0" target="_blank">Polymorphism</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Modules & Packages</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/CqvZ3vGoGs0" target="_blank">Importing modules</a></li>
+      <li><a href="https://youtu.be/CqvZ3vGoGs0" target="_blank">Built-in modules</a></li>
+      <li><a href="https://youtu.be/CqvZ3vGoGs0" target="_blank">Virtual environments</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ Exception Handling</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/NIWwJbo-9_8" target="_blank">try / except</a></li>
+      <li><a href="https://youtu.be/NIWwJbo-9_8" target="_blank">finally</a></li>
+      <li><a href="https://youtu.be/NIWwJbo-9_8" target="_blank">Custom exceptions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 Python Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/rfscVS0vtbw" target="_blank">Clean code</a></li>
+      <li><a href="https://youtu.be/rfscVS0vtbw" target="_blank">Debugging</a></li>
+      <li><a href="https://youtu.be/rfscVS0vtbw" target="_blank">Performance tips</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>
+ </html>

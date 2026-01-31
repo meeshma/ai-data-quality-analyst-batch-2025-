@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">🐘 PHP Programming Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to PHP</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What is PHP?</a></li>
+      <li><a href="#" target="_blank">History of PHP</a></li>
+      <li><a href="#" target="_blank">Applications of PHP</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ PHP Basics</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">PHP Syntax</a></li>
+      <li><a href="#" target="_blank">Variables & Data Types</a></li>
+      <li><a href="#" target="_blank">Constants</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Control Structures</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">if / else Statements</a></li>
+      <li><a href="#" target="_blank">switch Case</a></li>
+      <li><a href="#" target="_blank">Loops (for, while, foreach)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Functions in PHP</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">User-defined Functions</a></li>
+      <li><a href="#" target="_blank">Function Parameters & Return Values</a></li>
+      <li><a href="#" target="_blank">Built-in PHP Functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Arrays & Strings</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Indexed & Associative Arrays</a></li>
+      <li><a href="#" target="_blank">Multidimensional Arrays</a></li>
+      <li><a href="#" target="_blank">String Functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Forms & User Input</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">GET & POST Methods</a></li>
+      <li><a href="#" target="_blank">Form Validation</a></li>
+      <li><a href="#" target="_blank">Handling User Input</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ PHP & Databases</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Introduction to MySQL</a></li>
+      <li><a href="#" target="_blank">Connecting PHP with MySQL</a></li>
+      <li><a href="#" target="_blank">CRUD Operations</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Sessions & Cookies</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What are Sessions?</a></li>
+      <li><a href="#" target="_blank">Using Cookies</a></li>
+      <li><a href="#" target="_blank">User Authentication Basics</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ PHP Frameworks & Tools</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Introduction to Laravel</a></li>
+      <li><a href="#" target="_blank">MVC Architecture</a></li>
+      <li><a href="#" target="_blank">Composer</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 PHP Best Practices & Career</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">PHP Security Basics</a></li>
+      <li><a href="#" target="_blank">Code Optimization</a></li>
+      <li><a href="#" target="_blank">Careers in PHP Development</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>

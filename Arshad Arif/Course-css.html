@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<!-- CSS TOPICS -->
+<section class="lux-container">
+
+  <h2 class="section-title">🎨 CSS Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to CSS</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/1Rs2ND1ryYc" target="_blank">What is CSS?</a></li>
+      <li><a href="https://youtu.be/1Rs2ND1ryYc" target="_blank">Why CSS is important</a></li>
+      <li><a href="https://youtu.be/yfoY53QXEnI" target="_blank">CSS vs HTML</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ CSS Syntax & Selectors</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/ZNXN_inHz8s" target="_blank">CSS syntax</a></li>
+      <li><a href="https://youtu.be/l1mER1bV0N0" target="_blank">Element selectors</a></li>
+      <li><a href="https://youtu.be/l1mER1bV0N0" target="_blank">Class & ID selectors</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ CSS Colors & Backgrounds</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/7kVeCqQCxlk" target="_blank">Color values</a></li>
+      <li><a href="https://youtu.be/7kVeCqQCxlk" target="_blank">Background color</a></li>
+      <li><a href="https://youtu.be/7kVeCqQCxlk" target="_blank">Background images</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ CSS Text & Fonts</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/yfoY53QXEnI" target="_blank">Text color & alignment</a></li>
+      <li><a href="https://youtu.be/yfoY53QXEnI" target="_blank">Font family</a></li>
+      <li><a href="https://youtu.be/yfoY53QXEnI" target="_blank">Font size & weight</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Box Model</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/rIO5326FgPE" target="_blank">Margin</a></li>
+      <li><a href="https://youtu.be/rIO5326FgPE" target="_blank">Padding</a></li>
+      <li><a href="https://youtu.be/rIO5326FgPE" target="_blank">Border</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ CSS Layout</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/jx5jmI0UlXU" target="_blank">Display property</a></li>
+      <li><a href="https://youtu.be/jx5jmI0UlXU" target="_blank">Position property</a></li>
+      <li><a href="https://youtu.be/jx5jmI0UlXU" target="_blank">Overflow</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Flexbox</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/fYq5PXgSsbE" target="_blank">Flex container</a></li>
+      <li><a href="https://youtu.be/fYq5PXgSsbE" target="_blank">Flex items</a></li>
+      <li><a href="https://youtu.be/fYq5PXgSsbE" target="_blank">Justify & align</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ CSS Grid</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/EFafSYg-PkI" target="_blank">Grid container</a></li>
+      <li><a href="https://youtu.be/EFafSYg-PkI" target="_blank">Grid rows & columns</a></li>
+      <li><a href="https://youtu.be/EFafSYg-PkI" target="_blank">Grid gap</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ Responsive Design</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/srvUrASNj0s" target="_blank">Media queries</a></li>
+      <li><a href="https://youtu.be/srvUrASNj0s" target="_blank">Mobile-first design</a></li>
+      <li><a href="https://youtu.be/srvUrASNj0s" target="_blank">Responsive units</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 CSS Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/1Rs2ND1ryYc" target="_blank">Clean code</a></li>
+      <li><a href="https://youtu.be/1Rs2ND1ryYc" target="_blank">Reusable classes</a></li>
+      <li><a href="https://youtu.be/1Rs2ND1ryYc" target="_blank">Performance tips</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>
+ </html>
+

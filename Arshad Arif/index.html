@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LearnHub | Free Video Courses</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1></h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Login</a>
+    <a href="instructors.html">Instructors</a>
+    <a href="contact.html">Contact</a>
+    <button onclick="toggleDark()"></button>
+  </nav>
+</header>
+
+<section class="hero" style="position: relative; overflow: hidden;">
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline
+    style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      object-fit: cover;
+    ">
+    <source src="https://media.istockphoto.com/id/869584204/video/typing-on-laptop-keyboard.mp4?s=mp4-640x640-is&k=20&c=Zihyv3ENq0JlG5N9iDpDkFglo_7ZPYJz7JL7HR5-B1g=" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Hero Content -->
+  <div class="hero-box">
+    <h2>Learn Skills for Free</h2>
+    <p>High-quality online video courses for everyone</p>
+    <a href="courses.html" class="btn">Browse Courses</a>
+  </div>
+</section>
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>

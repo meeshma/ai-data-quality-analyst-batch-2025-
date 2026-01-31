@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">💻 C Programming Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to C Programming</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What is C?</a></li>
+      <li><a href="#" target="_blank">History of C</a></li>
+      <li><a href="#" target="_blank">Applications of C</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ C Language Basics</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">C Syntax & Structure</a></li>
+      <li><a href="#" target="_blank">Variables & Data Types</a></li>
+      <li><a href="#" target="_blank">Constants & Keywords</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Control Statements</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">if / else Statements</a></li>
+      <li><a href="#" target="_blank">switch Case</a></li>
+      <li><a href="#" target="_blank">Loops (for, while, do-while)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Functions in C</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Function Declaration & Definition</a></li>
+      <li><a href="#" target="_blank">Function Arguments & Return Values</a></li>
+      <li><a href="#" target="_blank">Recursion</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Arrays & Strings</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">One-dimensional Arrays</a></li>
+      <li><a href="#" target="_blank">Multidimensional Arrays</a></li>
+      <li><a href="#" target="_blank">String Handling Functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Pointers</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Pointer Basics</a></li>
+      <li><a href="#" target="_blank">Pointer Arithmetic</a></li>
+      <li><a href="#" target="_blank">Pointers & Arrays</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Structures & Unions</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Structures</a></li>
+      <li><a href="#" target="_blank">Nested Structures</a></li>
+      <li><a href="#" target="_blank">Unions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ File Handling in C</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">File Operations</a></li>
+      <li><a href="#" target="_blank">Reading & Writing Files</a></li>
+      <li><a href="#" target="_blank">File Modes</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ Preprocessor & Memory Management</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Preprocessor Directives</a></li>
+      <li><a href="#" target="_blank">Dynamic Memory Allocation</a></li>
+      <li><a href="#" target="_blank">malloc, calloc, free</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 C Programming Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Coding Standards</a></li>
+      <li><a href="#" target="_blank">Debugging Techniques</a></li>
+      <li><a href="#" target="_blank">Career Opportunities with C</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About | LearnHub</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #020617, #0f172a);
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    .logo {
+      font-size: 28px;
+      color: #22d3ee;
+    }
+
+    .nav-links a {
+      margin-left: 28px;
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: #22d3ee;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 60px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: #67e8f9;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      max-width: 780px;
+      margin: 0 auto 60px;
+      color: #cbd5f5;
+    }
+
+    /* ABOUT FEATURES */
+    .about-features {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .feature-box {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 18px;
+      padding: 34px 28px;
+      border: 1px solid rgba(0, 255, 255, 0.18);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: 0.35s;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 32px rgba(34, 211, 238, 0.45);
+    }
+
+    .expert-box {
+      text-align: left;
+    }
+
+    .expert-title {
+      font-size: 22px;
+      margin-bottom: 18px;
+      color: #22d3ee;
+    }
+
+    .expert-list li {
+      list-style: none;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 15px;
+    }
+
+    .feature-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: #67e8f9;
+    }
+
+    .feature-desc {
+      font-size: 15px;
+      color: #cbd5f5;
+    }
+
+    /* PROGRAMS */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .program-card {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      transition: 0.3s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+    }
+
+    .program-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .program-card h3 {
+      color: #67e8f9;
+      margin-bottom: 10px;
+    }
+
+    .program-card button {
+      margin-top: 14px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: none;
+      background: #22d3ee;
+      color: #020617;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    .main-footer {
+      padding: 30px;
+      text-align: center;
+      background: #020617;
+      border-top: 1px solid rgba(0, 255, 255, 0.15);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .about-features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 70px 24px;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="main-header">
+  <h1 class="logo"></h1>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="about-section">
+  <h2 class="section-title">About LearnHub</h2>
+  <p class="section-desc">
+    <b>LearnHub is a free online learning platform designed to help students
+    and professionals gain industry-ready skills through high-quality
+    video courses and structured learning paths.</b>
+  </p>
+
+  <div class="about-features">
+
+    <div class="feature-box expert-box">
+      <h3 class="expert-title">🎓 Expert Instructors</h3>
+      <ul class="expert-list">
+        <li>Dr. Sarah Johnson – AI & ML Specialist</li>
+        <li>Mark Anderson – PMP® Certified Trainer</li>
+        <li>Priya Mehta – Cybersecurity Expert</li>
+        <li>James Lee – Cloud & DevOps Architect</li>
+      </ul>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-title">📚 Free Courses</div>
+      <div class="feature-desc">
+       Access a wide variety of expertly designed, high-quality courses that are completely free, helping learners build practical, industry-ready skills at their own pace Learn through a diverse collection of high-quality courses developed by experienced industry professionals, offering in-depth knowledge and practical skills without any cost.
+      </div>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-title">💻 Practical Learning</div>
+      <div class="feature-desc">
+        Learn by actively engaging in hands-on projects, real-world case studies, and step-by-step guided exercises designed to strengthen practical understanding and real-life problem-solving skills Gain practical experience by working on hands-on projects, real-world examples, and guided exercises that prepare you for real industry challenges
+      </div>
+    </div>
+
+    <div class="feature-box">
+      <div class="feature-title">🚀 Career Growth</div>
+      <div class="feature-desc">
+        Build job-ready, industry-relevant skills, earn recognized certificates, and confidently advance your professional career with practical knowledge and continuous learning Develop industry-aligned skills, earn verified certifications, and strengthen your professional profile to achieve long-term career growth.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="main-footer">
+  <p>© 2026 LearnHub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

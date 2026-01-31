@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">📘 JavaScript Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to JavaScript</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/W6NZfCO5SIk" target="_blank">What is JavaScript?</a></li>
+      <li><a href="https://youtu.be/W6NZfCO5SIk" target="_blank">Why JavaScript is important</a></li>
+      <li><a href="https://youtu.be/W6NZfCO5SIk" target="_blank">JavaScript in web development</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ JavaScript Basics</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/hdI2bqOjy3c" target="_blank">Variables (var, let, const)</a></li>
+      <li><a href="https://youtu.be/hdI2bqOjy3c" target="_blank">Data types</a></li>
+      <li><a href="https://youtu.be/hdI2bqOjy3c" target="_blank">Operators</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Control Statements</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/IsG4Xd6LlsM" target="_blank">if / else</a></li>
+      <li><a href="https://youtu.be/IsG4Xd6LlsM" target="_blank">switch statement</a></li>
+      <li><a href="https://youtu.be/IsG4Xd6LlsM" target="_blank">Loops (for, while)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Functions</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/N8ap4k_1QEQ" target="_blank">Function declaration</a></li>
+      <li><a href="https://youtu.be/N8ap4k_1QEQ" target="_blank">Parameters & return</a></li>
+      <li><a href="https://youtu.be/N8ap4k_1QEQ" target="_blank">Arrow functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Arrays & Objects</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/oigfaZ5ApsM" target="_blank">Arrays</a></li>
+      <li><a href="https://youtu.be/oigfaZ5ApsM" target="_blank">Objects</a></li>
+      <li><a href="https://youtu.be/oigfaZ5ApsM" target="_blank">JSON</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ DOM Manipulation</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/0ik6X4DJKCc" target="_blank">Selecting elements</a></li>
+      <li><a href="https://youtu.be/0ik6X4DJKCc" target="_blank">Events</a></li>
+      <li><a href="https://youtu.be/0ik6X4DJKCc" target="_blank">Changing HTML & CSS</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ ES6 Features</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/NCwa_xi0Uuc" target="_blank">Template literals</a></li>
+      <li><a href="https://youtu.be/NCwa_xi0Uuc" target="_blank">Destructuring</a></li>
+      <li><a href="https://youtu.be/NCwa_xi0Uuc" target="_blank">Spread operator</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Asynchronous JavaScript</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/PoRJizFvM7s" target="_blank">Callbacks</a></li>
+      <li><a href="https://youtu.be/PoRJizFvM7s" target="_blank">Promises</a></li>
+      <li><a href="https://youtu.be/PoRJizFvM7s" target="_blank">async / await</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ APIs & Fetch</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/cuEtnrL9-H0" target="_blank">What is API?</a></li>
+      <li><a href="https://youtu.be/cuEtnrL9-H0" target="_blank">Fetch API</a></li>
+      <li><a href="https://youtu.be/cuEtnrL9-H0" target="_blank">Handling JSON</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 JavaScript Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/W6NZfCO5SIk" target="_blank">Clean code</a></li>
+      <li><a href="https://youtu.be/W6NZfCO5SIk" target="_blank">Debugging</a></li>
+      <li><a href="https://youtu.be/W6NZfCO5SIk" target="_blank">Performance tips</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>
+ </html>

@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">🤖 Artificial Intelligence </h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to Artificial Intelligence</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What is Artificial Intelligence?</a></li>
+      <li><a href="#" target="_blank">History of AI</a></li>
+      <li><a href="#" target="_blank">Applications of AI</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ AI Foundations</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Data, Information & Knowledge</a></li>
+      <li><a href="#" target="_blank">Types of AI (Narrow, General, Super)</a></li>
+      <li><a href="#" target="_blank">AI vs Machine Learning vs Deep Learning</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Machine Learning Basics</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">What is Machine Learning?</a></li>
+      <li><a href="#" target="_blank">Supervised Learning</a></li>
+      <li><a href="#" target="_blank">Unsupervised Learning</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Learning Algorithms</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Linear Regression</a></li>
+      <li><a href="#" target="_blank">Decision Trees</a></li>
+      <li><a href="#" target="_blank">K-Nearest Neighbors (KNN)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Neural Networks</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Biological vs Artificial Neurons</a></li>
+      <li><a href="#" target="_blank">Perceptron Model</a></li>
+      <li><a href="#" target="_blank">Activation Functions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Deep Learning</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Deep Neural Networks</a></li>
+      <li><a href="#" target="_blank">Convolutional Neural Networks (CNN)</a></li>
+      <li><a href="#" target="_blank">Recurrent Neural Networks (RNN)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Natural Language Processing (NLP)</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Text Processing Basics</a></li>
+      <li><a href="#" target="_blank">Tokenization & Stemming</a></li>
+      <li><a href="#" target="_blank">Chatbots & Language Models</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Computer Vision</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Image Processing</a></li>
+      <li><a href="#" target="_blank">Object Detection</a></li>
+      <li><a href="#" target="_blank">Face Recognition</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ AI Tools & Frameworks</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Python for AI</a></li>
+      <li><a href="#" target="_blank">TensorFlow & PyTorch</a></li>
+      <li><a href="#" target="_blank">Scikit-learn</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 Ethics & Future of AI</h3>
+    <ul class="subtopics">
+      <li><a href="#" target="_blank">Ethical Issues in AI</a></li>
+      <li><a href="#" target="_blank">AI Bias & Fairness</a></li>
+      <li><a href="#" target="_blank">Future Trends in AI</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>

@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HTML Course | LearnHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="lux-header">
+  <h1>LearnHub</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="certificate.html">Certificate</a>
+  </nav>
+</header>
+<section class="lux-container">
+
+  <h2 class="section-title">☕ Java Basics</h2>
+
+  <div class="lux-card topic">
+    <h3>1️⃣ Introduction to Java</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">What is Java?</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Why Java is popular</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Java applications</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>2️⃣ Java Basics</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Variables & data types</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Operators</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Type casting</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>3️⃣ Control Statements</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">if / else</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">switch statement</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Loops (for, while)</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>4️⃣ Methods & Functions</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Method declaration</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Parameters & return types</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Method overloading</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>5️⃣ Arrays & Strings</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Arrays</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">String class</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">StringBuilder & StringBuffer</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>6️⃣ Object-Oriented Programming</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Classes & objects</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Inheritance</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Encapsulation</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>7️⃣ Polymorphism & Abstraction</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Method overriding</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Abstract classes</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Interfaces</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>8️⃣ Exception Handling</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">try / catch</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">throw & throws</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Custom exceptions</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>9️⃣ Collections Framework</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">List</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Set</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Map</a></li>
+    </ul>
+  </div>
+
+  <div class="lux-card topic">
+    <h3>🔟 Java Best Practices</h3>
+    <ul class="subtopics">
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Clean code</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Memory management</a></li>
+      <li><a href="https://youtu.be/grEKMHGYyns" target="_blank">Debugging</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<script>
+ const topics = document.querySelectorAll("[data-topic]");
+ let completedTopics = 0;
+ function completeTopic(btn) {
+ const card = btn.parentElement; 
+if (card.classList.contains("completed")) return;
+ card.classList.add("completed");
+ card.classList.remove("locked");
+ card.querySelector(".check").style.display = "inline";
+ btn.innerText = "Completed ✔"; 
+btn.disabled = true;
+ completedTopics++;
+ // Unlock next topic
+ const next = card.nextElementSibling; 
+if (next && next.classList.contains("locked")) { 
+next.classList.remove("locked"); 
+}
+ updateProgress();
+ } 
+function updateProgress(){
+ const percent = Math.round((completedTopics / topics.length) * 100); progress = percent;
+ document.getElementById("progressValue").innerText = percent + "%";
+ document.getElementById("progressText").innerText = "Course Progress: " + percent + "%";
+ if (percent >= 70 && quizPassed) {
+ unlockCertificate();
+ }
+ }
+ </script>
+ </body>
+ </html>
