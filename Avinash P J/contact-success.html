@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Message Sent</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff7e6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        width: 380px;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        animation: fadeIn 0.7s ease-out;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    .icon {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 4px solid #ff9800;
+        color: #ff9800;
+        font-size: 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 15px;
+    }
+
+    a.btn {
+        display: inline-block;
+        background: #ff9800;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+</style>
+</head>
+
+<body>
+<div class="card">
+    <div class="icon">✉</div>
+    <h2>Message Sent!</h2>
+    <p>Your message has been delivered. We will contact you soon.</p>
+    <a href="index.html" class="btn">Back to Home</a>
+</div>
+</body>
+</html>

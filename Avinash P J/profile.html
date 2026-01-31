@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile -  Sportura Coaching Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <h1> Sportura Coaching Center</h1>
+    </div>
+</header>
+
+<center><h2>Your Profile</h2></center>
+
+<!-- PROFILE SECTION -->
+<section id="profile" class="section">
+
+    <center><div class="profile-container">
+                <img src="images/11147460_jude_bellingham_20251130052133.jpg" alt="Profile Image"
+                 style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%;">
+                <h3 id="displayName"></h3>
+                <p>Football Trainee | Member</center></p>
+            </div>
+
+<div class="profile-row">
+
+      <label>Name</label>
+      <input id="pname" type="text">
+
+               <label>Email</label>
+               <input id="pemail" type="email">
+
+               <label>Mobile</label>
+               <input id="pmobile" type="text">
+
+               <label>Course Enrolled</label>
+               <input id="pcourse" type="text">
+
+               <label>Batch Timing</label>
+               <input id="pbatch" type="text">
+
+               <label>Membership Status</label>
+               <input id="pstatus" type="text">
+
+               <button onclick="updateProfile()">Update Profile</button>
+           </div>
+
+</section>
+
+<script>
+// Load saved data into profile page
+document.getElementById("pname").value   = localStorage.getItem("name");
+document.getElementById("pemail").value  = localStorage.getItem("email");
+document.getElementById("pmobile").value = localStorage.getItem("mobile");
+document.getElementById("pcourse").value = localStorage.getItem("course");
+document.getElementById("pbatch").value  = localStorage.getItem("batch");
+document.getElementById("pstatus").value = localStorage.getItem("status");
+
+// Display name in top card
+document.getElementById("displayName").innerText = localStorage.getItem("name");
+
+// Save updated details
+function updateProfile() {
+    localStorage.setItem("name", document.getElementById("pname").value);
+    localStorage.setItem("email", document.getElementById("pemail").value);
+    localStorage.setItem("mobile", document.getElementById("pmobile").value);
+    localStorage.setItem("course", document.getElementById("pcourse").value);
+    localStorage.setItem("batch", document.getElementById("pbatch").value);
+    localStorage.setItem("status", document.getElementById("pstatus").value);
+
+    alert("Profile updated successfully!");
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Training Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="google-section">
+    <h2>Our Training Gallery</h2>
+
+    <div class="google-gallery">
+
+        <div class="img-card">
+            <img src="images/download.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Football Training Session</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/download3.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Swimming Practice</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/download2.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Ground Drill Training</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/images7.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Cricket Team</p>
+            </div>
+        </div>
+        
+        <div class="img-card">
+            <img src="images/images8.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Swimming Pool</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/images9.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Coaching</p>
+            </div>
+        </div>
+
+         <div class="img-card">
+            <img src="images/images10.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p> Basketball Coaching</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/images11.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Football Practice</p>
+            </div>
+        </div>
+
+         <div class="img-card">
+            <img src="images/images12.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Swimming Training Session</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/images13.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Swimming Session</p>
+            </div>
+        </div>
+
+        <div class="img-card">
+            <img src="images/images14.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Swimming Pool</p>
+            </div>
+        </div>
+  
+        <div class="img-card">
+            <img src="images/tennis.jfif" alt="">
+            <div class="img-info">
+                <span class="source">Sportura</span>
+                <p>Tennis Training Session</p>
+            </div>
+        </div>
+        <!-- Repeat same structure for other images -->
+
+    </div>
+</section>
+
+<!-- IMAGE POPUP -->
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightboxImg">
+</div>
+
+<script>
+    document.querySelectorAll(".img-card img").forEach(img => {
+        img.onclick = () => {
+            document.getElementById("lightbox").style.display = "flex";
+            document.getElementById("lightboxImg").src = img.src;
+        };
+    });
+
+    document.getElementById("lightbox").onclick = () => {
+        document.getElementById("lightbox").style.display = "none";
+    };
+</script>
+
+</body>
+</html>
+
+  

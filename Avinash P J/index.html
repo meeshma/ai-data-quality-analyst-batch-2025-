@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportura Coaching Center</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ---- Coaches Styling ---- */
+        .coach-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .coach-card {
+            width: 260px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .coach-card img {
+            width: 100%;
+            height: 230px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .coach-card h3 {
+            margin-top: 10px;
+            font-size: 22px;
+            color: #003366;
+        }
+
+        .coach-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .social-icons img {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* Contact Button */
+        .contact-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #003366;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #0055aa;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Sportura Coaching Center</h1>
+    <button onclick="toggleTheme()">🌙/☀️</button>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#coaches">Coaches</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="Booking.html">Booking</a>
+    <a href="gallery.html">Gallery</a>
+    
+</nav>
+
+<!-- HOME SECTION -->
+<div id="home" class="hero"></div>
+
+<section class="section">
+    <h2>Welcome to Sportura Sports Center</h2>
+    
+
+    <p>
+        Your journey to athletic excellence begins here! Explore our top-tier coaching, 
+        modern facilities, and world-class trainers.
+    </p>
+</section>
+<section id="about" class="section">
+    <h2>Who We Are</h2>
+    <p><u><b>Welcome to Sportura Coaching Center</strong></u> </b>— a place where fun meets fitness, and passion meets progress! We are more than just a coaching academy; we are a vibrant community of athletes, families, and expert trainers who believe that sports should be both enjoyable and meaningful.</p>
+
+        <p>At our center, every child and young athlete receives the encouragement, support, and guidance they need to grow  not just as players, but as confident individuals. We focus on developing essential life skills such as teamwork, discipline, leadership, and resilience, all while keeping the learning environment uplifting and full of enthusiasm.</p>
+
+        <p>Whether your child is picking up a sport for the first time or preparing for a competitive challenge, our experienced coaches create a positive, safe, and energetic atmosphere that inspires progress at every level. We believe in celebrating every effort, every improvement, and every milestone, no matter how small — because here, every journey matters.</p>
+
+        <p>Our programs are designed to help athletes discover their strengths, explore new interests, and build long-lasting friendships. With a blend of structured training, fun activities, and character-building sessions, we ensure that every athlete feels valued, supported, and motivated to keep growing.</p>
+</section>
+<!-- COACHES SECTION -->
+<section id="coaches" class="section">
+    <h2>Meet the Team</h2>
+    <p>Top-tier coaches and national athletes ready to transform your performance.</p>
+
+    <div class="coach-container">
+
+        <!-- Coach 1 -->
+        <div class="coach-card">
+            <img src="images/zindane.webp">
+            <h3>Zinedine Zidane</h3>
+            <p><b>Football Head Coach</b></p>
+            <p>3× UEFA Champions League winning coach, La Liga champion, world-class strategist.</p>
+
+            <div class="social-icons">
+                <a href="https://wa.me/9876543210">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+                </a>
+                <a href="https://instagram.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg">
+                </a>
+                 <a href="mailto:coach2@gmail.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg">
+                 </a>
+
+            </div>
+
+            <a class="contact-btn" href="mailto:coach1@gmail.com">Contact Coach</a>
+        </div>
+
+        <!-- Coach 2 -->
+        <div class="coach-card">
+            <img src="images/jordan.webp">
+            <h3>Michael Jordan</h3>
+            <p><b>Basketball Coach</b></p>
+            <p>6× NBA Champion, 5× MVP, elite level mentor for future stars.</p>
+
+            <div class="social-icons">
+                <a href="https://wa.me/9876543222">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+                </a>
+                <a href="https://instagram.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg">
+                </a>
+                <a href="mailto:coach2@gmail.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg">
+                </a>
+            </div>
+
+            <a class="contact-btn" href="mailto:coach2@gmail.com">Contact Coach</a>
+        </div>
+
+        <!-- Coach 3 -->
+        <div class="coach-card">
+            <img src="images/swim.webp">
+            <h3>Virdhawal Khade</h3>
+            <p><b>Swimming Coach</b></p>
+            <p>National record holder in freestyle & butterfly events.</p>
+
+            <div class="social-icons">
+                <a href="https://wa.me/9876543333">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+                </a>
+                <a href="https://instagram.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg">
+                </a>
+                <a href="mailto:coach3@gmail.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg">
+                </a>
+            </div>
+
+            <a class="contact-btn" href="mailto:coach3@gmail.com">Contact Coach</a>
+        </div>
+
+        <!-- Coach 4 -->
+        <div class="coach-card">
+            <img src="images/sachin-tendulkar.webp">
+            <h3>Sachin Tendulkar</h3>
+            <p><b>Cricket Coach</b></p>
+            <p>100 international centuries, highest run-scorer, World Cup winner.</p>
+
+            <div class="social-icons">
+                <a href="https://wa.me/9876543444">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+                </a>
+                <a href="https://instagram.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg">
+                </a>
+                <a href="mailto:coach4@gmail.com">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg">
+                </a>
+            </div>
+
+            <a class="contact-btn" href="mailto:coach4@gmail.com">Contact Coach</a>
+        </div>
+
+    </div>
+</section>
+<!-- REVIEW SECTION -->
+<section id="reviews" class="section">
+    <h2>Student Reviews</h2>
+    <p>See what our students say about us</p>
+
+    <!-- Review Form -->
+    <div class="review-form">
+        <input type="text" id="reviewerName" placeholder="Your Name" required>
+
+        <select id="reviewRating">
+            <option value="">Select Rating</option>
+            <option value="5">★★★★★ (5)</option>
+            <option value="4">★★★★ (4)</option>
+            <option value="3">★★★ (3)</option>
+            <option value="2">★★ (2)</option>
+            <option value="1">★ (1)</option>
+        </select>
+
+        <textarea id="reviewText" placeholder="Write your review..." rows="4"></textarea>
+
+        <button onclick="addReview()">Submit Review</button>
+    </div>
+
+    <!-- Reviews Display -->
+    <div id="reviewList" class="review-list">
+
+    <div class="review-card">
+        <div class="review-header">
+            <div class="avatar-circle">R</div>
+            <div>
+                <h4>Rahul Sharma <span class="verified">✔</span></h4>
+                <div class="stars">★★★★★</div>
+                <small class="review-date">10 Jan 2026, 9:15 AM</small>
+            </div>
+        </div>
+        <p>Excellent coaching and friendly trainers. My performance improved a lot!</p>
+    </div>
+
+    <div class="review-card">
+        <div class="review-header">
+            <div class="avatar-circle">R</div>
+            <div>
+                <h4>Romal</h4>
+                <div class="stars">★★★★☆</div>
+                <small class="review-date">08 Jan 2026, 6:40 PM</small>
+            </div>
+        </div>
+        <p>Great environment and facilities. Coaches are very supportive.</p>
+    </div>
+
+    <div class="review-card">
+        <div class="review-header">
+            <div class="avatar-circle">A</div>
+            <div>
+                <h4>Arjun Das <span class="verified">✔</span></h4>
+                <div class="stars">★★★★★</div>
+                <small class="review-date">05 Jan 2026, 11:20 AM</small>
+            </div>
+        </div>
+        <p>Best sports academy! Highly recommend Sportura Coaching Center.</p>
+    </div>
+
+</div>
+
+
+</section>
+
+<footer>©  Sportura Coaching Center</footer>
+<script>
+function addReview() {
+    let name = document.getElementById("reviewerName").value;
+    let rating = document.getElementById("reviewRating").value;
+    let text = document.getElementById("reviewText").value;
+
+    if (!name || !rating || !text) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let firstLetter = name.charAt(0).toUpperCase();
+    let stars = "★".repeat(rating) + "☆".repeat(5 - rating);
+
+    let date = new Date().toLocaleDateString("en-IN", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    });
+
+    let reviewHTML = `
+    <div class="review-card google-review">
+        <div class="review-header">
+          
+            <div class="review-meta">
+                <h4>${name}</h4>
+                <div class="stars">${stars}</div>
+                <small class="review-date">${date}</small>
+            </div>
+        </div>
+        <p class="review-text">${text}</p>
+    </div>
+    `;
+
+    // Prepend the new review at the top
+    document.getElementById("reviewList").innerHTML = reviewHTML + document.getElementById("reviewList").innerHTML;
+
+    // Clear input fields
+    document.getElementById("reviewerName").value = "";
+    document.getElementById("reviewRating").value = "";
+    document.getElementById("reviewText").value = "";
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+</body>
+</html>
+

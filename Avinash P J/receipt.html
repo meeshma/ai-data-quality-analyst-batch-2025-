@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Receipt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Payment Receipt</h1>
+</header>
+
+<section class="section receipt">
+    <h2>Sportura Coaching Center</h2>
+    <hr>
+
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Sport:</strong> <span id="sport"></span></p>
+    <p><strong>Training Date:</strong> <span id="date"></span></p>
+    <p><strong>Payment Method:</strong> <span id="payment"></span></p>
+    <p><strong>Amount Paid:</strong> ₹<span id="amount"></span></p>
+
+    <br>
+    <button onclick="downloadPDF()">Download Receipt (PDF)</button>
+</section>
+
+<footer>© Sportura Coaching Center</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+// Sport prices
+const sportPrices = {
+    Football: 1500,
+    Basketball: 1400,
+    Tennis: 1600,
+    Swimming: 1200,
+    Cricket: 1800
+};
+
+// Get values from URL
+const sport = params.get("sport");
+
+document.getElementById("name").textContent = params.get("name");
+document.getElementById("sport").textContent = sport;
+document.getElementById("date").textContent = params.get("date");
+document.getElementById("payment").textContent = params.get("payment");
+document.getElementById("amount").textContent = sportPrices[sport];
+
+// PDF download
+function downloadPDF() {
+    window.print();
+}
+</script>
+</body>
+</html>

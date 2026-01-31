@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Training Session</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Book Training Session</h1>
+</header>
+
+<section class="section">
+    <!-- Send form data to receipt.html -->
+    <form action="receipt.html" method="GET">
+
+        <input type="text" name="name" placeholder="Full Name" required>
+
+        <h3>Select Sport</h3>
+
+<div class="sport-options">
+
+ <label class="sport-item">
+    <span class="radio-wrap">
+        <input type="radio" name="sport" value="Football">
+    </span>
+    <span class="sport-name">Football</span>
+    <span class="sport-price">₹1500</span>
+ </label>
+
+
+ <label class="sport-item">
+    <span class="radio-wrap">
+        <input type="radio" name="sport" value="Basketball">
+    </span>
+    <span class="sport-name">Basketball</span>
+    <span class="sport-price">₹1400</span>
+ </label>
+
+
+ <label class="sport-item">
+    <span class="radio-wrap">
+        <input type="radio" name="sport" value="Tennis">
+    </span>
+    <span class="sport-name">Tennis</span>
+    <span class="sport-price">₹1600</span>
+ </label>
+
+
+ <label class="sport-item">
+    <span class="radio-wrap">
+        <input type="radio" name="sport" value="Swimmimg">
+    </span>
+    <span class="sport-name">Swimming</span>
+    <span class="sport-price">₹1200</span>
+ </label>
+
+ <label class="sport-item">
+    <span class="radio-wrap">
+        <input type="radio" name="sport" value="Cricket">
+    </span>
+    <span class="sport-name">Cricket</span>
+    <span class="sport-price">₹1800</span>
+  </label>
+
+</div>
+
+        <input type="date" name="date" required>
+
+        <select name="payment" required>
+            <option value="">Select Payment Method</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+        </select>
+
+        <input type="text" name="card_name" placeholder="Card Holder Name" required>
+        <input type="text" name="card_number" placeholder="Card Number" maxlength="16" required>
+
+        <div class="row">
+            <input type="month" name="expiry" required>
+            <input type="password" name="cvv" placeholder="CVV" maxlength="3" required>
+        </div>
+
+        <button type="submit">Pay & Generate Receipt</button>
+
+    </form>
+</section>
+
+<footer>© Sportura Coaching Center</footer>
+</body>
+</html>
+
