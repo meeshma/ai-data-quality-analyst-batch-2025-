@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Solar System</title>
+
+  <style>
+    body { margin:0; font-family:'Orbitron',sans-serif; background:black; color:white; overflow-x:hidden; }
+
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      background:url('https://www.nasa.gov/wp-content/uploads/2025/09/iss073e0516005orig.jpg') center/cover no-repeat;
+      filter:brightness(1.2) contrast(1.1) saturate(1.3);
+      opacity:.5;
+      z-index:-1;
+    }
+
+    nav{width:100%;background:#111;padding:15px 0;position:sticky;top:0;z-index:10}
+    nav ul{list-style:none;display:flex;justify-content:center;gap:40px;padding:0}
+    nav ul li a{color:white;text-decoration:none;font-size:18px;font-weight:bold;cursor:pointer}
+    nav ul li a:hover{color:#00aaff}
+
+    .title{
+      text-align:center;font-size:70px;margin-top:20px;font-weight:bold;
+      text-shadow:0 0 15px #00ccff,0 0 25px #ff00ff;
+    }
+
+    /* ================= NEW SOLAR ANIMATION (ONLY THIS PART CHANGED) ================= */
+
+  .solar-container{
+      width:700px;
+      height:700px;
+      margin:40px auto;
+      position:relative;
+    }
+
+    .sun{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:url('https://images-assets.nasa.gov/image/PIA03149/PIA03149~orig.jpg') center/cover;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      box-shadow:0 0 60px 30px rgba(255,160,40,.5);
+      animation:rotateSun 20s linear infinite;
+      z-index:10;
+    }
+
+    @keyframes rotateSun{
+      to{transform:translate(-50%,-50%) rotate(360deg);}
+    }
+
+    .orbit{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      border:1px dashed rgba(255,255,255,.15);
+      animation:spin linear infinite;
+    }
+
+    @keyframes spin{
+      to{transform:translate(-50%,-50%) rotate(360deg);}
+    }
+
+    .orbit .planet{
+      position:absolute;
+      top:50%;
+      right:-10px;
+      transform:translateY(-50%);
+      border-radius:50%;
+    }
+
+    /* ORBIT SIZES */
+    .o1{width:140px;height:140px;animation-duration:6s}
+    .o2{width:180px;height:180px;animation-duration:9s}
+    .o3{width:230px;height:230px;animation-duration:12s}
+    .o4{width:290px;height:290px;animation-duration:17s}
+    .o5{width:360px;height:360px;animation-duration:22s}
+    .o6{width:430px;height:430px;animation-duration:28s}
+    .o7{width:500px;height:500px;animation-duration:34s}
+    .o8{width:570px;height:570px;animation-duration:40s}
+
+    /* PLANETS */
+    .mercury{width:12px;height:12px;background:url('https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar-system/mercury/images/messenger_high_resolution_view_of_mercury_pia_13840.jpg?w=300&h=300&fit=crop&crop=faces%2Cfocalpoint') center/cover}
+    .venus{width:18px;height:18px;background:url('https://science.nasa.gov/wp-content/uploads/2023/05/venus-mariner-10-pia23791-1920x640-1.jpg?resize=600,200') center/cover}
+    .earth{width:22px;height:22px;background:url('https://solarsystem.nasa.gov/system/feature_items/images/17_earth.png') center/cover}
+    .mars{width:16px;height:16px;background:url('https://science.nasa.gov/wp-content/uploads/2024/03/pia04304-mars.jpg?resize=1536,1456') center/cover}
+    .jupiter{width:50px;height:50px;background:url('https://solarsystem.nasa.gov/system/feature_items/images/16_jupiter_new.png') center/cover}
+    .saturn{width:44px;height:44px;background:url('https://solarsystem.nasa.gov/system/feature_items/images/28_saturn.png') center/cover}
+    .uranus{width:28px;height:28px;background:url('https://solarsystem.nasa.gov/system/feature_items/images/29_uranus.png') center/cover}
+    .neptune{width:26px;height:26px;background:url('https://solarsystem.nasa.gov/system/feature_items/images/30_neptune.png') center/cover}
+
+    .info{width:80%; margin:40px auto; text-align:center; font-size:18px; line-height:1.6;}
+    .planet-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; width:90%; margin:40px auto;}
+    .planet-box{background:#1a1a1a; padding:20px; border-radius:15px; text-align:center; cursor:pointer; transition: transform 0.3s, background 0.3s;}
+    .planet-box:hover{background:#333; transform:scale(1.1);}
+    .planet-box img{width:120px;height:120px;border-radius:50%; animation: rotatePlanet 8s linear infinite;}
+
+    #planetDetails, #moonDetails{
+      display:none; 
+      position:fixed; 
+      top:0; left:0; 
+      width:100%; height:100%; 
+      background:rgba(0,0,0,0.8); 
+      justify-content:center; 
+      align-items:center;
+      animation: popIn 0.3s ease forwards;
+    }
+    @keyframes popIn { from {opacity:0; transform: scale(0.8);} to {opacity:1; transform: scale(1);} }
+
+    .details-box{width:60%; background:#222; padding:30px; border-radius:15px; text-align:left; }
+    .details-box h2{text-align:center;}
+    .close-btn{background:red; padding:10px 20px; border:none; color:white; float:right; cursor:pointer; margin-bottom:20px;}
+    .details-box img { display:block; margin:0 auto 20px auto; width:200px; height:200px; border-radius:50%; animation: rotatePlanet 25s linear infinite; }
+
+    .moon-planet-header { text-align:center; font-size:28px; margin-top:60px; text-decoration:underline; }
+
+    @keyframes rotatePlanet { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.learn-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.learn-card{
+  background:#151515;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(0,170,255,.2);
+  transition:transform .4s, box-shadow .4s;
+  cursor:pointer;
+}
+
+.learn-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 35px rgba(0,200,255,.5);
+}
+
+.learn-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.learn-card h3{
+  margin:15px;
+  text-align:center;
+  color:#00ccff;
+}
+
+.learn-card p{
+  padding:0 18px 20px;
+  font-size:15px;
+  line-height:1.6;
+}
+#sun img{
+  width:320px;        /* change this value if needed */
+  max-width:90%;
+  display:block;
+  margin:25px auto;
+  border-radius:200px;
+  box-shadow:0 0 35px rgba(255,170,0,0.6);
+}
+/* ===== LEARN POPUP ===== */
+#learnDetails{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.learn-details-box{
+  width:70%;
+  max-height:85%;
+  background:#111;
+  padding:30px;
+  border-radius:20px;
+  overflow-y:auto;
+  animation:popIn .3s ease forwards;
+}
+
+.learn-details-box h2{
+  text-align:center;
+  color:#00ccff;
+}
+
+.learn-details-box iframe{
+  width:100%;
+  height:360px;
+  border-radius:15px;
+  margin:20px 0;
+}
+
+.learn-details-box p{
+  line-height:1.8;
+  font-size:16px;
+}
+/* ===== QUIZ STYLES ===== */
+
+
+
+/* ===== QUIZ SUBMIT BUTTON (LARGE + HOVER) ===== */
+/* ===== QUIZ STYLES ===== */
+#quizBox{
+  max-width:800px;
+  margin:40px auto;
+  background:#111;
+  padding:30px;
+  border-radius:20px;
+  transition:transform .4s ease, box-shadow .4s ease;
+}
+
+#quizBox:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 35px rgba(0,200,255,.45);
+}
+
+.quiz-question{
+  margin-bottom:25px;
+}
+
+.quiz-question h4{
+  margin-bottom:10px;
+}
+
+.quiz-option{
+  display:block;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  cursor:pointer;
+  background:#222;
+}
+
+.quiz-option.correct{
+  background:#0f5132;
+  color:#9fffc2;
+}
+
+.quiz-option.wrong{
+  background:#842029;
+  color:#ffb3b3;
+}
+
+/* ===== QUIZ SUBMIT BUTTON (LARGE + HOVER) ===== */
+.quiz-btn{
+  display:block;
+  margin:40px auto;
+  padding:18px 60px;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
+  background:linear-gradient(135deg, #00ccff, #0077ff);
+  color:#000;
+  border:none;
+  border-radius:40px;
+  cursor:pointer;
+  transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+}
+
+.quiz-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 30px rgba(0,200,255,.7);
+  background:linear-gradient(135deg, #33ddff, #0099ff);
+}
+
+.quiz-btn:active{
+  transform:scale(0.95);
+}
+
+
+
+/* ===== QUIZ RESULT ANIMATION ===== */
+#quizResult{
+  font-size:26px;
+  font-weight:bold;
+  opacity:0;
+  transform:scale(0.5);
+  display:block;   /* ✅ ADD THIS LINE */
+}
+
+
+.result-animate{
+  animation:resultPop .6s ease forwards;
+  opacity:1;
+}
+
+
+@keyframes resultPop{
+  0%{
+    opacity:0;
+    transform:scale(0.5);
+  }
+  70%{
+    opacity:1;
+    transform:scale(1.15);
+  }
+  100%{
+    opacity:1;            /* ✅ THIS WAS MISSING */
+    transform:scale(1);
+  }
+}
+
+.retry-btn{
+  margin-top:25px;
+  padding:18px 60px;
+  font-size:20px;
+  font-family:'Orbitron',sans-serif;
+  border:none;
+  border-radius:40px;
+  background:#444;
+  color:white;
+  cursor:pointer;
+  transition:all .4s ease;
+  display:none;           /* hidden until quiz submitted */
+}
+
+.retry-btn:hover{
+  background:#00aaff;
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(0,170,255,.7);
+}
+/* ================= QUIZ PROFESSIONAL UI ================= */
+
+.quiz-header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.quiz-header h2{
+  font-size:32px;
+  color:#00ccff;
+  letter-spacing:1px;
+}
+
+.quiz-subtitle{
+  font-size:15px;
+  opacity:.85;
+  margin-top:10px;
+}
+
+#quizProgress{
+  margin-top:12px;
+  font-size:14px;
+  color:#aaa;
+  letter-spacing:1px;
+}
+
+.quiz-option.selected{
+  background:#0b2a35;
+  border:2px solid #00ccff;
+}
+/* ===== FEEDBACK FORM (DARK BLUE) ===== */
+
+#feedbackForm{
+  background: linear-gradient(145deg, #0a1d33, #0f2a4d);
+  padding: 25px;
+  border-radius: 18px;
+  max-width: 500px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 15px 35px rgba(0, 100, 255, 0.25);
+}
+
+#feedbackForm input,
+#feedbackForm textarea{
+  width: 100%;
+  background: #081829;
+  border: 1px solid #1c3b5a;
+  color: #e6f1ff;
+  padding: 12px;
+  border-radius: 10px;
+  font-family:'Orbitron',sans-serif;
+}
+
+#feedbackForm input::placeholder,
+#feedbackForm textarea::placeholder{
+  color:#9bb3cc;
+}
+
+#feedbackForm input:focus,
+#feedbackForm textarea:focus{
+  outline:none;
+  border-color:#00ccff;
+  box-shadow:0 0 10px rgba(0,204,255,.4);
+}
+
+#feedbackForm textarea{
+  resize:none;
+  height:120px;
+}
+
+#feedbackForm button{
+  padding:14px;
+  font-size:16px;
+  font-weight:bold;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#00ccff,#0077ff);
+  cursor:pointer;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+
+#feedbackForm button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 25px rgba(0,204,255,.6);
+}
+
+
+#feedbackMsg{
+  text-align:center;
+  margin-top:15px;
+  color:#00ff99;
+  font-weight:bold;
+}
+.mission-grid {
+  display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.mission-card {
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  text-align: center;
+}
+
+
+.mission-card:hover {
+  transform: translateY(-10px) scale(1.07);
+  box-shadow: 0 15px 40px rgba(0, 180, 255, 0.35);
+  background: rgba(10,10,20,0.85);
+}
+
+
+.mission-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+
+.mission-card span {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.mission-sub {
+  margin: 30px 0 15px;
+}
+
+.mission-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.mission-content {
+  background: #111;
+  padding: 30px;
+  border-radius: 20px;
+  width: 70%;
+  max-width: 900px;   /* SAME SCALE AS LEARN MORE */
+  max-height: 85%;
+  overflow-y: auto;
+  text-align: left;
+  animation: popIn 0.3s ease forwards;
+}
+
+.mission-content img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
+.mission-close-btn{
+  background: red;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mission-close-btn:hover{
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255,0,0,0.8);
+}
+
+.mission-card {
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 14px;
+  text-align: center;
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+.mission-card img {
+  transition: transform 0.5s ease;
+}
+
+.mission-card:hover img {
+  transform: scale(1.12);
+}
+.mission-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(120deg, transparent, rgba(0,180,255,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mission-card:hover::before {
+  opacity: 1;
+}
+.mission-box{
+  background: rgba(0,0,0,0.7);
+  border: 1px solid #00ffff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 0 15px #00ffff;
+  max-width: 900px;
+  margin: 20px auto;
+}
+.mission-content h2,
+.mission-content h3,
+.mission-content h4 {
+  color: #00ccff;
+  text-align: center;
+}
+.mission-close-btn{
+  background:red;
+  padding:10px 20px;
+  border:none;
+  color:white;
+  border-radius:8px;
+  float:right;
+  cursor:pointer;
+  margin-bottom:20px;
+  font-family:'Orbitron',sans-serif;
+}
+
+.sun-rotate{
+  animation: rotateSunNav 18s linear infinite;
+}
+
+@keyframes rotateSunNav{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+  <li><a data-target="home">Home</a></li>
+  <li><a data-target="sun">Sun</a></li>
+  <li><a data-target="planetSection">Planets</a></li>
+  <li><a data-target="moonSection">Moons</a></li>
+  <li><a data-target="missions">Missions</a></li>
+  <li><a data-target="learn">Learn More</a></li>
+  <li><a data-target="quiz">Quiz</a></li>
+  <li><a data-target="about">About Us</a></li>
+  <li><a data-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <h1 class="title">THE SOLAR SYSTEM</h1>
+
+  <div class="solar-container">
+    <div class="sun"></div>
+    <div class="orbit o1"><div class="planet mercury"></div></div>
+    <div class="orbit o2"><div class="planet venus"></div></div>
+    <div class="orbit o3"><div class="planet earth"></div></div>
+    <div class="orbit o4"><div class="planet mars"></div></div>
+    <div class="orbit o5"><div class="planet jupiter"></div></div>
+    <div class="orbit o6"><div class="planet saturn"></div></div>
+    <div class="orbit o7"><div class="planet uranus"></div></div>
+    <div class="orbit o8"><div class="planet neptune"></div></div>
+  </div>
+
+  <!-- Home Section -->
+  <div class="info" id="home">
+    <p>The solar system is a vast and intricate cosmic neighborhood that consists of the Sun, eight major planets, their moons, dwarf planets, comets, asteroids, meteoroids, and the vast expanse of interplanetary space filled with gas and dust. At the heart of the solar system lies the Sun, a massive, glowing sphere of hot plasma that provides the energy necessary for life on Earth and drives the orbits and movements of all the surrounding celestial bodies. The planets are divided into two groups: the inner terrestrial planets—Mercury, Venus, Earth, and Mars—composed mainly of rock and metal, with solid surfaces; and the outer gas giants—Jupiter and Saturn—along with the ice giants Uranus and Neptune, which are much larger, composed mostly of gases and ices, and have complex systems of rings and many moons. Surrounding the planets are countless smaller objects like asteroids, primarily found in the asteroid belt between Mars and Jupiter, and comets, icy bodies that develop bright tails when they approach the Sun. Beyond Neptune lies the Kuiper Belt and the distant Oort Cloud, which are reservoirs of icy bodies and remnants from the early formation of the solar system. The solar system formed around 4.6 billion years ago from a giant molecular cloud of gas and dust, with gravity pulling matter together to form the Sun and the surrounding planets. This cosmic arrangement is held together by the Sun’s gravitational pull, which keeps the planets, moons, and smaller bodies in stable orbits. The study of the solar system not only helps us understand the nature of our own planet but also provides insights into the formation of other planetary systems, the potential for life beyond Earth, and the dynamic interactions of celestial bodies across space. In essence, the solar system is a dynamic, interconnected system of celestial objects that continues to evolve and awe humanity with its complexity, scale, and beauty.</p>
+  </div>
+
+  <!-- About Section -->
+  <div class="info" id="about"><h2>About Us</h2>
+    <p>
+      Welcome to Solar Explorer . A place where curiosity becomes knowledge and imagination blends with science.
+      Our mission is to bring the wonders of the universe closer to everyone. From the blazing surface of the Sun
+      to the icy worlds beyond Neptune, we believe the cosmos should be explored, understood, and loved by all.
+      <br><br>
+      We are a passionate team of dreamers, learners, and creators who want to inspire the next generation
+      of astronomers, scientists, students, and space lovers. Every animation, every detail, and every line of
+      information on this page has been designed to help you feel the beauty of our solar system — as if you’re
+      floating in space, witnessing the planets dance around their star.
+      <br><br>
+      Whether you're learning for school, exploring out of curiosity, or dreaming of one day touching the stars,
+      this website is your gateway to the universe. Enjoy your cosmic journey!
+    </p>
+  </div>
+ <div class="info" id="sun" style="display:none">
+  <h2>The Sun</h2>
+<img class="sun-rotate"
+     src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001435/GSFC_20171208_Archive_e001435~large.jpg">
+
+  
+  <p>
+The Sun is the central star of our solar system and the primary source of light, heat, and energy for all the planets that orbit it. It contains about 99.8% of the total mass of the solar system** and is composed mostly of hydrogen and helium. Through a process called nuclear fusion, the Sun converts hydrogen into helium in its core, releasing enormous amounts of energy in the form of light and heat every second. This energy drives the climate, weather, and seasons on Earth and influences planetary motion and space weather throughout the solar system. The Sun has several layers, including the core, radiative zone, convective zone, and an outer atmosphere consisting of the photosphere, chromosphere, and corona. It also produces phenomena such as sunspots, solar flares, and solar winds, which can affect satellites and communications on Earth. With a diameter of about 1.39 million kilometers, the Sun is an average-sized star but is vital for sustaining life on Earth. Its gravitational pull keeps the planets, asteroids, and comets in stable orbits, making it the anchor of our solar system and a key object of study for understanding stars and the universe itself.
+
+  </p>
+  
+</div>
+
+  <!-- Contact -->
+  <div class="info" id="contact">
+   
+
+  <h3 style="margin-top:40px;color:#00ccff;">Send Us Your Feedback</h3>
+
+  <form id="feedbackForm">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Feedback" required></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  <p id="feedbackMsg"></p>
+  </div>
+
+  <!-- Planet Section -->
+  <h2 style="text-align:center; margin-top:120px;" id="planetSection">Planet Details</h2>
+  <div class="planet-grid" id="planetGridContainer">
+    <div class="planet-box" onclick="showDetails('Mercury')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg" alt="Mercury"/>
+      <h3>Mercury</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Venus')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg" alt="Venus"/>
+      <h3>Venus</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Earth')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Earth"/>
+      <h3>Earth</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Mars')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" alt="Mars"/>
+      <h3>Mars</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Jupiter')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg" alt="Jupiter"/>
+      <h3>Jupiter</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Saturn')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg" alt="Saturn"/>
+      <h3>Saturn</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Uranus')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" alt="Uranus"/>
+      <h3>Uranus</h3>
+    </div>
+    <div class="planet-box" onclick="showDetails('Neptune')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg" alt="Neptune"/>
+      <h3>Neptune</h3>
+    </div>
+  </div>
+
+  <div id="planetDetails">
+    <div class="details-box">
+      <button class="close-btn" onclick="closeDetails()">Close</button>
+      <h2 id="planetTitle"></h2>
+      <img id="planetImg" src="" alt="Planet Image"/>
+      <ul id="planetInfo"></ul>
+    </div>
+  </div>
+
+ 
+  <div class="info" id="missions" style="display:none">
+  <h2>Space Missions</h2>
+
+  <h3 class="mission-sub">Ongoing Missions</h3>
+  <div class="mission-grid">
+
+    <div class="mission-card" onclick="openMission('jwst')">
+       <img src="https://science.nasa.gov/wp-content/uploads/2024/05/jwst_artist_concept_0.png">
+      <h4>James Webb Telescope</h4><span>NASA</span>
+      
+    </div>
+
+    <div class="mission-card" onclick="openMission('perseverance')">
+        <img src="https://science.nasa.gov/wp-content/uploads/2017/12/pia26344-perseverance-selfie-at-cheyava-mars2020home-1920x640-1.jpg?resize=1536,512">
+      <h4>Mars Perseverance</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('voyager')">
+        <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26353/PIA26353.jpg?w=600&h=338&fit=crop&crop=faces%2Cfocalpoint">
+      <h4>Voyager 1 & 2</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('osiris')">  <img src="https://science.nasa.gov/wp-content/uploads/2023/07/orexmodel-display.png?resize=1536,864">
+      <h4>OSIRIS-REx</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('aditya')">
+        <img src="https://www.isro.gov.in/media_isro/image/index/Aditya-L1/ANN_5739.webp">
+      <h4>Aditya-L1</h4><span>ISRO</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('chandrayaan3')">
+       <img src="https://resize.indiatvnews.com/en/centered/newbucket/1200_675/2023/08/chandrayaan-3-5-1691547437.jpg">
+      <h4>Chandrayaan-3</h4><span>ISRO</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('xposat')">
+       <img src="https://images.indianexpress.com/2024/01/XPoSat.jpg">
+      <h4>XPoSat</h4><span>ISRO</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('lro')">
+       <img src="https://science.nasa.gov/wp-content/uploads/2017/11/174593main-lro-rendering.jpg">
+      <h4>Lunar Recon Orbiter</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('iss')">
+       <img src="https://www.nasa.gov/wp-content/uploads/2023/02/International-Space-Station-in-2021.jpg?resize=1536,853">
+      <h4>International Space Station</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('parker')">
+       <img src="https://science.nasa.gov/wp-content/uploads/2021/11/SwingbySunCloseup-sm-1024x576-1.png?w=200&h=200&crop=1">
+      <h4>Parker Solar Probe</h4><span>NASA</span>
+    </div>
+
+  </div>
+
+  <h3 class="mission-sub">Upcoming Missions</h3>
+  <div class="mission-grid">
+
+    <div class="mission-card" onclick="openMission('artemis2')">
+       <img src="https://www.nasa.gov/wp-content/uploads/2023/05/artemis-ii-crew-for-advisory.jpg">
+      <h4>Artemis II</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('artemis3')">
+       <img src="https://www.nasa.gov/wp-content/uploads/2023/06/samplecollection-2crew-xeva-final2.png?resize=1536,864">
+      <h4>Artemis III</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('gaganyaan')">
+       <img src="https://c.ndtvimg.com/2023-10/gctr0jb8_gaganyaan-isro_625x300_07_October_23.jpg">
+      <h4>Gaganyaan</h4><span>ISRO</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('nasa_msr')">
+       <img src="https://science.nasa.gov/wp-content/uploads/2024/07/pia26344-figa-2500x.jpg?resize=600,426">
+      <h4>Mars Sample Return</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('lupex')">
+       <img src="https://space-india.com/wp-content/uploads/2024/11/Lunar-Polar-Exploration-LUPEX-project.png">
+      <h4>LUPEX</h4><span>ISRO + JAXA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('nasa_dragonfly')">
+       <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/dragonfly/Dragonfly-BannerFactSheet_2024.jpg?w=1536&h=624&fit=crop&crop=faces%2Cfocalpoint">
+      <h4>Dragonfly</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('shukrayaan')">
+       <img src="https://m.economictimes.com/thumb/height-450,width-600,imgsize-667214,msid-115684873/isros-shukrayaan.jpg">
+      <h4>Shukrayaan-1</h4><span>ISRO</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('nasa_europa')">
+       <img src="https://science.nasa.gov/wp-content/uploads/2017/12/europa-clipper-liftoff-hi-res-1920x640-1.jpg?resize=1536,512">
+      <h4>Europa Clipper</h4><span>NASA</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('bharatiya_station')">
+       <img src="https://www.indiastrategic.in/wp-content/uploads/2025/05/BHARATIYA-ANTARIKSH-STATION.jpg">
+      <h4>Bharatiya Space Station</h4><span>ISRO</span>
+    </div>
+
+    <div class="mission-card" onclick="openMission('nasa_habex')">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDdbfb6uUQdK37kBYh0ejt3oYQnb9VaNYDvg&s">
+      <h4>HabEx</h4><span>NASA</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= MISSION POPUP ================= -->
+<div class="mission-modal" id="missionModal">
+  <div class="mission-content">
+
+    <button class="mission-close-btn" onclick="closeMission()">Close</button>
+
+    <h2 id="missionTitle"></h2>
+    <p id="missionText"></p>
+
+  </div>
+</div>
+
+<!-- LEARN MORE -->
+<div class="info" id="learn" style="display:none">
+  <h2>Learn More</h2>
+  <p>
+    Explore fascinating facts about our solar system through interactive space cards.
+   And discover amazing science behind each cosmic object.
+  </p>
+
+  <div class="learn-grid">
+
+ <div class="learn-card" onclick="openLearn('Supernova')">
+
+      <img src="http://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002183/GSFC_20171208_Archive_e002183~small.jpg" alt="Supernova">
+      <h3>Supernova</h3>
+    </div>
+<div class="learn-card" onclick="openLearn('black hole')">
+
+      <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2025/webb-STScI-01JKREFYNJE7MT5SG2H0FBYG75-2K.png?w=900&h=506&fit=crop&crop=faces%2Cfocalpoint" alt="black hole">
+      <h3>black hole</h3>
+    </div>
+<div class="learn-card" onclick="openLearn('Gas Giants')">
+
+      <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/astro/exo-explore/internal_resources/1801/download_46.jpeg?w=1600&h=900&fit=clip&crop=faces%2Cfocalpoint" alt="Jupiter">
+      <h3>Gas Giants</h3>
+    </div>
+<div class="learn-card" onclick="openLearn('Ocean Worlds')">
+
+      <img src="https://science.nasa.gov/wp-content/uploads/2023/07/ns-clppr-srfc-100622-031-00000-cropped.jpg?resize=1536,1536" alt="Europa">
+      <h3>Ocean Worlds</h3>
+    </div>
+    <div class="learn-card" onclick="openLearn('Kuiper Belt')">
+  <img src="https://images-assets.nasa.gov/image/ACD17-0168-009/ACD17-0168-009~large.jpg?w=300&h=225&fit=crop&crop=faces%2Cfocalpoint">
+  <h3>Kuiper Belt</h3>
+</div>
+
+<div class="learn-card" onclick="openLearn('Oort Cloud')">
+  <img src="https://images-assets.nasa.gov/image/PIA20118/PIA20118~orig.jpg?w=600&h=600&fit=crop&crop=faces%2Cfocalpoint">
+  <h3>Oort Cloud</h3>
+</div>
+
+</div>
+
+<div class="learn-card" onclick="openLearn('Comets & Asteroids')">
+
+      <img src="https://science.nasa.gov/wp-content/uploads/2018/07/bennu-banner-1920x640-1.jpg?resize=1536,512" alt="Comet">
+      <h3>Comets & Asteroids</h3>   
+    </div>
+
+<div class="learn-card" onclick="openLearn('Beyond Our Solar System')">
+
+      <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/7/7064_solar-system-sun-earth-moon-galaxy-artist-concept-water-feature-full2.jpg?w=633&h=422&fit=clip&crop=faces%2Cfocalpoint" alt="Exoplanets">
+      <h3>Beyond Our System</h3>
+    </div>
+
+  </div>
+
+  <p style="font-size:14px; opacity:0.7; margin-top:20px;">
+    Images courtesy of NASA (Public Domain)
+  </p>
+</div>
+
+<!-- QUIZ SECTION -->
+<div class="info" id="quiz" style="display:none">
+  <div class="quiz-header">
+  <h2>🚀 Solar System Knowledge Assessment</h2>
+  <p class="quiz-subtitle">
+    Answer all questions before submitting. Each question carries equal marks.
+  </p>
+  <div id="quizProgress">Question 1 of 10</div>
+</div>
+
+
+  <!-- Space Animation -->
+
+
+  <div id="quizBox"></div>
+
+  <button onclick="submitQuiz()" class="quiz-btn">Submit Quiz</button>
+  <button class="retry-btn" onclick="retryQuiz()">Retry Quiz</button>
+
+
+  <h3 id="quizResult" style="text-align:center;margin-top:25px;"></h3>
+</div>
+
+  <!-- Moon Section -->
+  <h2 style="text-align:center; margin-top:120px;" id="moonSection">Moon Details</h2>
+  <div id="moonGridContainer"></div>
+
+  <div id="moonDetails">
+    <div class="details-box">
+      <button class="close-btn" onclick="closeMoonDetails()">Close</button>
+      <h2 id="moonTitle"></h2>
+      <img id="moonImg" src="" alt="Moon Image"/>
+      <ul id="moonInfo"></ul>
+    </div>
+  </div>
+
+  <script>
+const missionModal = document.getElementById("missionModal");
+const missionTitle = document.getElementById("missionTitle");
+const missionText = document.getElementById("missionText");
+
+    /* ------------ UPDATED PLANET DATA (10 bullet points each) ------------ */
+
+    const data = {
+      Mercury: { img:"https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg",
+        bullets:[
+          "Closest planet to the Sun",
+          "Smallest planet in the solar system",
+          "No atmosphere to trap heat",
+          "Temperature swings from -173°C to 427°C",
+          "Has no moons",
+          "Orbits the Sun in just 88 days",
+          "Surface full of craters",
+          "No seasons",
+          "Weak magnetic field",
+          "Day is longer than its year"
+        ]
+      },
+
+      Venus: { img:"https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg",
+        bullets:[
+          "Second planet from the Sun",
+          "Hottest planet due to runaway greenhouse effect",
+          "Thick carbon dioxide atmosphere",
+          "Surface pressure 92 times Earth",
+          "No moons",
+          "Rotates backwards",
+          "Volcanic surface",
+          "Covered thick yellow clouds",
+          "Often called Earth's twin",
+          "Brightest object in night sky after Moon"
+        ]
+      },
+
+      Earth: { img:"https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg",
+        bullets:[
+          "Only known planet with life",
+          "70% surface is water",
+          "One natural moon",
+          "Has an oxygen-rich atmosphere",
+          "Has plate tectonics",
+          "Perfect distance from Sun",
+          "Strong magnetic field",
+          "Has seasons due to tilt",
+          "Rich biodiversity",
+          "Supports human civilization"
+        ]
+      },
+
+      Mars: { img:"https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
+        bullets:[
+          "Known as the Red Planet",
+          "Two moons: Phobos & Deimos",
+          "Home to Olympus Mons (largest volcano)",
+          "Thin carbon dioxide atmosphere",
+          "Dust storms cover the planet",
+          "Evidence of past water",
+          "Very cold climate",
+          "Potential human exploration target",
+          "Rusty iron-rich soil",
+          "Has seasons like Earth"
+        ]
+      },
+
+      Jupiter: { img:"https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg",
+        bullets:[
+          "Largest planet in solar system",
+          "Gas giant composed of hydrogen & helium",
+          "Has 79 known moons",
+          "Home to the Great Red Spot",
+          "Strongest magnetic field",
+          "Fastest rotation of all planets",
+          "Has faint rings",
+          "Immense atmospheric storms",
+          "Produces strong auroras",
+          "Could fit 1,300 Earths inside"
+        ]
+      },
+
+      Saturn: { img:"https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg",
+        bullets:[
+          "Known for its beautiful rings",
+          "Gas giant",
+          "82 confirmed moons",
+          "Low density (could float in water)",
+          "Made mostly of hydrogen",
+          "Fast rotation",
+          "Rings made of ice and rock",
+          "Yellow-brown clouds",
+          "Very strong winds",
+          "Second largest planet"
+        ]
+      },
+
+      Uranus: { img:"https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg",
+        bullets:[
+          "Ice giant",
+          "Tilts on its side (98°)", 
+          "27 known moons",
+          "Blue-green color due to methane",
+          "Coldest planet",
+          "Faint rings",
+          "Very long seasons",
+          "High-speed winds",
+          "Discovered in 1781",
+          "Has a rocky core"
+        ]
+      },
+
+      Neptune: { img:"https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg",
+        bullets:[
+          "Farthest planet from Sun",
+          "Ice giant",
+          "14 moons",
+          "Strongest winds in solar system",
+          "Blue color from methane",
+          "Has faint rings",
+          "Cold surface temperatures",
+          "Year lasts 165 Earth years",
+          "Storms similar to Jupiter",
+          "Discovered in 1846"
+        ]
+      }
+    };
+
+    /* ------------ UPDATED MOON DATA (10 bullet points each) ------------ */
+
+    const moons = {
+      "Earth":[
+        {name:"Moon",
+          img:"https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg",
+          bullets:[
+            "First human landing in 1969",
+            "Controls Earth's tides",
+            "Formed from a giant impact",
+            "Only natural satellite of Earth",
+            "Has no atmosphere",
+            "Covered in craters",
+            "Reflects sunlight (not glowing itself)",
+            "Takes 27 days to orbit Earth",
+            "Always shows same side to Earth",
+            "Largest moon relative to its planet"
+          ]
+        }
+      ],
+
+      "Mars":[
+        {name:"Phobos",
+          img:"https://science.nasa.gov/wp-content/uploads/2017/11/phobos-pia10368-1920x1200-1.jpg?resize=300,188",
+          bullets:[
+            "Larger of Mars’ two moons",
+            "Orbits very close to Mars",
+            "Will crash into Mars someday",
+            "Heavily cratered surface",
+            "Irregular potato shape",
+            "Very low gravity",
+            "Rises in the west",
+            "Orbits in just 7.6 hours",
+            "Captured asteroid",
+            "Covered in grooves and scratches"
+          ]
+        },
+        {name:"Deimos",
+          img:"https://science.nasa.gov/wp-content/uploads/2017/11/deimos-1920x1200-1.jpg?resize=300,188",
+          bullets:[
+            "Smaller of Mars’ two moons",
+            "Very smooth surface",
+            "Orbits far from Mars",
+            "Moves very slowly in sky",
+            "Low reflectivity",
+            "Likely captured asteroid",
+            "Takes 30 hours to orbit",
+            "Few craters",
+            "Very low gravity",
+            "Appears like a star from Mars"
+          ]
+        }
+      ],
+
+      "Jupiter":[
+        {name:"Ganymede",
+          img:"https://science.nasa.gov/wp-content/uploads/2023/09/Galileo_Ganymede-800x600-1.jpg",
+          bullets:[
+            "Largest moon in solar system",
+            "Bigger than Mercury",
+            "Has its own magnetic field",
+            "Icy surface",
+            "Possible underground ocean",
+            "Heavily cratered",
+            "Dark and bright regions",
+            "Orbits Jupiter in 7 days",
+            "Thin atmosphere",
+            "Discovered by Galileo"
+          ]
+        },
+        {name:"Callisto",
+          img:"https://images-assets.nasa.gov/image/PIA03456/PIA03456~orig.jpg?w=295&h=300&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Second largest moon of Jupiter",
+            "Most cratered body in solar system",
+            "Icy surface",
+            "Thin CO2 atmosphere",
+            "Possible underground ocean",
+            "Low radiation levels",
+            "Very old surface",
+            "Dark appearance",
+            "Large impact basins",
+            "Orbits in 16.7 days"
+          ]
+        },
+        {name:"Io",
+          img:"https://science.nasa.gov/wp-content/uploads/2024/05/io-from-juno-close-flyby-p57-%E2%80%9315850.jpg?resize=1536,1536",
+          bullets:[
+            "Most volcanic world",
+            "Hundreds of active volcanoes",
+            "Bright colorful surface",
+            "Sulfur-rich landscape",
+            "No water",
+            "Thin atmosphere",
+            "Tidal heating from Jupiter",
+            "Orbits in 1.7 days",
+            "Constant surface changes",
+            "Molten lava lakes"
+          ]
+        },
+        {name:"Europa",
+          img:"https://science.nasa.gov/wp-content/uploads/2024/07/pia25695-nasas-juno-mission-captures-images-of-europa.jpg?resize=600,529",
+          bullets:[
+            "Icy crust",
+            "Possible liquid ocean beneath",
+            "Strong candidate for life",
+            "Few craters",
+            "Surface cracking patterns",
+            "Very smooth surface",
+            "Thin oxygen atmosphere",
+            "Orbits in 3.5 days",
+            "Discovered by Galileo",
+            "Reflective icy surface"
+          ]
+        }
+      ],
+
+      "Saturn":[
+        {name:"Titan",
+          img:"https://science.nasa.gov/wp-content/uploads/2023/06/pia11548-titan-16x9-1.jpg?resize=1536,864",
+          bullets:[
+            "Second largest moon",
+            "Thick orange atmosphere",
+            "Lakes of methane",
+            "Rivers and seas exist",
+            "Complex chemistry",
+            "Surface cold as -180°C",
+            "Mountains and dunes",
+            "Low gravity",
+            "Possible subsurface ocean",
+            "Similar size to Mercury"
+          ]
+        },
+        {name:"Enceladus",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/PIA11133.jpg?w=415&h=599&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Known for icy geysers",
+            "Shoots water into space",
+            "Strong evidence for ocean",
+            "Very reflective surface",
+            "Cryovolcanoes",
+            "Thin atmosphere",
+            "Covered in fresh ice",
+            "Small size",
+            "Orbits Saturn in 1.4 days",
+            "Source of material for Saturn’s E-ring"
+          ]
+        },
+        {name:"Mimas",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/PIA12739_modest.jpg?w=900&h=900&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Looks like the Death Star",
+            "Large crater called Herschel",
+            "Small icy moon",
+            "Very low density",
+            "Cold surface",
+            "Heavily cratered",
+            "Orbits in 23 hours",
+            "Causes waves in Saturn’s rings",
+            "Reflects lots of light",
+            "Discovered in 1789"
+          ]
+        }
+      ],
+
+      "Uranus":[
+        {name:"Ariel",
+          img:"https://science.nasa.gov/wp-content/uploads/2017/11/ariel-pia01534.jpg?resize=529,600",
+          bullets:[
+            "Bright icy surface",
+            "Canyons and cliffs",
+            "Possible subsurface ocean",
+            "One of Uranus’s largest moons",
+            "Few craters",
+            "Smooth regions indicate past activity",
+            "Reflective surface",
+            "Orbits in 2.5 days",
+            "Cold temperatures",
+            "Discovered in 1851"
+          ]
+        },
+        {name:"Umbriel",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/PIA00040_umbriel.jpg?w=400&h=400&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Darkest Uranus moon",
+            "Old, cratered surface",
+            "Cold and inactive",
+            "Low reflectivity",
+            "Possible carbon-rich material",
+            "Orbits in 4 days",
+            "Large impact crater called Wunda",
+            "Discovered in 1851",
+            "Heavily cratered",
+            "Very little geological activity"
+          ]
+        },
+        {name:"Titania",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/PIA00036.jpg?w=400&h=400&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Largest Uranus moon",
+            "Huge canyons",
+            "Signs of past tectonic activity",
+            "Icy and rocky surface",
+            "Orbits in 8.7 days",
+            "Possible ocean beneath crust",
+            "Discovered in 1787",
+            "Has scarps and cliffs",
+            "Surface partially young",
+            "Fourth largest moon in solar system"
+          ]
+        },
+        {name:"Oberon",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/Oberon_732.jpg?w=400&h=219&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Second largest Uranus moon",
+            "Heavily cratered",
+            "Bright icy peaks",
+            "Rocky inner core",
+            "Orbits in 13.5 days",
+            "Very old surface",
+            "Large dark patches",
+            "Discovered in 1787",
+            "Cold and inactive",
+            "Thin ice covering rocks"
+          ]
+        }
+      ],
+
+      "Neptune":[
+        {name:"Triton",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/PIA00317_modest.jpg?w=654&h=509&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Largest Neptune moon",
+            "Retrograde orbit",
+            "Likely captured Kuiper Belt object",
+            "Has nitrogen geysers",
+            "Thin atmosphere",
+            "Icy surface",
+            "Very cold temperatures",
+            "Possible subsurface ocean",
+            "Orbits in 5.8 days",
+            "Smooth plains & ridges"
+          ]
+        },
+        {name:"Nereid",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/Nereid-browse-732X520.jpg?w=732&h=520&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Highly elliptical orbit",
+            "One of Neptune’s outer moons",
+            "Very irregular shape",
+            "Discovered in 1949",
+            "Long orbital period",
+            "Likely captured object",
+            "Very dark surface",
+            "Small size",
+            "Cold temperatures",
+            "Orbits far from Neptune"
+          ]
+        },
+        {name:"Larissa",
+          img:"https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/Larissa_732X520.jpg?w=732&h=520&fit=crop&crop=faces%2Cfocalpoint",
+          bullets:[
+            "Inner Neptune moon",
+            "Irregular shape",
+            "Heavily cratered",
+            "Very dark surface",
+            "Discovered in 1981",
+            "Orbits in 0.5 days",
+            "Likely captured",
+            "Very low gravity",
+            "Cold icy surface",
+            "Non-spherical body"
+          ]
+        }
+      ]
+    };
+const learnData = {
+  "Supernova": {
+    title: "Supernova",
+    text: `A supernova is a powerful and luminous explosion that occurs at the end of a massive star’s life. During a supernova, the star releases an enormous amount of energy, briefly outshining entire galaxies. These explosions scatter elements like carbon, oxygen, and iron into space, which later form new stars, planets, and even life. Supernovae are classified into different types based on how they explode. They can create neutron stars or black holes as remnants. Supernovae play a key role in enriching the universe with heavy elements. They are visible across vast distances, helping astronomers study the universe’s expansion and evolution.`,
+    img: "http://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002183/GSFC_20171208_Archive_e002183~small.jpg"
+  },
+  "black hole": {
+    title: "black hole",
+    text: `A black hole is an extremely dense object formed when a massive star collapses under its own gravity. Its gravitational pull is so strong that not even light can escape from it. The boundary around a black hole is called the event horizon. Black holes can grow by pulling in gas, dust, and nearby stars. Some black holes are millions of times more massive than the Sun and lie at the centers of galaxies. They play an important role in galaxy formation and evolution. Black holes remain one of the most mysterious objects in the universe.
+`,
+    img: "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2025/webb-STScI-01JKREFYNJE7MT5SG2H0FBYG75-2K.png?w=900&h=506&fit=crop&crop=faces%2Cfocalpoint"
+  },
+
+  "Gas Giants": {
+    title: "Gas Giants",
+    text: `Gas giants are enormous planets composed mainly of hydrogen and helium, lacking a solid surface. Jupiter and Saturn are the two gas giants in our solar system. They have thick, layered atmospheres with powerful storms and strong winds. Gas giants rotate very rapidly, creating intense weather systems like Jupiter’s Great Red Spot. These planets possess strong gravitational fields that influence nearby objects. They are surrounded by numerous moons and spectacular ring systems. Gas giants play a crucial role in maintaining the structure of the solar system.`,
+    img: "https://images-assets.nasa.gov/image/PIA23623/PIA23623~orig.jpg"
+  },
+
+  "Ocean Worlds": {
+    title: "Ocean Worlds",
+    text: `Ocean worlds are planets or moons that contain vast amounts of liquid water beneath their surface or atmosphere. Some ocean worlds have hidden oceans below thick ice layers. Moons like Europa and Enceladus are famous examples in our solar system. These oceans are kept warm by gravitational heating from nearby planets. Ocean worlds may contain the chemical ingredients needed for life. Scientists study them to understand where life could exist beyond Earth. Ocean worlds are key targets for future space exploration.
+`,
+    img: "https://images-assets.nasa.gov/image/PIA18182/PIA18182~orig.jpg"
+  },
+
+  "Kuiper Belt": {
+    title: "The Kuiper Belt",
+    text: `The Kuiper Belt is a vast, disk-shaped region beyond Neptune filled with icy bodies and remnants from the early solar system. It extends from about 30 to 50 astronomical units away from the Sun. The Kuiper Belt contains dwarf planets such as Pluto, Haumea, and Makemake. Objects in this region are made mostly of ice, rock, and frozen gases. Short-period comets originate from the Kuiper Belt. It helps scientists understand how planets and smaller bodies formed. The Kuiper Belt marks the outer edge of the main planetary system.
+`,
+    img: "https://images-assets.nasa.gov/image/ACD17-0168-009/ACD17-0168-009~large.jpg?w=300&h=225&fit=crop&crop=faces%2Cfocalpoint"
+  },
+
+  "Oort Cloud": {
+    title: "The Oort Cloud",
+    text: `The Oort Cloud is a distant, spherical region surrounding the solar system far beyond the Kuiper Belt. It is believed to extend up to 100,000 astronomical units from the Sun. The Oort Cloud is made of icy bodies and frozen remnants from the solar system’s formation. It is the source of many long-period comets that travel toward the inner solar system. These objects are loosely bound by the Sun’s gravity. The Oort Cloud marks the outermost boundary of the Sun’s influence. It represents the transition between our solar system and interstellar space.
+`,
+    img: "https://images-assets.nasa.gov/image/PIA18182/PIA18182~orig.jpg"
+  },
+
+  "Beyond Our Solar System": {
+    title: "Beyond Our Solar System",
+    text: `Beyond our solar system lies a vast and mysterious universe filled with billions of stars, planetary systems, nebulae, galaxies, and cosmic phenomena that stretch far beyond human imagination. While the solar system is just a tiny neighborhood around one star the Sun it is only a microscopic part of the Milky Way galaxy, which itself contains over 100 billion stars, many of which host their own planets known as exoplanets. These distant worlds vary greatly in size, composition, and environment, ranging from scorching lava planets to icy gas giants and even potentially habitable Earth-like planets.`,
+    img: "https://images-assets.nasa.gov/image/PIA23623/PIA23623~orig.jpg"
+  },
+
+  "Comets & Asteroids": {
+    title: "Comets & Asteroids",
+    text: `**Comets & Asteroids** are small celestial bodies left over from the formation of the solar system. Asteroids are mostly rocky or metallic and are found mainly in the asteroid belt between Mars and Jupiter. Comets are made of ice, dust, and rock and usually originate from the Kuiper Belt or the Oort Cloud. When comets travel close to the Sun, they form a glowing coma and a long tail. Asteroids usually have stable orbits and do not form tails. Both objects provide valuable information about the early solar system. Scientists also track them because some can pass close to Earth.
+`,
+    img: "https://images-assets.nasa.gov/image/PIA14172/PIA14172~orig.jpg"
+  },
+
+  
+};
+
+/* ===== QUIZ DATA ===== */
+const quizQuestions = [
+  {
+    q:"Which planet is closest to the Sun?",
+    options:["Venus","Earth","Mercury","Mars"],
+    answer:2
+  },
+  {
+    q:"Which planet is known as the Red Planet?",
+    options:["Venus","Mars","Jupiter","Saturn"],
+    answer:1
+  },
+  {
+    q:"What is the largest planet?",
+    options:["Earth","Saturn","Jupiter","Neptune"],
+    answer:2
+  },
+  {
+    q:"Which planet has the most moons?",
+    options:["Mars","Earth","Saturn","Mercury"],
+    answer:2
+  },
+  {
+    q:"What causes a comet’s tail?",
+    options:["Gravity","Solar wind","Moon","Rings"],
+    answer:1
+  },
+  {
+    q:"Which planet rotates on its side?",
+    options:["Neptune","Uranus","Saturn","Mars"],
+    answer:1
+  },
+  {
+    q:"Where is the asteroid belt located?",
+    options:[
+      "Between Earth & Mars",
+      "Between Mars & Jupiter",
+      "Beyond Neptune",
+      "Near Sun"
+    ],
+    answer:1
+  },
+  {
+    q:"Which is NOT a gas giant?",
+    options:["Jupiter","Saturn","Neptune","Earth"],
+    answer:3
+  },
+  {
+    q:"What is the Sun mainly made of?",
+    options:["Rock","Hydrogen","Oxygen","Iron"],
+    answer:1
+  },
+  {
+    q:"Which region is farthest from the Sun?",
+    options:["Kuiper Belt","Asteroid Belt","Oort Cloud","Mars"],
+    answer:2
+  }
+];
+
+let userAnswers = [];
+
+/* LOAD QUIZ */
+function loadQuiz(){
+  const box = document.getElementById("quizBox");
+  box.innerHTML="";
+  userAnswers = [];
+
+  quizQuestions.forEach((item,index)=>{
+    const div=document.createElement("div");
+    div.className="quiz-question";
+    div.innerHTML=`<h4>${index+1}. ${item.q}</h4>`;
+
+    item.options.forEach((opt,i)=>{
+      const optDiv=document.createElement("div");
+      optDiv.className="quiz-option";
+      optDiv.innerText=opt;
+     optDiv.onclick = () => {
+  userAnswers[index] = i;
+
+  div.querySelectorAll(".quiz-option")
+     .forEach(o => o.classList.remove("selected"));
+
+  optDiv.classList.add("selected");
+
+  document.getElementById("quizProgress").innerText =
+    `Question ${index + 1} of ${quizQuestions.length}`;
+};
+
+      div.appendChild(optDiv);
+    });
+    box.appendChild(div);
+  });
+}
+
+/* SUBMIT QUIZ */
+function submitQuiz(){
+if(userAnswers.length < quizQuestions.length ||
+   userAnswers.includes(undefined)){
+  alert("⚠️ Please answer all questions before submitting.");
+  return;
+}
+
+  let score = 0;
+
+  quizQuestions.forEach((q,i)=>{
+    const options = document.querySelectorAll(
+      `.quiz-question:nth-child(${i+1}) .quiz-option`
+    );
+
+    options.forEach((opt,index)=>{
+      if(index === q.answer){
+        opt.classList.add("correct");
+      }
+      if(userAnswers[i] === index && index !== q.answer){
+        opt.classList.add("wrong");
+      }
+    });
+
+    if(userAnswers[i] === q.answer) score++;
+  });
+
+  const resultEl = document.getElementById("quizResult");
+  resultEl.innerText = `🎉 You scored ${score} / ${quizQuestions.length}`;
+  resultEl.style.opacity = "1";
+document.querySelector(".retry-btn").style.display = "inline-block";
+document.querySelectorAll(".quiz-option").forEach(opt=>{
+  opt.style.pointerEvents = "none";
+});
+
+
+  // 🔥 animation trigger
+  resultEl.classList.remove("result-animate");
+  void resultEl.offsetWidth;   // force reflow
+  resultEl.classList.add("result-animate");
+}
+
+
+function retryQuiz(){
+  loadQuiz();
+
+  document.getElementById("quizResult").innerText = "";
+  document.getElementById("quizResult").style.opacity = "0";
+
+  document.querySelector(".retry-btn").style.display = "none";
+
+  document.getElementById("quizProgress").innerText =
+    `Question 1 of ${quizQuestions.length}`;
+}
+
+
+const missions = {
+  jwst:{title:"James Webb Space Telescope",text:"The James Webb Space Telescope is the most powerful space observatory ever built.It studies the universe in infrared light to see distant galaxies, stars, and exoplanets.Webb helps scientists understand how the first galaxies formed after the Big Bang.It was launched in 2021 and orbits around the Sun–Earth L2 point."},
+  perseverance:{title:"Mars Perseverance",text:"Perseverance is a robotic rover exploring the surface of Mars since 2021.Its main goal is to search for signs of ancient microbial life.The rover collects rock samples for future return to Earth.It also tested the Ingenuity helicopter, the first aircraft on another planet."},
+  voyager:{title:"Voyager 1 & 2",text:"Voyager 1 and 2 were launched in 1977 to explore the outer planets.They provided detailed images of Jupiter, Saturn, Uranus, and Neptune.Both spacecraft have now entered interstellar space.They continue sending data from beyond our solar system."},
+  osiris:{title:"OSIRIS-REx",text:"OSIRIS-REx was launched to study the asteroid Bennu.It successfully collected samples from the asteroid’s surface.The mission helps scientists understand the early solar system.The sample was returned to Earth in 2023."},
+  aditya:{title:"Aditya-L1",text:"Aditya-L1 is India’s first solar observation mission.It studies the Sun’s outer atmosphere, known as the corona.The spacecraft is placed at the Sun–Earth L1 Lagrange point.It helps improve understanding of solar storms and space weather."},
+  chandrayaan3:{title:"Chandrayaan-3",text:"Chandrayaan-3 successfully landed near the Moon’s south pole in 2023.It made India the first country to land in that region.The mission studied lunar soil, temperature, and seismic activity.It demonstrated India’s soft-landing capability on the Moon."},
+  xposat:{title:"XPoSat",text:"XPoSat is India’s first X-ray Polarimetry Satellite.It studies extreme cosmic objects like black holes and neutron stars.The mission measures the polarization of X-ray radiation.It helps understand high-energy processes in the universe."},
+  lro:{title:"Lunar Reconnaissance Orbiter",text:"LRO orbits the Moon to create detailed maps of its surface.It studies lunar topography, temperature, and radiation levels.The mission supports future human and robotic missions.It has been operating since 2009."},
+  iss:{title:"International Space Station",text:"The ISS is a large space laboratory orbiting Earth.Astronauts from many countries live and work aboard it.It supports experiments in science, medicine, and technology.The station has been continuously occupied since 2000."},
+  parker:{title:"Parker Solar Probe",text:"Parker Solar Probe travels closer to the Sun than any spacecraft before.It studies the Sun’s corona and solar wind.The mission helps explain why the corona is hotter than the Sun’s surface.It improves predictions of solar storms affecting Earth."},
+
+  artemis2:{title:"Artemis II",text:"Artemis II will be the first crewed mission of the Artemis program.It will carry astronauts around the Moon without landing.The mission tests spacecraft systems with humans onboard.It prepares for future lunar landings."},
+  artemis3:{title:"Artemis III",text:"Artemis III aims to land astronauts on the Moon’s south pole.It will mark the first human lunar landing since Apollo 17.The mission includes the first woman and first person of color on the Moon.It supports long-term lunar exploration."},
+  gaganyaan:{title:"Gaganyaan",text:"Gaganyaan is India’s first human spaceflight mission.It aims to send Indian astronauts into low Earth orbit.The mission demonstrates crew safety and life-support systems.It marks a major milestone for ISRO."},
+  nasa_msr:{title:"Mars Sample Return",text:"Mars Sample Return plans to bring Martian samples to Earth.Samples collected by Perseverance will be retrieved.The mission involves multiple spacecraft and international collaboration.It will allow detailed laboratory study of Mars material."},
+  lupex:{title:"LUPEX",text:"LUPEX is a joint lunar mission by ISRO and JAXA.It will explore the Moon’s south polar region.The mission focuses on detecting water ice.It supports future human exploration on the Moon."},
+  nasa_dragonfly:{title:"Dragonfly",text:"Dragonfly is a rotorcraft mission to Saturn’s moon Titan.It will fly between locations to study Titan’s chemistry.The mission searches for conditions suitable for life.Launch is planned in the 2030s."},
+  shukrayaan:{title:"Shukrayaan-1",text:"Shukrayaan-1 is India’s planned mission to Venus.It will study Venus’s atmosphere and surface.The mission aims to understand climate and volcanic activity.It strengthens India’s planetary exploration program."},
+  nasa_europa:{title:"Europa Clipper",text:"Europa Clipper will explore Jupiter’s moon Europa.Europa is believed to have a subsurface ocean.The mission studies ice thickness and habitability.It searches for conditions that could support life."},
+  bharatiya_station:{title:"Bharatiya Space Station",text:"India plans to build its own space station by the 2030s.It will support long-duration human missions.The station will enable advanced research in microgravity.It represents India’s next step in space exploration."},
+  nasa_habex:{title:"HabEx",text:"HabEx is a proposed mission to study exoplanets.It aims to directly image Earth-like planets.The mission searches for signs of life beyond Earth.It focuses on habitability and planetary atmospheres."}
+};
+
+function openMission(id){
+  missionTitle.innerText = missions[id].title;
+  missionText.innerText = missions[id].text;
+  missionModal.style.display="flex";
+}
+function closeMission(){ missionModal.style.display="none"; }
+
+
+
+    /* ------------ REST OF YOUR ORIGINAL JAVASCRIPT (UNCHANGED) ------------ */
+
+    const container = document.getElementById("moonGridContainer");
+    for(const planet in moons){
+      const header = document.createElement("h3");
+      header.className="moon-planet-header";
+      header.innerText = planet + (planet==="Earth"? "'s Moon" : "'s Moons");
+      container.appendChild(header);
+
+      const grid = document.createElement("div");
+      grid.className="planet-grid";
+      moons[planet].forEach(moon=>{
+        const div = document.createElement("div");
+        div.className="planet-box";
+        div.onclick = ()=>showMoonDetails(moon.name);
+        div.innerHTML = `<img src="${moon.img}"/><h4>${moon.name}</h4>`;
+        grid.appendChild(div);
+      });
+      container.appendChild(grid);
+    }
+
+    function showDetails(planet){
+      const planetImg = document.getElementById("planetImg");
+      planetImg.src = data[planet].img;
+      planetImg.classList.add("rotate");
+      document.getElementById("planetTitle").innerText = planet;
+      const list = document.getElementById("planetInfo");
+      list.innerHTML = "";
+      data[planet].bullets.forEach(item=>{
+        const li = document.createElement("li");
+        li.innerText = item;
+        list.appendChild(li);
+      });
+      document.getElementById("planetDetails").style.display="flex";
+    }
+
+    function closeDetails(){
+      document.getElementById("planetDetails").style.display="none";
+      document.getElementById("planetImg").classList.remove("rotate");
+    }
+
+    function showMoonDetails(moonName){
+      let moonData;
+      for(const planet in moons){
+        moonData = moons[planet].find(m=>m.name===moonName);
+        if(moonData) break;
+      }
+      if(!moonData) return;
+      const moonImg = document.getElementById("moonImg");
+      moonImg.src = moonData.img;
+      moonImg.classList.add("rotate");
+      document.getElementById("moonTitle").innerText = moonName;
+      const list = document.getElementById("moonInfo");
+      list.innerHTML="";
+      moonData.bullets.forEach(item=>{
+        const li=document.createElement("li");
+        li.innerText=item;
+        list.appendChild(li);
+      });
+      document.getElementById("moonDetails").style.display="flex";
+    }
+
+    function closeMoonDetails(){
+      document.getElementById("moonDetails").style.display="none";
+      document.getElementById("moonImg").classList.remove("rotate");
+    }
+const sections = document.querySelectorAll(".info");
+const solar = document.querySelector(".solar-container");
+
+const navLinks = document.querySelectorAll("nav ul li a");
+function openLearn(key){
+  if(!learnData[key]) return;
+
+  document.getElementById("learnTitle").innerText =
+    learnData[key].title;
+
+  document.getElementById("learnText").innerText =
+    learnData[key].text;
+
+  document.getElementById("learnDetails").style.display = "flex";
+}
+
+function closeLearn(){
+  document.getElementById("learnDetails").style.display = "none";
+}
+document.getElementById("feedbackForm").addEventListener("submit", e => {
+  e.preventDefault();
+  document.getElementById("feedbackMsg").innerText =
+    "✅ Thank you! Your feedback has been received.";
+  e.target.reset();
+});
+
+navLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const target = link.dataset.target;
+
+    /* hide ALL info sections */
+    document.querySelectorAll(".info").forEach(sec => {
+      sec.style.display = "none";
+    });
+
+    /* hide headings & grids */
+    document.getElementById("planetSection").style.display = "none";
+    document.getElementById("moonSection").style.display = "none";
+    document.getElementById("planetGridContainer").style.display = "none";
+    document.getElementById("moonGridContainer").style.display = "none";
+
+    /* HOME */
+    if (target === "home") {
+      document.getElementById("home").style.display = "block";
+      document.querySelector(".solar-container").style.display = "block";
+      return;
+    }
+
+    /* SUN */
+    if (target === "sun") {
+      document.getElementById("sun").style.display = "block";
+      document.querySelector(".solar-container").style.display = "none";
+      return;
+    }
+if (target === "quiz") {
+  document.getElementById("quiz").style.display = "block";
+  document.querySelector(".solar-container").style.display = "none";
+  loadQuiz();
+  return;
+}
+
+
+
+
+    /* LEARN MORE */
+    if (target === "learn") {
+      document.getElementById("learn").style.display = "block";
+      document.querySelector(".solar-container").style.display = "none";
+      return;
+    }
+
+
+    /* PLANETS */
+    if (target === "planetSection") {
+      document.getElementById("planetSection").style.display = "block";
+      document.getElementById("planetGridContainer").style.display = "grid";
+      document.querySelector(".solar-container").style.display = "none";
+      return;
+    }
+
+    /* MOONS */
+    if (target === "moonSection") {
+      document.getElementById("moonSection").style.display = "block";
+      document.getElementById("moonGridContainer").style.display = "grid";
+      document.querySelector(".solar-container").style.display = "none";
+      return;
+    }
+
+    /* ABOUT / CONTACT */
+    document.getElementById(target).style.display = "block";
+    document.querySelector(".solar-container").style.display = "none";
+  });
+});
+
+/* default view */
+document.getElementById("home").style.display = "block";
+document.querySelector(".solar-container").style.display = "block";
+
+  
+    document.getElementById("home").style.display="block";
+    document.getElementById("planetSection").style.display="none";
+    document.getElementById("moonSection").style.display="none";
+    document.getElementById("planetGridContainer").style.display="none";
+    document.getElementById("moonGridContainer").style.display="none";
+    document.getElementById("about").style.display="none";
+    document.getElementById("contact").style.display="none";
+
+  </script>
+  <div id="learnDetails">
+  <div class="learn-details-box">
+    <button class="close-btn" onclick="closeLearn()">Close</button>
+    <h2 id="learnTitle"></h2>
+    <p id="learnText"></p>
+  </div>
+</div>
+<div id="missionModal" class="mission-modal">
+  <div class="mission-content">
+    <span class="close" onclick="closeMission()">✖</span>
+    <h2 id="missionTitle"></h2>
+    <img id="missionImg">
+    <p id="missionText"></p>
+  </div>
+</div>
+
+</body>
+</html>
