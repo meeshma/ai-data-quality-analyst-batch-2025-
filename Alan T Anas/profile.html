@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge | Profile</title>
+    <link rel="stylesheet" href="global.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+        }
+
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff5722;
+        }
+
+        .section {
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .profile-card p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #ff5722;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #e64a19;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+    <nav>
+        <a href="yourfitnessdashboard.html">Dashboard</a>
+        <a href="progress.html">Progress</a>
+        <a href="logout.html">Logout</a>
+    </nav>
+</header>
+
+<section class="section">
+    <div class="profile-card">
+        <img src="https://png.pngtree.com/png-vector/20240130/ourmid/pngtree-male-cartoon-man-surprising-look-png-image_11506823.png"
+            alt="Profile Picture">
+        <h2>ALAN</h2>
+        <p>Email: user@example.com</p>
+        <p>Membership: Premium</p>
+
+        <div class="profile-actions">
+            <a href="logout.html" class="btn">Logout</a>
+        </div>
+    </div>
+</section>
+
+</body>
+
+</html>

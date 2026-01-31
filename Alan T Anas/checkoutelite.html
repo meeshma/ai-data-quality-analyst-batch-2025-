@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitForge | Checkout</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        /* CONTAINER */
+        .checkout-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+        }
+
+        /* PLAN */
+        .plan {
+            border: 2px solid #ff5722;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .plan h3 {
+            margin: 0;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* FORM */
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff5722;
+        }
+
+        .pay-btn {
+            margin-top: 25px;
+            width: 100%;
+            padding: 14px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pay-btn:hover {
+            background: #e64a19;
+        }
+
+        .secure {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">FitForge</div>
+    </header>
+
+    <!-- CHECKOUT -->
+    <div class="checkout-container">
+
+        <!-- ORDER SUMMARY -->
+        <div class="card">
+            <h2>Order Summary</h2>
+
+            <div class="plan">
+                <h3>Elite Plan</h3>
+                <p class="price">$19.99 / month</p>
+                <p>Includes:</p>
+                <ul>
+                    <li>Everything in Pro</li>
+                    <li>1-on-1 coaching</li>
+                    <li>Priority support</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="card">
+            <h2>Payment Details</h2>
+
+     <form onsubmit="goToSuccess(event)">
+                <label>Full Name</label>
+ <input type="text" id="fullName" placeholder="Name" required>
+
+                <label>Email Address</label>
+<input type="email" id="email" placeholder="email" required>
+                <label>Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456" required>
+
+                <label>Expiry Date</label>
+                <input type="text" placeholder="MM / YY" required>
+
+                <label>CVC</label>
+                <input type="text" placeholder="123" required>
+
+<button class="pay-btn" type="submit">
+    Pay $19.99
+</button>
+
+
+                <div class="secure">
+                    🔒 Secure checkout powered by FitForge
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 FitForge. All rights reserved.
+    </footer>
+<script>
+function goToSuccess(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("fullName").value;
+    const email = document.getElementById("email").value;
+
+    // Store data
+    localStorage.setItem("customerName", name);
+    localStorage.setItem("customerEmail", email);
+    localStorage.setItem("plan", "Pro Plan");
+    localStorage.setItem("amount", "$9.99");
+
+    // Redirect
+    window.location.href = "paymentsuccessfullelite.html";
+}
+</script>
+
+
+
+</body>
+</html>

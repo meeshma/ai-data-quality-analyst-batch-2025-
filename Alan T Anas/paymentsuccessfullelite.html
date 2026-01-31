@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Successful | FitForge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffffff;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        /* SUCCESS CARD */
+        .success-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-card {
+            background: white;
+            max-width: 450px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .checkmark {
+            font-size: 3.5rem;
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+
+        .success-card h1 {
+            margin-bottom: 10px;
+        }
+
+        .success-card p {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .details {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+ .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    background: #ff5722;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.btn.secondary {
+    background: #eeeeee;
+    color: #333;
+}
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+</header>
+
+<div class="success-container">
+    <div class="success-card">
+        <div class="checkmark">✅</div>
+        <h1>Payment Successful!</h1>
+ <p id="thankYouText"></p>
+
+
+        <div class="details">
+            <strong>Plan:</strong> Elite Plan<br>
+            <strong>Amount Paid:</strong> $19.99<br>
+            <strong>Status:</strong> Active
+        </div>
+
+        <a href="yourfitnessdashboard.html" class="btn">Go to Dashboard</a>
+        <a href="invoiceelite.html" class="btn secondary">View invoice</a>
+        <a href="index.html" class="btn secondary">Back to Home</a>
+    </div>
+</div>
+
+<footer>
+    © 2025 FitForge. All rights reserved.
+</footer>
+<script>
+const name = localStorage.getItem("customerName");
+const email = localStorage.getItem("customerEmail");
+const plan = localStorage.getItem("plan");
+const amount = localStorage.getItem("amount");
+
+if (name) {
+    document.getElementById("customer-name").textContent = name;
+}
+
+if (email) {
+    document.querySelector(".left").innerHTML += `<br>${email}`;
+}
+</script>
+
+
+</body>
+</html>

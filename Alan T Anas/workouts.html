@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge | Workouts</title>
+    <link rel="stylesheet" href="global.css">
+
+    <style>
+        body { margin:0; font-family:'Segoe UI', sans-serif; background:#f5f7fa; }
+        
+        header { 
+            background:#fff; padding:15px 40px; display:flex; 
+            justify-content:space-between; border-bottom:1px solid #ddd; 
+        }
+
+        nav a { margin:0 15px; color:#444; text-decoration:none; font-weight:500; }
+        nav a:hover { color:#ff5722; }
+
+        .logo { font-size:1.6rem; font-weight:bold; color:#ff5722; }
+
+        .container { padding:40px; max-width:1200px; margin:auto; }
+
+        /* 3 Columns in a row */
+        .workout-grid {
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:30px;
+        }
+
+        @media(max-width:900px){
+            .workout-grid {
+                grid-template-columns:repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:600px){
+            .workout-grid {
+                grid-template-columns:1fr;
+            }
+        }
+
+        .workout-card {
+            background:white; padding:20px;
+            border-radius:12px; 
+            box-shadow:0 3px 10px rgba(0,0,0,0.08);
+            transition:0.15s;
+            text-align:center;
+        }
+
+        .workout-card:hover {
+            transform:translateY(-4px);
+            box-shadow:0 6px 14px rgba(0,0,0,0.12);
+        }
+
+        .workout-card img {
+            width:100%;
+            height:180px;
+            object-fit:cover;
+            border-radius:10px;
+            cursor:pointer;
+            transition:0.2s;
+        }
+
+        .workout-card img:hover { opacity:0.85; }
+
+        .workout-card h3 { margin:15px 0 10px; font-size:1.2rem; }
+        .workout-card p { margin:0; color:#555; font-size:0.9rem; }
+
+        /* Button like Tutorials page */
+        .workout-card button {
+            margin-top:10px;
+            padding:10px 18px;
+            background:#ff5722;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:0.95rem;
+            font-weight:600;
+            transition:0.2s;
+        }
+
+        .workout-card button:hover {
+            background:#e64a19;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign up</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Workout Categories</h2>
+
+    <div class="workout-grid">
+
+        <!-- Full Body -->
+        <div class="workout-card">
+            <a href="fullbody.html">
+                <img src="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg">
+            </a>
+            <h3>Full Body</h3>
+            <p>Complete training for all major muscle groups.</p>
+            <button onclick="location.href='fullbody.html'">View Tutorial</button>
+        </div>
+
+        <!-- Upper & Lower -->
+        <div class="workout-card">
+            <a href="upperlower.html">
+                <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg">
+            </a>
+            <h3>Upper & Lower Body</h3>
+            <p>Alternate sessions for strength and balance.</p>
+            <button onclick="location.href='upperlower.html'">View Tutorial</button>
+        </div>
+
+        <!-- Single Body Parts -->
+        <div class="workout-card">
+            <a href="singlebodypart.html">
+                <img src="https://media.istockphoto.com/id/1370782447/photo/portrait-of-a-muscular-young-man-exercising-with-a-dumbbell-in-a-gym.jpg?s=612x612&w=0&k=20&c=qUchMFvAByhh85nq4pAdn3MD1TJm4inKjsVLyUJO-Rk=">
+            </a>
+            <h3>Single Body Parts</h3>
+            <p>Targeted workouts for each muscle group.</p>
+            <button onclick="location.href='singlebodypart.html'">View Tutorial</button>
+        </div>
+
+        <!-- Push Pull Legs -->
+        <div class="workout-card">
+            <a href="ppl.html">
+                <img src="https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2019/12/Incline-Barbell-Bench-Press.jpg?quality=86&strip=all">
+            </a>
+            <h3>Push • Pull • Legs</h3>
+            <p>Smart split routine for fast results.</p>
+            <button onclick="location.href='ppl.html'">View Tutorial</button>
+        </div>
+
+        <!-- Cardio -->
+        <div class="workout-card">
+            <a href="cardio.html">
+                <img src="https://media.istockphoto.com/id/1132086660/photo/side-view-of-beautiful-muscular-woman-running-on-treadmill.jpg?s=612x612&w=0&k=20&c=5Vq_BJjG7sbIyKIP-Adu0pChReDXm0dC7BVPvto2M0I=">
+            </a>
+            <h3>Cardio</h3>
+            <p>Boost stamina, energy, and endurance.</p>
+            <button onclick="location.href='cardio.html'">View Tutorial</button>
+        </div>
+
+        <!-- HIIT -->
+        <div class="workout-card">
+            <a href="hiit.html">
+                <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg">
+            </a>
+            <h3>HIIT</h3>
+            <p>High-intensity routines for fat burning.</p>
+            <button onclick="location.href='hiit.html'">View Tutorial</button>
+        </div>
+
+        <!-- Strength -->
+        <div class="workout-card">
+            <a href="strength.html">
+                <img src="https://images.pexels.com/photos/949126/pexels-photo-949126.jpeg">
+            </a>
+            <h3>Strength Training</h3>
+            <p>Build raw power and muscle definition.</p>
+            <button onclick="location.href='strength.html'">View Tutorial</button>
+        </div>
+
+        <!-- Flexibility -->
+        <div class="workout-card">
+            <a href="flexibility.html">
+                <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg">
+            </a>
+            <h3>Flexibility & Mobility</h3>
+            <p>Improve range of motion and reduce tightness.</p>
+            <button onclick="location.href='flexibility.html'">View Tutorial</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge | Login</title>
+<link rel="stylesheet" href="global.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+        }
+
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff5722;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            padding: 35px;
+            margin: 80px auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin: 10px 0 5px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        input:focus {
+            border-color: #ff5722;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #e64a19;
+        }
+
+        .signup-link,
+        .forgot-link {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.95rem;
+        }
+
+        .signup-link a,
+        .forgot-link a {
+            color: #ff5722;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-link a:hover,
+        .forgot-link a:hover {
+            text-decoration: underline;
+        }
+
+        #login-error {
+            color: red;
+            font-size: 0.9rem;
+            display: none;
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+    <nav>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Login</h2>
+
+    <form onsubmit="return handleLogin(event)">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+
+        <p id="login-error">Incorrect email or password.</p>
+
+        <div class="forgot-link" id="forgot-link" style="display:none;">
+            <a href="resetpassword.html">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p class="signup-link">
+            Don't have an account? <a href="signup.html">Sign up</a>
+        </p>
+    </form>
+
+<script>
+    // Existing fixed account (DO NOT REMOVE)
+    const VALID_EMAIL = "user@example.com";
+    const VALID_PASSWORD = "fitforge123";
+
+    function handleLogin(event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const pass = document.getElementById("password").value.trim();
+        const error = document.getElementById("login-error");
+        const forgot = document.getElementById("forgot-link");
+
+        // 1️⃣ Check fixed account first
+        if (email === VALID_EMAIL && pass === VALID_PASSWORD) {
+            localStorage.setItem("username", "Admin");
+            window.location.href = "yourfitnessdashboard.html";
+            return false;
+        }
+
+        // 2️⃣ Check signup user from localStorage
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+
+        if (storedUser && email === storedUser.email && pass === storedUser.password) {
+            localStorage.setItem("username", storedUser.name);
+            window.location.href = "success.html";
+            return false;
+        }
+
+        // 3️⃣ If nothing matches → error
+        error.style.display = "block";
+        forgot.style.display = "block";
+        return false;
+    }
+</script>
+
+</div>
+
+</body>
+</html>

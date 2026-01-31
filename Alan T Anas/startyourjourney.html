@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge | Start Your Journey</title>
+<link rel="stylesheet" href="global.css">
+
+
+    <style>
+        body { margin:0; font-family:'Segoe UI'; background:#f5f7fa; }
+
+        header { 
+            background:#fff; padding:15px 40px;
+            display:flex; justify-content:space-between;
+            border-bottom:1px solid #ddd;
+        }
+
+        .logo { color:#ff5722; font-size:1.6rem; font-weight:bold; }
+        nav a { margin:0 15px; color:#444; text-decoration:none; font-weight:500; }
+
+        .container { max-width:1000px; margin:auto; padding:40px; }
+
+        h2 { color:#333; margin-bottom:30px; text-align:center; }
+
+        /* Grid Layout */
+        .goal-grid {
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);
+            gap:25px;
+        }
+
+        @media(max-width:700px){
+            .goal-grid { grid-template-columns:1fr; }
+        }
+
+        /* Goal Cards */
+        .goal-card {
+            background:white; padding:30px;
+            border-radius:15px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.08);
+            transition:0.2s;
+            cursor:pointer;
+            display:flex;
+            align-items:flex-start;
+        }
+
+        .goal-card:hover {
+            transform:translateY(-5px);
+            box-shadow:0 6px 14px rgba(0,0,0,0.12);
+        }
+
+        .goal-icon {
+            font-size:2.4rem;
+            margin-right:18px;
+            color:#ff5722;
+        }
+
+        .goal-card h3 {
+            margin:0 0 8px;
+            font-size:1.25rem;
+        }
+
+        .start-btn {
+            text-align:center;
+            margin-top:35px;
+        }
+        .start-btn a {
+            padding:12px 30px;
+            background:#ff5722;
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+            border-radius:10px;
+            display:inline-block;
+        }
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff5722;
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign up</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Start Your Fitness Journey</h2>
+
+    <div class="goal-grid">
+
+        <a href="looseweight.html" style="color:inherit; text-decoration:none;">
+            <div class="goal-card">
+                <div class="goal-icon">🔥</div>
+                <div>
+                    <h3>Lose Weight</h3>
+                    <p>Reduce body fat and achieve a leaner shape with guided plans.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="buildmuscle.html" style="color:inherit; text-decoration:none;">
+            <div class="goal-card">
+                <div class="goal-icon">🏋️‍♂️</div>
+                <div>
+                    <h3>Build Muscle</h3>
+                    <p>Increase strength and muscle mass with progressive training.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="improveendurance.html" style="color:inherit; text-decoration:none;">
+            <div class="goal-card">
+                <div class="goal-icon">⚡</div>
+                <div>
+                    <h3>Improve Endurance</h3>
+                    <p>Boost stamina with cardio and performance-focused routines.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="stayactive.html" style="color:inherit; text-decoration:none;">
+            <div class="goal-card">
+                <div class="goal-icon">🏃‍♂️</div>
+                <div>
+                    <h3>Stay Fit & Active</h3>
+                    <p>Maintain a healthy, balanced lifestyle that supports your overall well-being..</p>
+                </div>
+            </div>
+        </a>
+
+    
+</div>
+
+</body>
+</html>

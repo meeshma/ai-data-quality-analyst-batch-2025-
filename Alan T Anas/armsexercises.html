@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge | Arm Exercises</title>
+<link rel="stylesheet" href="global.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+        }
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+        nav a {
+            margin-left: 15px;
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #ff5722;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1, h2 {
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        @media(max-width:900px) {
+            .tutorial-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width:600px) {
+            .tutorial-grid { grid-template-columns: 1fr; }
+        }
+        .tutorial-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: 0.15s;
+            text-align: center;
+        }
+        .tutorial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        }
+        .tutorial-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .tutorial-card img:hover { opacity: 0.85; }
+        .tutorial-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+        .tutorial-card button {
+            margin-top: 10px;
+            padding: 10px 18px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .tutorial-card button:hover { background: #e64a19; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="tutorials.html">Tutorials</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Arm Exercises</h1>
+
+    <!-- Biceps -->
+    <h2>Biceps Exercises</h2>
+    <div class="tutorial-grid">
+        <!-- Barbell Curl -->
+        <div class="tutorial-card">
+            <img src="https://t4.ftcdn.net/jpg/02/41/04/47/360_F_241044745_RdSbOxvbYoYIzUI7tEUl6RrJTMUbfphx.jpg" alt="Barbell Curl">
+            <h3>Barbell Curl</h3>
+            <button onclick="location.href='barbellcurl.html'">View Tutorial</button>
+        </div>
+        <!-- Dumbbell Curl -->
+        <div class="tutorial-card">
+            <img src="https://barbend.com/wp-content/uploads/2023/06/bodybuilder-alternating-dumbbel-curl-barbend.com_.jpg" alt="Dumbbell Curl">
+            <h3>Dumbbell Curl</h3>
+            <button onclick="location.href='dumbbellcurl.html'">View Tutorial</button>
+        </div>
+        <!-- Hammer Curl -->
+        <div class="tutorial-card">
+            <img src="https://steelsupplements.com/cdn/shop/articles/shutterstock_1197050494_12cc6090-56ad-4d56-95aa-eed9d08b34d3_1000x.jpg?v=1754462049" alt="Hammer Curl">
+            <h3>Hammer Curl</h3>
+            <button onclick="location.href='hammercurl.html'">View Tutorial</button>
+        </div>
+        <!-- Spider Curl -->
+        <div class="tutorial-card">
+            <img src="https://cdn.shopify.com/s/files/1/0252/3155/6686/files/Spider_Curls_1.jpg?v=1738265203" alt="Spider Curl">
+            <h3>Spider Curl</h3>
+            <button onclick="location.href='spidercurl.html'">View Tutorial</button>
+        </div>
+        <!-- Preacher Curl -->
+        <div class="tutorial-card">
+            <img src="https://swolverine.com/cdn/shop/articles/Preacher_Curl.jpg?v=1662581126&width=1600" alt="Preacher Curl">
+            <h3>Preacher Curl</h3>
+            <button onclick="location.href='preachercurl.html'">View Tutorial</button>
+        </div>
+    </div>
+
+    <!-- Triceps -->
+    <h2>Triceps Exercises</h2>
+    <div class="tutorial-grid">
+        <!-- Tricep Pushdown -->
+        <div class="tutorial-card">
+            <img src="https://www.shutterstock.com/image-photo/muscular-bodybuilder-doing-cable-tricep-260nw-1816507496.jpg" alt="Tricep Pushdown">
+            <h3>Tricep Pushdown</h3>
+            <button onclick="location.href='triceppushdown.html'">View Tutorial</button>
+        </div>
+        <!-- Overhead Tricep Extension -->
+        <div class="tutorial-card">
+            <img src="https://media.post.rvohealth.io/wp-content/uploads/2021/10/overhead-tricep-extension-dumbbell-732x549-thumbnail-732x549.jpg" alt="Overhead Tricep Extension">
+            <h3>Overhead Tricep Extension</h3>
+            <button onclick="location.href='overheadtricepextension.html'">View Tutorial</button>
+        </div>
+        <!-- Skull Crushers -->
+        <div class="tutorial-card">
+            <img src="https://fitliferegime.com/wp-content/uploads/2022/07/Skull-Crushers.jpg" alt="Skull Crushers">
+            <h3>Skull Crushers</h3>
+            <button onclick="location.href='skullcrushers.html'">View Tutorial</button>
+        </div>
+        <!-- Close-Grip Bench Press -->
+        <div class="tutorial-card">
+            <img src="https://steelsupplements.com/cdn/shop/articles/shutterstock_69079681_2000x.jpg?v=1599316230" alt="Close-Grip Bench Press">
+            <h3>Close-Grip Bench Press</h3>
+            <button onclick="location.href='closegripbenchpress.html'">View Tutorial</button>
+        </div>
+        <!-- Tricep Kickbacks -->
+        <div class="tutorial-card">
+            <img src="https://swolverine.com/cdn/shop/articles/dumbbell_triceps_kickback.jpg?v=1744004471&width=1920" alt="Tricep Kickbacks">
+            <h3>Tricep Kickbacks</h3>
+            <button onclick="location.href='tricepkickbacks.html'">View Tutorial</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

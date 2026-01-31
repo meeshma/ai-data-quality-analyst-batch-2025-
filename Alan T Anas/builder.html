@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Custom Workout Builder | FitForge</title>
+<link rel="stylesheet" href="global.css">
+
+<style>
+body{margin:0;font-family:'Segoe UI';background:#f5f7fa;}
+header{background:white;padding:15px 40px;border-bottom:1px solid #e7e7e7;display:flex;justify-content:space-between;}
+.logo{color:#ff5722;font-size:1.5rem;font-weight:bold;}
+
+.form-container{
+    max-width:480px;margin:60px auto;background:white;padding:25px;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+input,select{width:100%;padding:12px;margin:10px 0;border-radius:6px;border:1px solid #ccc;}
+.btn{background:#ff5722;color:white;padding:12px;border-radius:6px;text-align:center;display:block;font-weight:bold;text-decoration:none;}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">FitForge</div>
+<nav>
+<a href="dashboard.html">Dashboard</a>
+</nav>
+</header>
+
+<div class="form-container">
+<h2>Create a Custom Workout</h2>
+
+<input type="text" placeholder="Workout Name">
+
+<select>
+    <option>Select Muscle Group</option>
+    <option>Chest</option>
+    <option>Back</option>
+    <option>Legs</option>
+    <option>Arms</option>
+</select>
+
+<input type="text" placeholder="Exercise">
+<input type="number" placeholder="Sets">
+<input type="number" placeholder="Reps">
+
+<a class="btn" href="dashboard.html">Save Workout</a>
+</div>
+
+</body>
+</html>

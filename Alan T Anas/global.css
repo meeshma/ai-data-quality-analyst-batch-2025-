@@ -1,0 +1,109 @@
+/* ===========================
+   GLOBAL PAGE ANIMATIONS
+   =========================== */
+
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f5f7fa;
+    opacity:0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+}
+
+header {
+    background:#fff;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    animation: slideDown 0.7s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-40px); opacity:0; }
+    to { transform: translateY(0); opacity:1; }
+}
+
+.container {
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    animation: fadeUp 0.9s ease-out;
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity:0; }
+    to { transform: translateY(0); opacity:1; }
+}
+
+/* ===========================
+   CONTENT BLOCK ANIMATIONS
+   =========================== */
+
+.section {
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    margin-top:25px;
+    opacity:0;
+    animation: floatIn 0.9s ease forwards;
+    transition:0.3s ease;
+}
+
+@keyframes floatIn {
+    from { transform: translateY(15px); opacity:0; }
+    to { transform: translateY(0); opacity:1; }
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow:0 5px 18px rgba(0,0,0,0.13);
+}
+
+/* ===========================
+   START BUTTON (Left Aligned)
+   =========================== */
+
+.start-btn {
+    text-align:left;
+    margin-top:30px;
+}
+
+.start-btn a {
+    padding:12px 30px;
+    background:#ff5722;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    display:inline-block;
+    transition:0.25s ease;
+}
+
+.start-btn a:hover {
+    background:#e64a19;
+    transform:translateX(5px);
+}
+
+/* ===========================
+   HEADER NAV LINKS
+   =========================== */
+
+.logo {
+    color:#ff5722;
+    font-size:1.6rem;
+    font-weight:bold;
+}
+
+nav a {
+    margin:0 15px;
+    color:#444;
+    text-decoration:none;
+    font-weight:500;
+}

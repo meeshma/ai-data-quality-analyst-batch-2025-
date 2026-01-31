@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice | FitForge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background: #ffffff;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e7e7e7;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        /* INVOICE CARD */
+        .invoice-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .invoice-card {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .invoice-header .left,
+        .invoice-header .right {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .invoice-table {
+            width: 100%;
+            margin-bottom: 30px;
+            border-collapse: collapse;
+        }
+
+        .invoice-table th, .invoice-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .invoice-table th {
+            background-color: #f1f1f1;
+        }
+
+        .total-row {
+            font-weight: bold;
+            background-color: #f1f1f1;
+        }
+
+        .total-row td {
+            text-align: right;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #ff5722;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">FitForge</div>
+    </header>
+
+    <!-- INVOICE SECTION -->
+    <div class="invoice-container">
+        <div class="invoice-card">
+            <h1>Invoice</h1>
+
+            <div class="invoice-header">
+                <div class="left">
+                    <strong>Invoice To:</strong><br>
+                    <span id="customer-name">John Doe</span><br>
+                    1234 Fitness St.<br>
+                    Gymtown, FIT 56789
+                </div>
+                <div class="right">
+                    <strong>Invoice Number:</strong> #F12345<br>
+                    <strong>Invoice Date:</strong> January 5, 2026<br>
+                    <strong>Due Date:</strong> January 15, 2026
+                </div>
+            </div>
+
+            <!-- INVOICE TABLE -->
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FitForge Pro Plan</td>
+                        <td>1</td>
+                        <td>$9.99</td>
+                        <td>$9.99</td>
+                    </tr>
+                    <tr>
+                        <td>Tax (8%)</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>$0.80</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="3">Total</td>
+                        <td>$10.79</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="yourfitnessdashboard.html" class="btn">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 FitForge. All rights reserved.
+    </footer>
+
+<script>
+const name = localStorage.getItem("customerName");
+const email = localStorage.getItem("customerEmail");
+const plan = localStorage.getItem("plan");
+const amount = localStorage.getItem("amount");
+
+if (name) {
+    document.getElementById("customer-name").textContent = name;
+}
+
+if (email) {
+    document.querySelector(".left").innerHTML += `<br>${email}`;
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Progress | FitForge</title>
+<link rel="stylesheet" href="global.css">
+
+<style>
+body { margin:0; font-family:'Segoe UI'; background:#f5f7fa; }
+header { background:white; padding:15px 40px; border-bottom:1px solid #e7e7e7; display:flex; justify-content:space-between; }
+.logo { color:#ff5722; font-size:1.5rem; font-weight:bold; }
+
+.page-hero {
+    background:linear-gradient(to right,#ff5722,#ff784e);
+    padding:50px 40px;
+    color:white;
+}
+
+.section { padding:50px 40px; }
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.card {
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff5722;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">FitForge</div>
+<nav>
+    <a href="yourfitnessdashboard.html">Dashboard</a>
+</nav>
+</header>
+
+<section class="page-hero">
+<h1>Your Progress</h1>
+<p>Monitor your improvements and performance.</p>
+</section>
+
+<section class="section">
+<div class="grid">
+
+    <!-- WEIGHT CHART -->
+    <div class="card">
+        <h3>Weight Change</h3>
+        <canvas id="weightChart" height="200"></canvas>
+    </div>
+
+    <!-- CONSISTENCY CHART -->
+    <div class="card">
+        <h3>Workout Consistency</h3>
+        <canvas id="consistencyChart" height="200"></canvas>
+    </div>
+
+    <!-- STRENGTH CHART -->
+    <div class="card">
+        <h3>Strength Progress</h3>
+        <canvas id="strengthChart" height="200"></canvas>
+    </div>
+
+</div>
+</section>
+
+<!-- CHART.JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+/* ==========================
+   WEIGHT PROGRESS CHART
+========================= */
+new Chart(document.getElementById("weightChart"), {
+    type: "line",
+    data: {
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
+        datasets: [{
+            label: "Weight (kg)",
+            data: [78, 77, 76, 75, 74],
+            borderColor: "#ff5722",
+            backgroundColor: "rgba(255,87,34,0.3)",
+            borderWidth: 3,
+            tension: 0.3,
+            pointRadius: 5,
+            pointBackgroundColor: "#ff5722"
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: false } }
+    }
+});
+
+
+/* ==========================
+   CONSISTENCY BAR CHART
+========================= */
+new Chart(document.getElementById("consistencyChart"), {
+    type: "bar",
+    data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+        datasets: [{
+            label: "Sessions Completed",
+            data: [1, 1, 1, 0, 1],
+            backgroundColor: "#ff784e",
+            borderRadius: 6
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { beginAtZero: true, max: 1 },
+        }
+    }
+});
+
+
+/* ==========================
+   STRENGTH CHART (Bench/Squat/Deadlift)
+========================= */
+new Chart(document.getElementById("strengthChart"), {
+    type: "line",
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+        datasets: [
+            {
+                label: "Bench Press (kg)",
+                data: [50, 55, 57, 60, 62],
+                borderColor: "#ff5722",
+                borderWidth: 3,
+                tension: 0.3
+            },
+            {
+                label: "Squat (kg)",
+                data: [70, 75, 78, 82, 85],
+                borderColor: "#ffab91",
+                borderWidth: 3,
+                tension: 0.3
+            },
+            {
+                label: "Deadlift (kg)",
+                data: [80, 85, 90, 95, 100],
+                borderColor: "#ff8a65",
+                borderWidth: 3,
+                tension: 0.3
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: true }
+        },
+        scales: {
+            y: { beginAtZero: false }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

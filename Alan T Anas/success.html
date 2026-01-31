@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success | FitForge</title>
+<link rel="stylesheet" href="global.css">
+
+
+    <style>
+        body {
+            margin:0;
+            font-family:'Segoe UI', sans-serif;
+            background:#f5f7fa;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            text-align:center;
+        }
+
+        .box {
+            background:white;
+            padding:40px;
+            width:350px;
+            border-radius:12px;
+            box-shadow:0 3px 12px rgba(0,0,0,0.1);
+            animation: pop 0.5s ease-out;
+        }
+
+        @keyframes pop {
+            0% { transform:scale(0.6); opacity:0; }
+            100% { transform:scale(1); opacity:1; }
+        }
+
+        .check {
+            font-size:60px;
+            color:#4caf50;
+            animation: bounce 0.5s;
+        }
+
+        @keyframes bounce {
+            0% { transform:scale(0.3); }
+            70% { transform:scale(1.3); }
+            100% { transform:scale(1); }
+        }
+
+        button {
+            margin-top:20px;
+            padding:12px 20px;
+            border:none;
+            background:#ff5722;
+            color:white;
+            font-size:1rem;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        button:hover { background:#e64a19; }
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+    <div class="check">✔</div>
+<h2 id="welcomeText">Success!</h2>
+
+    <p>Your request has been completed.</p>
+
+    <button onclick="location.href='index.html'">Go Home</button>
+</div>
+<script>
+const name = localStorage.getItem("username");
+
+if (name) {
+    document.getElementById("welcomeText").innerText = "Welcome, " + name + "!";
+}
+</script>
+
+</body>
+</html>

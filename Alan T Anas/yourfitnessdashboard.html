@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitForge Dashboard</title>
+
+    <link rel="stylesheet" href="global.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e7e7e7;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+nav a:hover {
+    color: #ff5722;
+}
+
+
+        .btn-nav {
+            padding: 8px 16px;
+            background: #ff5722;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* DASHBOARD HEADER */
+        .dashboard-hero {
+            background: linear-gradient(to right, #ff5722, #ff784e);
+            padding: 50px 40px;
+            color: white;
+        }
+
+        .dashboard-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-hero p {
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        /* MAIN GRID */
+        .dashboard-section {
+            padding: 50px 40px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .card-btn {
+            padding: 10px 18px;
+            background: #ff5722;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">FitForge</div>
+
+        <nav>
+           <a href="workouts.html">Workouts</a>
+           <a href="profile.html">Profile</a>
+           <a href="logout.html">Logout</a>
+        </nav>
+
+    </header>
+
+    <!-- DASHBOARD HEADER -->
+    <section class="dashboard-hero">
+        <h1>Your Fitness Dashboard</h1>
+        <p>Track your workouts, monitor your progress, and access personalized fitness tools to keep your journey on track.</p>
+    </section>
+
+    <!-- MAIN DASHBOARD -->
+    <section class="dashboard-section">
+
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+                <h3>Today's Workout</h3>
+                <p>Your personalized daily routine is ready, get your goals and be healthy.</p>
+                <a class="card-btn" href="dailyworkout.html">View Workout</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Progress Tracking</h3>
+                <p>View your performance, charts, and improvements.</p>
+                <a class="card-btn" href="progress.html">Track Progress</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Meal & Nutrition Plan</h3>
+                <p>Balanced meals designed for your goals, wish you a good day.</p>
+                <a class="card-btn" href="nutrition.html">View Plan</a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Exercise Tutorials</h3>
+                <p>Learn proper form and techniques with videos.</p>
+                <a class="card-btn" href="tutorials.html">Explore Tutorials</a>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

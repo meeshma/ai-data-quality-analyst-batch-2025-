@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitForge | Reviews</title>
+    <link rel="stylesheet" href="global.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #ffffff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e7e7e7;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+nav a:hover { 
+    color:#ff5722; 
+}
+
+
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.pexels.com/photos/416717/pexels-photo-416717.jpeg?auto=compress&cs=tinysrgb&w=1600')
+                center/cover no-repeat;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 60px 40px;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section p.center {
+            text-align: center;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* REVIEWS GRID */
+/* REVIEWS – UPDATED DESIGN */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.review-card {
+    background: linear-gradient(180deg, #ffffff, #fafafa);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.review-card::before {
+    content: "“";
+    font-size: 4rem;
+    color: #ff5722;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    opacity: 0.15;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ff5722;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.review-card h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.stars {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 6px;
+}
+
+.stars::before {
+    content: "★★★★★";
+}
+
+.stars::after {
+    content: "★★★★★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    color: #ffb400;
+    overflow: hidden;
+    animation: fillStars 1.2s ease forwards;
+}
+
+.stars.five::after { width: 100%; }
+.stars.four::after { width: 80%; }
+
+@keyframes fillStars {
+    from { width: 0%; }
+    to { }
+}
+
+
+.review-card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.review-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 12px;
+}
+.verified {
+    font-size: 0.7rem;
+    background: rgba(255, 87, 34, 0.1);
+    color: #ff5722;
+    padding: 3px 6px;
+    border-radius: 6px;
+    margin-left: 6px;
+    font-weight: 600;
+}
+
+
+        /* CTA */
+        .cta {
+            background: #ff5722;
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta h2 {
+            margin-bottom: 10px;
+        }
+
+        .cta a {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 12px 25px;
+            background: white;
+            color: #ff5722;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e7e7e7;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+/* ADD REVIEW FORM */
+.add-review {
+    max-width: 700px;
+    margin: 60px auto 0;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.add-review h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.add-review p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.add-review form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-review input,
+.add-review textarea,
+.add-review select {
+    padding: 12px 14px;
+    font-family: inherit;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.add-review textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.add-review button {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #ff5722;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-review button:hover {
+    opacity: 0.9;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">FitForge</div>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h1>What Our Users Say</h1>
+            <p>Real results from real people using FitForge</p>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section">
+        <h2>User Reviews</h2>
+        <p class="center">
+            Join thousands who transformed their fitness journey with FitForge.
+        </p>
+
+        <div class="review-grid">
+
+<div class="review-card">
+    <div class="review-header">
+        <div class="avatar">N</div>
+        <h3>Nandana S. <span class="verified">✔ Verified</span></h3>
+    </div>
+
+    <div class="stars five"></div>
+    <div class="review-date">Reviewed on November 13, 2025</div>
+
+    <p>
+        I’ve tried multiple fitness apps, but FitForge stands out.
+        The workouts feel personalized and easy to stay consistent with.
+    </p>
+</div>
+
+<div class="review-card">
+    <div class="review-header">
+        <div class="avatar">D</div>
+        <h3>Daniel R.</h3>
+    </div>
+    <div class="stars five"></div>
+    <div class="review-date">Reviewed on November 9, 2025</div>
+    <p>
+        FitForge helped me stay consistent. The workouts are balanced
+        and realistic for a busy schedule.
+    </p>
+</div>
+
+<div class="review-card">
+    <div class="review-header">
+        <div class="avatar">M</div>
+        <h3>Maya T.</h3>
+    </div>
+
+    <div class="stars four"></div>
+    <div class="review-date">Reviewed on September 11, 2025</div>
+
+    <p>
+        The plans are well-structured and realistic. I’ve noticed
+        real improvements in strength and energy.
+    </p>
+</div>
+
+<div class="review-card">
+    <div class="review-header">
+        <div class="avatar">S</div>
+        <h3>Sophia L.</h3>
+    </div>
+    <div class="stars five"></div>
+    <div class="review-date">Reviewed on June 28, 2025</div>
+    <p>
+        The design feels premium and easy to use. I actually enjoy
+        logging workouts and seeing results over time.
+    </p>
+</div>
+
+
+<div class="review-card">
+    <div class="review-header">
+        <div class="avatar">A</div>
+<h3>Alex M. <span class="verified">✔ Verified</span></h3>
+    </div>
+<div class="stars four"></div>
+<div class="review-date">Reviewed on April 2, 2025</div>
+
+    <p>
+        FitForge changed how I approach training. The structure, clarity,
+        and progress tracking keep me motivated every week.
+    </p>
+</div>
+
+<div class="review-card">
+    <div class="review-header">
+        <div class="avatar">E</div>
+<h3>Emily C. <span class="verified">✔ Verified</span></h3>
+    </div>
+    <div class="stars five"></div>
+    <div class="review-date">Reviewed on January 11, 2025</div>
+    <p>
+        As someone new to fitness, this platform made everything feel
+        approachable and achievable.
+    </p>
+</div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+<section class="section">
+    <div class="add-review">
+        <h3>Share Your Experience</h3>
+        <p>Your feedback helps others start their fitness journey.</p>
+
+        <form id="reviewForm">
+    <input type="text" id="name" placeholder="Your Name" required />
+
+    <select id="rating" required>
+        <option value="">Your Rating</option>
+        <option value="five">★★★★★ (5 stars)</option>
+        <option value="four">★★★★☆ (4 stars)</option>
+        <option value="three">★★★☆☆ (3 stars)</option>
+    </select>
+
+    <textarea id="message" placeholder="Write your review..." required></textarea>
+
+    <button type="submit">Submit Review</button>
+</form>
+
+    </div>
+</section>
+
+    <section class="cta">
+        <h2>Ready to Start Your Transformation?</h2>
+        <p>Join FitForge today and take control of your fitness journey.</p>
+        <a href="getstarted.html">Get Started Free</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 FitForge. All rights reserved.
+    </footer>
+<script>
+document.getElementById("reviewForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const rating = document.getElementById("rating").value;
+    const message = document.getElementById("message").value;
+
+    if (!name || !rating || !message) return;
+
+    const avatar = name.charAt(0).toUpperCase();
+    const today = "Reviewed just now";
+
+    const reviewHTML = `
+        <div class="review-card">
+            <div class="review-header">
+                <div class="avatar">${avatar}</div>
+                <h3>${name} <span class="verified">✔ Verified</span></h3>
+            </div>
+
+            <div class="stars ${rating}"></div>
+            <div class="review-date">${today}</div>
+
+            <p>${message}</p>
+        </div>
+    `;
+
+    document.querySelector(".review-grid").insertAdjacentHTML("afterbegin", reviewHTML);
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>

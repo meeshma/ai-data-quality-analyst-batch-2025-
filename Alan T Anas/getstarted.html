@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge | Get Started</title>
+<link rel="stylesheet" href="global.css">
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+        }
+
+        /* HEADER */
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff5722;
+        }
+
+        /* MAIN SECTION */
+        .wrapper {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .start-btn {
+            padding: 15px 30px;
+            margin-top: 25px;
+            background: #ff5722;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .start-btn:hover {
+            background: #e64a19;
+        }
+
+        .features {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .features p {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+
+        .features span {
+            color: #ff5722;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">FitForge</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+    </nav>
+</header>
+
+<div class="wrapper">
+    <h1>Welcome to FitForge</h1>
+    <p>Your fitness journey starts here. Build muscle, burn fat, and track your goals with ease.</p>
+
+    <button class="start-btn" onclick="location.href='signup.html'">Get Started</button>
+
+    <div class="features">
+        <p><span>✔ Personalized Workouts</span> based on your goals</p>
+        <p><span>✔ Step-by-step Tutorials</span> for every exercise</p>
+        <p><span>✔ Track Progress</span> and stay motivated</p>
+        <p><span>✔ Beginner to Advanced</span> training programs</p>
+    </div>
+</div>
+
+</body>
+</html>
