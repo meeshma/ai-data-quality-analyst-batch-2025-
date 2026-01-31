@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Moon Veil</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap">
+
+<style>
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#faf7f2;
+  color:#333;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  background:#2d2d2d;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+nav h1{
+  font-family:'Great Vibes',cursive;
+  font-size:40px;
+  color:#fff;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+nav ul a{
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+}
+nav ul a:hover{color:#f4d29a}
+
+/* ===== EDITORIAL HOME HERO ===== */
+.hero-editorial {
+  height: 90vh;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.65), rgba(0,0,0,0.15)),
+    url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')
+    center / cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.hero-editorial-content {
+  max-width: 620px;
+  margin-left: 10%;
+  color: #f5f5f5;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #e0cfa9;
+  margin-bottom: 18px;
+}
+
+.hero-editorial h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 22px;
+}
+
+.hero-editorial p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 34px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.hero-btn {
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-btn.primary {
+  background: #3a2a2a;
+  color: #fff;
+  border: none;
+}
+
+.hero-btn.primary:hover {
+  background: #2a1d1d;
+}
+
+.hero-btn.secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.hero-btn.secondary:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+
+/* ===== SECTIONS ===== */
+section{
+  padding:70px 10%;
+}
+section h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:40px;
+}
+
+/* ===== CARDS ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.card{
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  padding:18px;
+  text-align:center;
+  transition:transform .3s, box-shadow .3s;
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:10px;
+  transition: transform 0.3s ease;
+}
+.card:hover img{
+  transform: scale(1.05);
+}
+.card h3{margin:15px 0 5px}
+.card p{font-size:15px;color:#555}
+
+.card button{
+  margin-top:12px;
+  padding:10px 22px;
+  background:#2d2d2d;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+.card button:hover{background:#444}
+
+/* ===== CART ===== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+th,td{
+  padding:12px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+th{background:#f0e6d8}
+
+.removeBtn{
+  background:red;
+  padding:5px 10px;
+  border:none;
+  border-radius:4px;
+  color:#fff;
+  cursor:pointer;
+}
+
+#payBtn{
+  margin-top:20px;
+  padding:14px 30px;
+  background:#f4d29a;
+  border:none;
+  border-radius:8px;
+  font-size:17px;
+  cursor:pointer;
+}
+/* ===== SIMPLE ADD TO CART BUTTON ===== */
+.add-cart-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.add-cart-btn {
+  background: #2d2d2d;       /* Dark background */
+  color: #fff;               /* White text */
+  border: none;              /* No border */
+  padding: 12px 22px;        /* Comfortable padding */
+  font-size: 15px;           /* Readable font */
+  cursor: pointer;           /* Pointer cursor */
+  border-radius: 6px;        /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.add-cart-btn:hover {
+  background: #444;          /* Slightly lighter on hover */
+  transform: scale(1.05);    /* Subtle zoom effect */
+}
+
+
+/* ===== CONTACT ===== */
+form{
+  max-width:500px;
+  margin:auto;
+}
+form input,form textarea{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+form button{
+  width:100%;
+  padding:14px;
+  background:#2d2d2d;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#2d2d2d;
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+/* ===== CAFE QTY (MATCH CART STYLE) ===== */
+.qty-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px auto 8px;
+}
+
+.qty-selector button {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #000;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.qty-selector span {
+  min-width: 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* ===== PAGE VISIBILITY ===== */
+.page-section{display:none}
+/* ===== REVIEW STARS AESTHETIC ===== */
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 26px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.star {
+  color: #ccc;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.star.active {
+  color: #f4b400;
+  transform: scale(1.1);
+}
+
+.review-card {
+  padding: 25px;
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff, #f3efe9);
+}
+
+.review-card p {
+  font-style: italic;
+  color: #444;
+}
+
+.home-btn {
+  font-family: 'Playfair Display', serif;
+}
+.home-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.home-btn:hover::after {
+  opacity: 1;
+}
+
+</style>
+</head>
+
+<body>
+<!-- Cart message popup -->
+  <div id="cartMessage" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 5000;
+    font-weight: bold;
+  ">
+    Item added to your cart!
+  </div>
+<!-- NAVBAR -->
+<nav>
+<h1>The Moon Veil</h1>
+<ul>
+<li><a href="javascript:void(0)" onclick="showSection('home')">Home</a></li>
+<li><a href="javascript:void(0)" onclick="showSection('about')">About</a></li>
+<li><a href="javascript:void(0)" onclick="showSection('books')">Bookstore</a></li>
+<li><a href="javascript:void(0)" onclick="showSection('events')">Events</a></li>
+<li><a href="javascript:void(0)" onclick="showSection('cafe')">Café</a></li>
+<li>
+  <a href="javascript:void(0)" onclick="showSection('cart')">
+    Cart (<span id="count">0</span>)
+  </a>
+</li>
+
+<li><a href="javascript:void(0)" onclick="showSection('contact')">Contact</a></li>
+<li><a href="javascript:void(0)" onclick="showSection('location')">Location</a></li>
+</ul>
+</nav>
+<!-- HOME SECTION -->
+<section id="home" class="page-section hero-editorial">
+
+  <div class="hero-editorial-content">
+
+    <span class="hero-eyebrow">
+      Locally Curated Bookstore & Café
+    </span>
+
+    <h2>
+      Where Stories &<br>
+      Coffee Meet
+    </h2>
+
+    <p>
+      A serene escape where books, coffee, and creativity come together —
+      a space to slow down, read deeply, and connect.
+    </p>
+
+    <div class="hero-actions">
+      <button class="hero-btn primary" onclick="showSection('books')">
+        Explore Books →
+      </button>
+
+      <button class="hero-btn secondary" onclick="showSection('cafe')">
+        Visit Café →
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+<section id="about" class="page-section" style="padding: 80px 20px; background-color: #f9f9f9;">
+  <div style="max-width: 1000px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+    
+    <!-- Left Column: Image -->
+    <div style="flex: 1 1 400px; min-width: 300px;">
+      <img src="https://images.pexels.com/photos/33669420/pexels-photo-33669420/free-photo-of-cozy-cafe-scene-with-coffee-and-croissant-in-istanbul.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Coffee and Books" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: translateY(20px); opacity: 0; animation: fadeUp 1s forwards;">
+    </div>
+
+    <!-- Right Column: Text -->
+    <div style="flex: 1 1 400px; min-width: 300px; text-align: left;">
+      <h2 style="font-size: 36px; margin-bottom: 20px; color: #333;">About Us</h2>
+      <p style="font-size: 18px; line-height: 1.8; color: #555; transform: translateY(20px); opacity: 0; animation: fadeUp 1s forwards 0.3s;">
+        Nestled in the heart of the city, <strong>Moon Veil Café</strong> is more than just a café—it’s a sanctuary for book lovers, coffee enthusiasts, and dreamers alike.
+      </p>
+      <p style="font-size: 18px; line-height: 1.8; color: #555; transform: translateY(20px); opacity: 0; animation: fadeUp 1s forwards 0.5s;">
+        Wander through our curated collection of books while savoring the aroma of freshly brewed coffee. From classic novels to contemporary reads, our shelves are filled with stories waiting to be discovered.
+      </p>
+      <p style="font-size: 18px; line-height: 1.8; color: #555; transform: translateY(20px); opacity: 0; animation: fadeUp 1s forwards 0.7s;">
+        Whether you’re here to relax, catch up with friends, or find inspiration, <strong>Moon Veil</strong> is your cozy escape into a world of warmth, flavor, and imagination.
+      </p>
+      
+
+  </div>
+</section>
+
+<!-- Animation CSS -->
+<style>
+  /* HOME PAGE GIF BACKGROUND */
+#home {
+  position: relative;
+  min-height: 100vh;
+  background: url("https://i.pinimg.com/originals/54/89/91/5489916bb1b1abc51efd1b177c858318.gif")
+              center / cover no-repeat;
+}
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+#home > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+
+<!-- BOOKSTORE -->
+<section id="books" class="page-section">
+  <h2>Book Store</h2>
+
+  <style>
+    /* Category spacing */
+    .book-category {
+      margin-top: 70px;
+    }
+
+    .book-category h3 {
+      margin-bottom: 35px;
+      font-size: 28px;
+      font-family: 'Playfair Display', serif;
+      text-align: left;
+    }
+
+    .book-category h3::after {
+      content: "";
+      display: block;
+      width: 90px;
+      height: 3px;
+      background: #f4d29a;
+      margin-top: 10px;
+    }
+  </style>
+
+  <!-- ================= ROMANCE ================= -->
+  <div class="book-category">
+    <h3> Romance</h3>
+    <div class="cards">
+       
+
+      <div class="card"><img src="https://m.media-amazon.com/images/I/91fDvMK+aEL._AC_UF1000,1000_QL80_.jpg"><h3>Pride & Prejudice</h3><p>₹299</p><button onclick="addToCart('Pride & Prejudice',299)">Add to Cart</button></div>
+      <div class="card"><img src="https://nicholassparks.com/wp-content/uploads/2022/08/TheNotebook.jpg"><h3>The Notebook</h3><p>₹350</p><button onclick="addToCart('The Notebook',350)">Add to Cart</button></div>
+      <div class="card"><img src="https://i1.wp.com/www.amysbookshelf.co.uk/wp-content/uploads/2017/05/Me-Before-You-FI-1.png?fit=1220%2C1101&ssl=1"><h3>Me Before You</h3><p>₹399</p><button onclick="addToCart('Me Before You',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://i.etsystatic.com/39955921/r/il/098921/4689743836/il_570xN.4689743836_h5vq.jpg"><h3>It Ends With Us</h3><p>₹399</p><button onclick="addToCart('It Ends With Us',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkLhjUj4eh2lo8YfhnMwH-4qEkdxIsiWXtMQ&s"><h3>Love & Other Words</h3><p>₹350</p><button onclick="addToCart('Love & Other Words',350)">Add to Cart</button></div>
+      <div class="card"><img src="https://is1-ssl.mzstatic.com/image/thumb/Publication125/v4/33/a6/c3/33a6c363-cafc-b23f-b4ed-faceb8225d75/cover.jpg/1200x1200wz.jpg"><h3>The Time Traveler’s Wife</h3><p>₹420</p><button onclick="addToCart('The Time Traveler’s Wife',420)">Add to Cart</button></div>
+      <div class="card"><img src="https://suntup.press/wp-content/uploads/2024/09/OutlanderClassicInteriors1-800x512.jpg"><h3>Outlander</h3><p>₹450</p><button onclick="addToCart('Outlander',450)">Add to Cart</button></div>
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2M6J4h5I8n_3sEiqPGIczeKZhon4HMpozbA&s"><h3>Twilight</h3><p>₹350</p><button onclick="addToCart('Twilight',350)">Add to Cart</button></div>
+      <div class="card"><img src="https://preview.redd.it/iacr-anna-karenina-by-leo-tolstoy-trans-pevear-volokhonsky-v0-mf8y7501fqd81.jpg?width=1080&crop=smart&auto=webp&s=f0ea4b88b63e14a813589414ba5b27604880e471"><h3>Anna Karenina</h3><p>₹499</p><button onclick="addToCart('Anna Karenina',499)">Add to Cart</button></div>
+      <div class="card"><img src="https://www.crossword.in/cdn/shop/files/penguin-select-classics-jane-eyre-original-unabridged-classic-premium-hardbound-collector-s-edition-ideal-for-gifting-bk0503436-43813347295449.jpg?v=1746626200&width=391"><h3>Jane Eyre</h3><p>₹320</p><button onclick="addToCart('Jane Eyre',320)">Add to Cart</button></div>
+    </div>
+  </div>
+
+  <!-- ================= FICTION ================= -->
+  <div class="book-category">
+    <h3> Fiction</h3>
+    <div class="cards">
+      <div class="card"><img src="https://i0.wp.com/ebookfriendly.com/wp-content/uploads/2015/12/New-covers-Harry-Potter-and-the-Deathly-Hallows-book-7-840x788.jpg?resize=540%2C507"><h3>Harry Potter 1</h3><p>₹499</p><button onclick="addToCart('Harry Potter 1',499)">Add to Cart</button></div>
+      <div class="card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTT8rOs90iUTpcoUS4Tg43GqW9E54PQncecFgoIpH8xmFKn6b4j2fbhmqKu3z6m9NnPkMsMi55CJ02eeo1kKhjLHh3qC6A53j4N7KMaWQxnxprn3YXVbpqh-Q"><h3>Dune</h3><p>₹499</p><button onclick="addToCart('Dune',499)">Add to Cart</button></div>
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVtjcXrFzLfPOuC81BU8z-QEptJIJyV2Pr-w&s"><h3>The Martian</h3><p>₹399</p><button onclick="addToCart('The Martian',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://c8.alamy.com/comp/2HG36JH/the-book-the-alchemist-by-paulo-coelho-2HG36JH.jpg"><h3>The Alchemist</h3><p>₹299</p><button onclick="addToCart('The Alchemist',299)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/91SZSW8qSsL.jpg"><h3>1984</h3><p>₹299</p><button onclick="addToCart('1984',299)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/718EluY9pML._SY342_.jpg"><h3>The Book Thief</h3><p>₹399</p><button onclick="addToCart('The Book Thief',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://www.eourmart.com/cdn/shop/products/ToKillAMockingbird1.png?v=1662557666"><h3>To Kill a Mockingbird</h3><p>₹350</p><button onclick="addToCart('To Kill a Mockingbird',350)">Add to Cart</button></div>
+      <div class="card"><img src="https://c8.alamy.com/comp/2EG14BE/swindon-uk-february-18-2021-the-great-gatsby-book-cover-by-f-scott-fitzgerald-on-a-white-background-2EG14BE.jpg"><h3>The Great Gatsby</h3><p>₹280</p><button onclick="addToCart('The Great Gatsby',280)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/61qHWYN-zxL._AC_UF1000,1000_QL80_.jpg"><h3>The Hobbit</h3><p>₹399</p><button onclick="addToCart('The Hobbit',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/61Qc8Qo5JpL._AC_UF350,350_QL50_.jpg"><h3>Life of Pi</h3><p>₹350</p><button onclick="addToCart('Life of Pi',350)">Add to Cart</button></div>
+    </div>
+  </div>
+
+  <!-- ================= FAIRYTALE ================= -->
+  <div class="book-category">
+    <h3> Fairytale</h3>
+    <div class="cards">
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSUS1VFlBhPDy5R8qVvh1mZXhbimVHany6UMj1tHSxkAZZP24atgPW-uZf7G5ahRnLnr95X5n80T5m3JpvKX9GYFgHaNVGjdLDs6cMXQI-f"><h3>Grimm Fairy Tales</h3><p>₹399</p><button onclick="addToCart('Grimm Fairy Tales',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/71n0dTrMy2L._AC_UF1000,1000_QL80_.jpg"><h3>Hans Andersen Tales</h3><p>₹349</p><button onclick="addToCart('Hans Andersen Tales',349)">Add to Cart</button></div>
+      <div class="card"><img src="https://www.crossword.in/cdn/shop/products/little-treasures-disney-princess-cinderella-hardcover-disney-bk0446185-40539530723545.jpg?v=1746619276"><h3>Cinderella</h3><p>₹250</p><button onclick="addToCart('Cinderella',250)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/91XHRWOh5QL._AC_UF1000,1000_QL80_.jpg"><h3>Snow White</h3><p>₹250</p><button onclick="addToCart('Snow White',250)">Add to Cart</button></div>
+      <div class="card"><img src="https://www.crossword.in/cdn/shop/products/children-classics-beauty-and-the-beast-illustrated-abridged-classics-with-practice-questions-om-illustrated-classics-for-kids-hardcover-jeanne-marie-le-prince-de-beaumont-bk0380408-40532741816537.jpg?v=1746609830"><h3>Beauty & the Beast</h3><p>₹280</p><button onclick="addToCart('Beauty & the Beast',280)">Add to Cart</button></div>
+      <div class="card"><img src="https://covers.shakespeareandcompany.com/97802416/9780241688250.jpg"><h3>Peter Pan</h3><p>₹300</p><button onclick="addToCart('Peter Pan',300)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/61NPGyQA9OL._AC_UF1000,1000_QL80_.jpg"><h3>Rapunzel</h3><p>₹260</p><button onclick="addToCart('Rapunzel',260)">Add to Cart</button></div>
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw9PSKw3v5MLPFItqBsfkYwTBfjVu3dgOPcA&s"><h3>Sleeping Beauty</h3><p>₹260</p><button onclick="addToCart('Sleeping Beauty',260)">Add to Cart</button></div>
+      <div class="card"><img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRq-y1Asy09Z4fXQq_78Zy2EUIJCLErvDwxZ_OhCiO2rUcvKYprPvraYfhPJhKvIY2pEWm4ly41cfgLZILnDNuqsF6T9yVPUY2NsQtAB0lhQESFZhNxXSr9Og"><h3>Aladdin</h3><p>₹280</p><button onclick="addToCart('Aladdin',280)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/81Xiw49KVqL.jpg"><h3>Little Mermaid</h3><p>₹270</p><button onclick="addToCart('Little Mermaid',270)">Add to Cart</button></div>
+    </div>
+  </div>
+
+  <!-- ================= MYSTERY ================= -->
+  <div class="book-category">
+    <h3> Mystery</h3>
+    <div class="cards">
+      <div class="card"><img src="https://www.crossword.in/cdn/shop/products/hachette-uk-books-default-title-the-silent-patient-paperback-michaelides-alex-paperback-michaelides-alex-40359614316761.jpg?v=1745714041"><h3>The Silent Patient</h3><p>₹399</p><button onclick="addToCart('The Silent Patient',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://static-ppimages.freetls.fastly.net/nielsens/9781780228228.jpg?canvas=600,600&fit=bounds&height=600&mode=max&width=600&404=default.jpg"><h3>Gone Girl</h3><p>₹449</p><button onclick="addToCart('Gone Girl',449)">Add to Cart</button></div>
+      <div class="card"><img src="https://www.crossword.in/cdn/shop/products/the-definitive-sherlock-holmes-sir-arthur-conan-doyle-bk0338095-40569994641625_1200x1200.jpg?v=1746617321"><h3>Sherlock Holmes</h3><p>₹399</p><button onclick="addToCart('Sherlock Holmes',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://fictionwritersreview.com/wp-content/uploads/2008/11/girl_dragon.jpg"><h3>The Girl with the Dragon Tattoo</h3><p>₹450</p><button onclick="addToCart('The Girl with the Dragon Tattoo',450)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/813QCG9vlML._AC_UF1000,1000_QL80_.jpg"><h3>Big Little Lies</h3><p>₹399</p><button onclick="addToCart('Big Little Lies',399)">Add to Cart</button></div>
+      <div class="card"><img src="https://danbrown.com/wp-content/uploads/2024/10/Dan-Brown_The-Da-Vinci-Code-book-cover_2024.jpg"><h3>The Da Vinci Code</h3><p>₹450</p><button onclick="addToCart('The Da Vinci Code',450)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/71QZPV2T4tL._AC_UF1000,1000_QL80_.jpg"><h3>Murder on the Orient Express</h3><p>₹350</p><button onclick="addToCart('Murder on the Orient Express',350)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/81i7VnMVF5L._AC_UF1000,1000_QL80_.jpg"><h3>Rebecca</h3><p>₹350</p><button onclick="addToCart('Rebecca',350)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/81ChE1VM6kL.jpg"><h3>The Woman in White</h3><p>₹320</p><button onclick="addToCart('The Woman in White',320)">Add to Cart</button></div>
+      <div class="card"><img src="https://m.media-amazon.com/images/I/71cEpnlLePL._UF1000,1000_QL80_.jpg"><h3>The Reversal</h3><p>₹420</p><button onclick="addToCart('The Reversal',420)">Add to Cart</button></div>
+    </div>
+  </div>
+<!-- Cart Message (Popup) -->
+<div id="cartMessage" style="display:none; padding: 10px; background-color: #4CAF50; color: white; position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); border-radius: 5px;">
+  Item added to cart!
+</div>
+
+
+</section>
+
+
+
+<!-- EVENTS -->
+<section id="events" class="page-section">
+  <h2>Upcoming Events</h2>
+  <div class="cards event-cards">
+    <!-- Author Book Reading -->
+    <div class="card event-card">
+      <div class="event-badge new">New</div>
+      <img src="https://keekli.in/wp-content/uploads/2023/04/WhatsApp-Image-2023-04-30-at-19.02.40-1024x682.jpeg">
+      <div class="event-info">
+        <h3>Author Book Reading 📖</h3>
+        <p>feb 3, 2025</p>
+        <p>Meet your favorite authors and get books signed!</p>
+      </div>
+    </div>
+
+    <!-- Poetry Workshop -->
+    <div class="card event-card">
+      <div class="event-badge popular">Popular</div>
+    <img src="https://news.harvard.edu/wp-content/uploads/2025/05/042225_Elegy_Workshop_227_1920.jpg">
+      <div class="event-info">
+        <h3>Poetry Workshop ✍️</h3>
+        <p>Jan 31, 2026</p>
+        <p>Learn creative writing techniques and express your poetry!</p>
+      </div>
+    </div>
+
+    <!-- Coffee & Creativity Meetup -->
+    <div class="card event-card">
+      <img src="https://images.stockcake.com/public/e/e/e/eee39255-9e44-4858-acb9-0a7d72ac1520_large/coffee-and-books-stockcake.jpg">
+      <div class="event-info">
+        <h3>Coffee & Creativity Meetup ☕🎨</h3>
+        <p>Jan 20, 2026</p>
+        <p>Collaborate on art projects, sketches, and creative ideas over coffee.</p>
+      </div>
+    </div>
+
+    <!-- Bonus: Open Mic / Reading Night -->
+    <div class="card event-card">
+      <div class="event-badge new">New</div>
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/d3/0e/e4/refreshing-ambience-our.jpg?w=900&h=500&s=1">
+      <div class="event-info">
+        <h3>Open Mic Night 🎤</h3>
+        <p>Feb 10, 2026</p>
+        <p>Share your poems, stories, or just enjoy the performance!</p>
+      </div>
+    </div>
+
+
+<!-- Children's Storytelling Hour -->
+<article class="card event-card">
+  <span class="event-badge new">New</span>
+  <img 
+    src="https://media.istockphoto.com/id/1320972631/photo/diversity-elementary-school-students-who-sit-on-the-classroom-floor-listen-to-asian-female.jpg?s=612x612&w=0&k=20&c=60IJuilHmmjVRFzjOQWVr-tHtaWdaJdVxTqblGO3ZTE=">
+  
+  <div class="event-info">
+    <h3>Children’s Storytelling Hour 🧒📚</h3>
+    <time datetime="2026-03-12">Mar 12, 2026</time>
+    <p>Fun and engaging storytelling for kids and parents alike.</p>
+  </div>
+</article>
+
+<!-- Illustration & Book Art Workshop -->
+<article class="card event-card">
+  <img 
+    src="https://img.freepik.com/free-photo/close-up-art-supplies-workshop_23-2149536259.jpg?semt=ais_hybrid&w=740&q=80">
+  <div class="event-info">
+    <h3>Illustration & Book Art Workshop 🎨📘</h3>
+    <time datetime="2026-03-25">Mar 25, 2026</time>
+    <p>Learn how illustrations bring stories to life.</p>
+  </div>
+</article>
+  </div>
+</section>
+
+<style>
+/* Events Section */
+.event-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 30px;
+}
+
+.event-card {
+  position: relative;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.event-card:hover img {
+  transform: scale(1.05);
+}
+
+.event-info {
+  padding: 18px;
+  text-align: center;
+}
+
+.event-info h3 {
+  margin: 10px 0 5px;
+}
+
+.event-info p {
+  font-size: 15px;
+  color: #555;
+}
+
+/* Badges */
+.event-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #f4d29a;
+  color: #333;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.event-badge.popular {
+  background: #ff6b6b;
+  color: #fff;
+}
+.event-badge.new {
+  background: #4caf50;
+  color: #fff;
+}
+
+/* Scroll animation (fade-in) */
+.event-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.event-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script>
+// Scroll animation for events
+const eventCards = document.querySelectorAll('.event-card');
+window.addEventListener('scroll', () => {
+  eventCards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 50) {
+      card.classList.add('visible');
+    }
+  });
+});
+</script>
+
+<!-- ====== CAFÉ MENU ====== -->
+<section id="cafe" class="page-section">
+  <h2>Café Menu</h2>
+
+  <div class="cards">
+
+    <!-- Cappuccino -->
+    <div class="card">
+      <img src="https://dairyfarmersofcanada.ca/sites/default/files/image_file_browser/conso_recipe/2022/Capuccino.jpg">
+      <h3>Cappuccino</h3>
+      <p>₹80</p>
+      <button class="add-cart-btn" onclick="addCafeItem(this, 'Cappuccino', 80)">Add to Cart</button>
+    </div>
+
+    <!-- Chocolate Cake -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+      <h3>Chocolate Cake</h3>
+      <p>₹150</p>
+      <button class="add-cart-btn" onclick="addCafeItem(this, 'Chocolate Cake', 150)">Add to Cart</button>
+    </div>
+
+    <!-- Croissant -->
+    <div class="card">
+      <img src="https://victoriajunction.in/wp-content/uploads/2023/08/croissant-chocolate-2.jpg">
+      <h3>Croissant</h3>
+      <p>₹60</p>
+      <button class="add-cart-btn" onclick="addCafeItem(this, 'Croissant', 60)">Add to Cart</button>
+    </div>
+
+    <!-- Blueberry Muffin -->
+    <div class="card">
+      <img src="https://www.bunsenburnerbakery.com/wp-content/uploads/2016/07/blueberry-muffins-square-35-720x720.jpg">
+      <h3>Blueberry Muffin</h3>
+      <p>₹90</p>
+      <button class="add-cart-btn" onclick="addCafeItem(this, 'Blueberry Muffin', 90)">Add to Cart</button>
+    </div>
+
+    <!-- Latte -->
+    <div class="card">
+      <img src="https://img.freepik.com/free-photo/latte-coffee_74190-7821.jpg">
+      <h3>Latte</h3>
+      <p>₹90</p>
+      <button class="add-cart-btn" onclick="addCafeItem(this, 'Latte', 90)">Add to Cart</button>
+    </div>
+
+    <!-- Cheesecake -->
+    <div class="card">
+      <img src="https://farchioni1780.com/en/cdn/shop/articles/cheesecake-senza-burro_4dba1f5b-8ca4-4a4d-8217-6bb590d6c353.jpg">
+      <h3>Cheesecake</h3>
+      <p>₹120</p>
+      <button class="add-cart-btn" onclick="addCafeItem(this, 'Cheesecake', 120)">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CART -->
+<section id="cart" class="page-section">
+  <h2>Your Cart</h2>
+  <table id="cartTable">
+    <tr>
+  <th>Item</th>
+  <th>Price (₹)</th>
+  <th>Qty</th>
+  <th>Remove</th>
+</tr>
+  </table>
+
+  <p style="margin-top:20px;font-size:20px">
+    <strong>Total: ₹<span id="total">0</span></strong>
+  </p>
+
+  <button id="payBtn">Pay Now</button>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="page-section">
+<h2>Contact Us</h2>
+<form onsubmit="submitContact(event)">
+<input placeholder="Your Name" required>
+<input placeholder="Email" required>
+<textarea placeholder="Message" required></textarea>
+<button>Send Message</button>
+</form>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="page-section">
+<h2>Our Location & Hours</h2>
+<div class="about-box">
+<p><strong>Contact:</strong> +91 9876543210 | info@themoonveilcafe.in</p>
+<p>📍 <strong>The  Moon Veil</strong> - Opposite to Forum Mall, Kochi</p>
+<p><strong>Opening Hours:</strong> Tuesday – Sunday: 11:00 AM – 8:00 PM | Monday: Closed</p>
+<div style="margin-top:20px;">
+<iframe src="https://www.google.com/maps?q=forum+mall+kochi&output=embed" width="100%" height="300" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+</div>
+  <h2>Customer Reviews</h2>
+
+  <!-- Reviews Display -->
+  <div id="reviewList" class="cards">
+
+   <div class="card review-card">
+  <div class="star-rating">
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+  </div>
+  <p>"A beautiful café with the calmest atmosphere. Loved the books and coffee!"</p>
+  <strong>- Ananya</strong>
+</div>
+
+   <div class="card review-card">
+  <div class="star-rating">
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+    <span class="star active">★</span>
+  </div>
+  <p>"Perfect place to read and relax. The ambience is magical"</p>
+  <strong>- Rahul</strong>
+</div>
+
+
+  </div>
+
+  <!-- Review Form -->
+  <h3 style="text-align:center;margin-top:50px;">Leave a Review</h3>
+
+  <form id="reviewForm" onsubmit="submitReview(event)" style="max-width:600px;margin:auto;">
+    <input id="reviewName" placeholder="Your Name" required>
+
+<label style="display:block;margin:10px 0;">Rating</label>
+
+<div class="star-rating" id="ratingStars">
+  <span class="star" data-value="1">★</span>
+  <span class="star" data-value="2">★</span>
+  <span class="star" data-value="3">★</span>
+  <span class="star" data-value="4">★</span>
+  <span class="star" data-value="5">★</span>
+</div>
+
+<input type="hidden" id="reviewRating" required>
+
+
+    <textarea id="reviewText" placeholder="Write your review..." required></textarea>
+
+    <button type="submit">Submit Review</button>
+  </form>
+</section>
+<!-- REVIEWS SECTION -->
+
+
+<footer id="footer">
+© 2025 The Moon Veil • All Rights Reserved
+</footer>
+<!-- PAYMENT MODAL -->
+<div id="paymentModal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  z-index:3000;
+">
+  <div style="
+    background:#fff;
+    padding:25px;
+    width:360px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  ">
+    <h3 style="text-align:center;">Secure Payment</h3>
+    <h4 style="margin-top:15px;">Customer Details</h4>
+
+<label>Full Name</label>
+<input id="custName" placeholder="Your Name"
+  style="width:100%;padding:10px;margin:8px 0;">
+
+<label>Phone Number</label>
+<input id="custPhone" placeholder="9876543210"
+  style="width:100%;padding:10px;margin:8px 0;">
+
+<label>Address</label>
+<textarea id="custAddress" placeholder="Your Address"
+  style="width:100%;padding:10px;margin:8px 0;"></textarea>
+
+    <p style="text-align:center;">Amount: ₹<span id="modalAmount">0</span></p>
+
+    <label>Card Type</label>
+    <select id="cardType" style="width:100%;padding:10px;margin:8px 0;">
+      <option value="">Select</option>
+      <option>Debit Card</option>
+      <option>Credit Card</option>
+    </select>
+
+    <label>Card Number</label>
+    <input id="cardNumber" placeholder="1234 5678 9012 3456"
+      style="width:100%;padding:10px;margin:8px 0;">
+
+    <div style="display:flex;gap:10px;">
+      <input id="expiry" placeholder="MM/YY"
+        style="width:100%;padding:10px;margin:8px 0;">
+      <input id="cvv" type="password" placeholder="CVV"
+        style="width:100%;padding:10px;margin:8px 0;">
+    </div>
+
+    <button onclick="processPayment()" style="
+      width:100%;
+      padding:12px;
+      background:#2d2d2d;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      margin-top:15px;
+      cursor:pointer;">
+      Pay Securely
+    </button>
+
+    <button onclick="closePayment()" style="
+      width:100%;
+      padding:10px;
+      background:#ccc;
+      border:none;
+      border-radius:8px;
+      margin-top:10px;">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<!-- RAZORPAY -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+/* ===== NAVIGATION ===== */
+function showSection(id) {
+  // hide all sections
+  document.querySelectorAll('.page-section').forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  // show selected section
+  const target = document.getElementById(id);
+  if (target) target.style.display = "block";
+
+  // footer logic
+  const footer = document.getElementById("footer");
+  footer.style.display = (id === "home") ? "block" : "block";
+
+  // go to top
+  window.scrollTo(0, 0);
+}
+
+showSection('home');
+
+/* ===== CART & PAYMENT ===== */
+
+let total = 0;
+let count = 0;
+
+function addToCart(name, price) {
+  const table = document.getElementById("cartTable");
+
+  // Check if item already exists
+  for (let i = 1; i < table.rows.length; i++) {
+    const row = table.rows[i];
+    if (row.dataset.name === name) {
+      const qtySpan = row.querySelector(".qty");
+      qtySpan.innerText = parseInt(qtySpan.innerText) + 1;
+      total += price;
+      count++;
+      updateTotals();
+      showCartMessage(name);
+      return;
+    }
+  }
+
+  // Create new row
+  const row = document.createElement("tr");
+  row.dataset.name = name;
+  row.dataset.price = price;
+
+  row.innerHTML = `
+    <td>${name}</td>
+    <td>₹${price}</td>
+    <td>
+      <button onclick="changeQty(this, -1)">▼</button>
+      <span class="qty">1</span>
+      <button onclick="changeQty(this, 1)">▲</button>
+    </td>
+    <td>
+      <button class="removeBtn" onclick="removeRow(this)">Remove</button>
+    </td>
+  `;
+
+  table.appendChild(row);
+  total += price;
+  count++;
+  updateTotals();
+  showCartMessage(name);
+}
+function showCartMessage(itemName) {
+  const msg = document.getElementById("cartMessage");
+  msg.innerText = `${itemName} added to your cart!`;
+  msg.style.display = "block";
+
+  setTimeout(() => {
+    msg.style.display = "none";
+  }, 2000);
+}
+function changeQty(btn, change) {
+  const row = btn.closest("tr");
+  const qtySpan = row.querySelector(".qty");
+  let qty = parseInt(qtySpan.innerText);
+  const price = parseInt(row.dataset.price);
+
+  // If quantity becomes 0, remove item
+  if (qty + change <= 0) {
+    removeRow(btn);
+    return;
+  }
+
+  qty += change;
+  qtySpan.innerText = qty;
+
+  total += price * change;
+  count += change;
+  updateTotals();
+}
+
+
+function removeRow(btn) {
+  const row = btn.closest("tr");
+  const qty = parseInt(row.querySelector(".qty").innerText);
+  const price = parseInt(row.dataset.price);
+
+  total -= price * qty;
+  count -= qty;
+  row.remove();
+  updateTotals();
+}
+
+function updateTotals() {
+  document.getElementById("total").innerText = total;
+  document.getElementById("count").innerText = count;
+}
+/* ===== CAFE QUANTITY SELECTOR ===== */
+
+function addCafeItem(btn, name, price) {
+  // Just add 1 item to cart per click
+  addToCart(name, price);
+
+  // Show the cart message
+  const msg = document.getElementById("cartMessage");
+  msg.style.display = "block";
+
+  // Hide it after 2 seconds
+  setTimeout(() => {
+    msg.style.display = "none";
+  }, 2000);
+}
+function addBookItem(btn, name, price) {
+  // Add item to cart
+  addToCart(name, price);
+
+  // Show the cart message
+  const msg = document.getElementById("cartMessage");
+  msg.style.display = "block";
+
+  // Hide it after 2 seconds
+  setTimeout(() => {
+    msg.style.display = "none";
+  }, 2000);
+}
+function addBookItem(btn, name, price) {
+  // Add item to cart
+  addToCart(name, price);
+
+  // Show the cart message (like for cafe items)
+  const msg = document.getElementById("cartMessage");
+  msg.innerText = `${name} added to cart!`; // Display the book name in the message
+  msg.style.display = "block";  // Show the message
+
+  // Hide the message after 2 seconds
+  setTimeout(() => {
+    msg.style.display = "none";
+  }, 2000);
+}
+
+
+document.getElementById("payBtn").onclick = function () {
+  if (total === 0) {
+    alert("Your cart is empty");
+    return;
+  }
+
+  document.getElementById("modalAmount").innerText = total;
+  document.getElementById("paymentModal").style.display = "flex";
+};
+function closePayment() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+
+
+
+function processPayment() {
+  /* === CUSTOMER DETAILS === */
+  const name = document.getElementById("custName").value;
+  const phone = document.getElementById("custPhone").value;
+  const address = document.getElementById("custAddress").value;
+
+  if (!name || !phone || !address) {
+    alert("Please enter customer details");
+    return;
+  }
+
+  /* === INVOICE DETAILS === */
+  const invoiceNo = "INV" + Math.floor(Math.random() * 100000);
+  const date = new Date().toLocaleDateString();
+
+  document.getElementById("invNo").innerText = invoiceNo;
+  document.getElementById("invDate").innerText = date;
+  document.getElementById("invName").innerText = name;
+  document.getElementById("invPhone").innerText = phone;
+  document.getElementById("invAddress").innerText = address;
+  document.getElementById("invTotal").innerText = total;
+
+  /* === COPY CART ITEMS TO INVOICE === */
+  const invItems = document.getElementById("invItems");
+  invItems.innerHTML = "";
+
+  document.querySelectorAll("#cartTable tr").forEach((row, i) => {
+    if (i === 0) return;
+    const cols = row.children;
+    invItems.innerHTML += `
+      <tr>
+        <td>${cols[0].innerText}</td>
+        <td>${cols[1].innerText.replace("₹","")}</td>
+      </tr>`;
+  });
+
+  /* === PRINT INVOICE === */
+  const content = document.getElementById("invoice").innerHTML;
+  const win = window.open("", "", "width=800,height=600");
+  win.document.write(`
+    <html>
+      <head><title>Invoice</title></head>
+      <body>${content}</body>
+    </html>
+  `);
+  win.document.close();
+  win.print();
+
+  /* === RESET CART === */
+  total = 0;
+  count = 0;
+  document.getElementById("total").innerText = 0;
+  document.getElementById("count").innerText = 0;
+  document.getElementById("cartTable").innerHTML =
+    "<tr><th>Item</th><th>Price</th><th>Remove</th></tr>";
+
+  closePayment();
+}
+
+
+
+/* ===== CONTACT FORM ===== */
+function submitContact(e){
+  e.preventDefault();
+  alert("Thank you! Your message has been sent.");
+  e.target.reset();
+}
+
+/* ===== REVIEWS ===== */
+function submitReview(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("reviewName").value;
+  const rating = document.getElementById("reviewRating").value;
+  const text = document.getElementById("reviewText").value;
+
+  if (!rating) {
+    alert("Please select a star rating");
+    return;
+  }
+
+  let starsHTML = "";
+  for (let i = 0; i < rating; i++) {
+    starsHTML += `<span class="star active">★</span>`;
+  }
+
+  const reviewCard = document.createElement("div");
+  reviewCard.className = "card review-card";
+  reviewCard.innerHTML = `
+    <div class="star-rating">${starsHTML}</div>
+    <p>"${text}"</p>
+    <strong>- ${name}</strong>
+  `;
+
+  document.getElementById("reviewList").prepend(reviewCard);
+  e.target.reset();
+
+  document.querySelectorAll("#ratingStars .star")
+    .forEach(s => s.classList.remove("active"));
+}
+const stars = document.querySelectorAll("#ratingStars .star");
+let selectedRating = 0;
+
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    selectedRating = star.dataset.value;
+    document.getElementById("reviewRating").value = selectedRating;
+
+    stars.forEach(s => s.classList.remove("active"));
+    for (let i = 0; i < selectedRating; i++) {
+      stars[i].classList.add("active");
+    }
+  });
+});
+
+
+
+</script>
+<!-- PRINTABLE INVOICE -->
+<div id="invoice" style="display:none;font-family:Arial;padding:30px;">
+  <h2 style="text-align:center;">The Moon Veil</h2>
+  <p style="text-align:center;">Opposite  to Forum Mall, Kochi</p>
+  <hr>
+
+  <p><strong>Invoice No:</strong> <span id="invNo"></span></p>
+  <p><strong>Date:</strong> <span id="invDate"></span></p>
+
+  <h3>Customer Details</h3>
+  <p><strong>Name:</strong> <span id="invName"></span></p>
+  <p><strong>Phone:</strong> <span id="invPhone"></span></p>
+  <p><strong>Address:</strong> <span id="invAddress"></span></p>
+
+  <h3>Order Details</h3>
+  <table border="1" width="100%" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Item</th>
+      <th>Price (₹)</th>
+    </tr>
+    <tbody id="invItems"></tbody>
+  </table>
+
+  <h3 style="text-align:right;">Total: ₹<span id="invTotal"></span></h3>
+
+  <p style="text-align:center;margin-top:40px;">
+    Thank you for shopping at <b>The Moon Veil</b>
+  </p>
+</div>
+
+</body>
+</html>
