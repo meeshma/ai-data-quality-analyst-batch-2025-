@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Select Payment Method | Venzo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  width: 420px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.method {
+  border: 2px solid #eee;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.method:hover {
+  border-color: #ff7a00;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: #ff7a00;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #e66900;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Select Payment Method</h2>
+
+  <div class="method">📱 UPI (GPay / PhonePe / Paytm)</div>
+  <div class="method">💳 Credit / Debit Card</div>
+  <div class="method">🏦 Net Banking</div>
+
+  <button onclick="completePayment()">Proceed to Pay</button>
+</div>
+
+<script>
+function completePayment() {
+  alert("Payment Successful 🎉");
+  window.location.href = "success.html";
+}
+</script>
+
+</body>
+</html>

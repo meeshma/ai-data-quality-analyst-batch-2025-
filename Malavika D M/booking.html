@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking | Venzo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .booking-box {
+      width: 450px;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 12px 35px rgba(255,0,120,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff3cac;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      margin-top: 12px;
+      color: #fff;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      outline: none;
+      font-size: 14px;
+      background: #0d0d0d;
+      color: white;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input[readonly] {
+      background: #1a1a1a;
+      color: #ff3cac;
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(45deg, #ff007a, #ff3cac);
+      color: white;
+      border: none;
+      font-size: 17px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<div class="booking-box">
+  <h2>Booking Details</h2>
+
+  <label>Event Name</label>
+  <input type="text" id="eventName" readonly>
+
+  <label>Event Date</label>
+  <input type="text" id="eventDate" readonly>
+
+  <label>Price per Person</label>
+  <input type="text" id="price" value="1119" readonly>
+
+  <label>Your Name</label>
+  <input type="text" id="userName" placeholder="Enter Your Name">
+
+  <label>Your Email</label>
+  <input type="email" id="userEmail" placeholder="Enter Your Email">
+
+  <label>Number of Persons</label>
+  <input type="number" id="persons" placeholder="Enter Number of People">
+
+  <label>Total Amount</label>
+  <input type="text" id="totalAmount" readonly>
+
+  <button onclick="goToPayment()">Proceed to Payment</button>
+</div>
+
+<script>
+    // Read event info from URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const eventName = urlParams.get("name");
+    const eventDate = urlParams.get("date");
+
+    if (eventName) document.getElementById("eventName").value = eventName;
+    if (eventDate) document.getElementById("eventDate").value = eventDate;
+
+    // price
+    let pricePerPerson = 1119;
+
+    // Auto calculate total
+    document.getElementById("persons").addEventListener("input", function () {
+        let persons = this.value;
+        document.getElementById("totalAmount").value = persons * pricePerPerson;
+    });
+
+    // redirect to payment
+    function goToPayment() {
+        let name = document.getElementById("eventName").value;
+        let date = document.getElementById("eventDate").value;
+        let user = document.getElementById("userName").value;
+        let email = document.getElementById("userEmail").value;
+        let persons = document.getElementById("persons").value;
+        let total = document.getElementById("totalAmount").value;
+
+        if (!user || !email || !persons) {
+            alert("Please fill all details!");
+            return;
+        }
+
+        window.location.href =
+        `payment.html?name=${name}&date=${date}&user=${user}&email=${email}&persons=${persons}&total=${total}`;
+    }
+</script>
+
+</body>
+</html>

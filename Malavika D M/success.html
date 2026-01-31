@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment Success | Venzo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #1a1a1a;
+  padding: 30px;
+  width: 380px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 20px #ff3cac;
+}
+
+/* HEADING COLORS */
+.thank-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff3cac; /* violet-pink */
+}
+
+.success-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 6px;
+  color: #ff007a; /* deeper pink */
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ff007a, #ff3cac);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Ticket Print Styling */
+.ticket {
+  border: 1px solid #ff3cac;
+  padding: 20px;
+  max-width: 420px;
+  margin: auto;
+  color: #fff;
+  background: #0d0d0d;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ticket .brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff3cac;
+}
+
+.ticket .confirmed {
+  font-weight: bold;
+  margin: 6px 0;
+  color: #ff007a;
+}
+
+.ticket .order-id {
+  font-size: 13px;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.ticket .event-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #ff3cac;
+}
+
+.ticket .event-meta {
+  margin-bottom: 15px;
+  color: #aaa;
+}
+
+.ticket .divider {
+  border-top: 1px dashed #ff3cac;
+  margin: 15px 0;
+}
+
+.ticket .row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.ticket .row span {
+  color: #fff;
+}
+
+.ticket .total {
+  font-weight: bold;
+  color: #ff007a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="modal">
+  <div class="modal-box">
+    <div class="thank-text">Thank You!</div>
+    <div class="success-text">Payment Successful</div>
+
+    <button onclick="downloadDetails()">Download Details</button>
+    <button onclick="goHome()">Close</button>
+  </div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const eventName = params.get("name") || "Event";
+const eventDate = params.get("date") || "";
+const eventTime = params.get("time") || "";
+const persons = params.get("persons") || "1";
+const total = params.get("total") || "0";
+const userName = params.get("user") || "Guest";
+const paymentMethod = params.get("payment") || "Card";
+
+function downloadDetails() {
+
+  const orderId = "VENZO" + Math.floor(Math.random() * 1000000);
+  const eventMeta = eventTime ? `${eventDate} • ${eventTime}` : eventDate;
+
+  const pdfHTML = `
+  <html>
+  <head>
+  <title>Venzo Ticket</title>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      padding: 40px;
+      color: #fff;
+      background: #0d0d0d;
+    }
+    .ticket {
+      border: 1px solid #ff3cac;
+      padding: 20px;
+      max-width: 420px;
+      margin: auto;
+      background: #1a1a1a;
+      color: white;
+    }
+    .center {
+      text-align: center;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff3cac;
+    }
+    .confirmed {
+      font-weight: bold;
+      margin: 6px 0;
+      color: #ff007a;
+    }
+    .order-id {
+      font-size: 13px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+    .event-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff3cac;
+    }
+    .event-meta {
+      margin-bottom: 15px;
+      color: #aaa;
+    }
+    .divider {
+      border-top: 1px dashed #ff3cac;
+      margin: 15px 0;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+      color: #fff;
+    }
+    .total {
+      font-weight: bold;
+      color: #ff007a;
+    }
+  </style>
+  </head>
+
+  <body>
+    <div class="ticket">
+      <div class="center">
+        <div class="brand">VENZO</div>
+        <div class="confirmed">Booking Confirmed</div>
+        <div class="order-id">Order ID: ${orderId}</div>
+      </div>
+
+      <div class="event-name">${eventName}</div>
+      <div class="event-meta">${eventMeta}</div>
+
+      <div class="divider"></div>
+
+      <div class="row"><span>Name</span><span>${userName}</span></div>
+      <div class="row"><span>No. of Persons</span><span>${persons}</span></div>
+      <div class="row"><span>Payment</span><span>${paymentMethod}</span></div>
+
+      <div class="divider"></div>
+
+      <div class="row total"><span>Total Paid</span><span>₹${total}</span></div>
+    </div>
+  </body>
+  </html>
+  `;
+
+  const win = window.open("", "", "width=800,height=600");
+  win.document.write(pdfHTML);
+  win.document.close();
+  win.focus();
+
+  setTimeout(() => {
+    win.print();
+    win.close();
+  }, 500);
+}
+
+function goHome() {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

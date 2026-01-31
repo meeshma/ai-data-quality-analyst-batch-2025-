@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venzo</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Cormorant+Garamond:ital,wght@1,400&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0d0d0d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ---------- HERO + VIDEO ---------- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 1;
+}
+
+.container {
+    animation: fadeIn 1.3s ease-in-out;
+    margin-top: 180px;
+}
+
+h1 {
+    font-size: 4rem;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    color: #ff3cac;
+}
+
+.hero p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    font-style: italic;
+    color: #fff;
+}
+
+/* ---------- NAV BAR ---------- */
+nav {
+    width: 100%;
+    padding: 25px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 20;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 35px;
+    padding-right: 150px;
+    font-family: 'Oswald', sans-serif;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #ff3cac;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: #ff3cac;
+}
+
+/* ---------- ABOUT SECTION ---------- */
+#about {
+    display: none;
+    min-height: 100vh;
+    padding: 160px 15%;
+    background: #0d0d0d;
+    color: #fff;
+}
+
+#about:target {
+    display: block;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff3cac;
+}
+
+#about p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    font-family: 'Cormorant Garamond', serif;
+    opacity: 0.85;
+}
+
+/* ---------- EVENTS SECTION ---------- */
+#events {
+    display: none;
+    min-height: 100vh;
+    padding: 100px 10%;
+    background: #0d0d0d;
+    color: #fff;
+    text-align: center;
+}
+
+#events:target {
+    display: block;
+}
+
+#events h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ff3cac;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.event-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.event-item {
+    width: 250px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255,60,172,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.event-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255,60,172,0.5);
+}
+
+.event-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.event-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #ff3cac;
+    margin: 0 0 10px 0;
+}
+
+.view-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: #000;
+    color: #ff3cac;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: linear-gradient(45deg, #ff007a, #ff3cac);
+    color: #fff;
+}
+
+/* ---------- CONTACT SECTION ---------- */
+#contact {
+    display: none;
+    min-height: 100vh;
+    padding: 120px 25%;
+    background: #0d0d0d;
+    color: #fff;
+}
+
+#contact:target {
+    display: block;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #ff3cac;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    background: #1a1a1a;
+    border: 1px solid #555;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, #ff007a, #ff3cac);
+    color: #fff;
+    border: none;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    opacity: 0.9;
+}
+
+/* ---------- FAQ SECTION ---------- */
+#faq {
+    background: #0d0d0d;
+    color: #fff;
+    padding: 80px 20%;
+    text-align: center;
+}
+
+#faq h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: #ff3cac;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    background: #1a1a1a;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(255,60,172,0.1);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 10px 25px rgba(255,60,172,0.3);
+}
+
+.faq-question {
+    padding: 25px 30px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    color: #ff3cac;
+}
+
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    content: '-';
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 30px;
+    font-size: 1rem;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    color: #fff;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 20px 30px 25px 30px;
+}
+
+/* ---------- CONTACT POPUP ---------- */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-box {
+    background: #1a1a1a;
+    padding: 35px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255,60,172,0.4);
+}
+
+.popup-box h3 {
+    color: #ff3cac;
+    margin-bottom: 10px;
+}
+
+.popup-box button {
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #ff007a, #ff3cac);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .event-item { width: 90%; }
+    #contact { padding: 60px 10%; }
+    #faq { padding: 60px 10%; }
+}
+/* ---------- iStock-style CENTER Video Text ---------- */
+.stock-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffffff;
+    z-index: 5;
+    animation: stockFade 1.6s ease forwards;
+}
+
+.stock-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ff3cac;
+}
+
+.stock-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.9;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* Cinematic fade */
+@keyframes stockFade {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+    .stock-title {
+        font-size: 2.4rem;
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-container">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="concert.mp4" type="video/mp4">
+    </video>
+ <div class="stock-overlay">
+        <div class="stock-title">VENZO</div>
+        <div class="stock-subtitle">Live Music • Events • Experiences</div>
+    </div>
+   
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>Venzo is a platform designed to bring people together through memorable events, celebrations, and experiences. We create moments that connect communities and inspire creativity.</p>
+    <p>Our platform allows users to discover, track, and engage with events as they happen. By emphasizing real-time updates and live information, Venzo ensures that audiences never miss what’s happening around them.</p>
+    <p>At Venzo, we believe the power of events lies in the present moment. That’s why everything we build is centered around real-time connection, immediacy, and shared experiences that bring people together — right now.</p>
+</section>
+
+<!-- EVENTS SECTION -->
+<section id="events">
+    <h2>Explore Our Events</h2>
+    <div class="event-list">
+        <div class="event-item">
+            <div class="event-icon"><i class="fa-solid fa-masks-theater"></i></div>
+            <h3>Cultural</h3>
+            <a href="cultural.html" class="view-btn">View Programs</a>
+        </div>
+        <div class="event-item">
+            <div class="event-icon"><i class="fa-solid fa-music"></i></div>
+            <h3>Music Meetup</h3>
+            <a href="music.html" class="view-btn">View Programs</a>
+        </div>
+        <div class="event-item">
+            <div class="event-icon"><i class="fa-solid fa-microphone"></i></div>
+            <h3>Open Mic Night</h3>
+            <a href="openmic.html" class="view-btn">View Programs</a>
+        </div>
+        <div class="event-item">
+            <div class="event-icon"><i class="fa-solid fa-palette"></i></div>
+            <h3>Art and Creativity</h3>
+            <a href="art.html" class="view-btn">View Programs</a>
+        </div>
+        <div class="event-item">
+            <div class="event-icon"><i class="fa-solid fa-user-group"></i></div>
+            <h3>Social Hangouts</h3>
+            <a href="social.html" class="view-btn">View Programs</a>
+        </div>
+        <div class="event-item">
+            <div class="event-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3>Workshop</h3>
+            <a href="workshop.html" class="view-btn">View Programs</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+        <form onsubmit="showMessage(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div id="successPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h3>✓ Message Sent</h3>
+            <p>Thank you! Your message has been sent successfully.</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">What is Venzo about?</div>
+            <div class="faq-answer">
+                Venzo is a platform that connects people through real-time events, experiences, and celebrations.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How do I register for an event?</div>
+            <div class="faq-answer">
+                You can register by clicking on the "View Programs" button under any event category and following the registration steps.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I host my own event on Venzo?</div>
+            <div class="faq-answer">
+                Yes! Venzo allows organizers to host events. Contact us for more information.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Are tickets refundable?</div>
+            <div class="faq-answer">
+                Tickets are non-refundable unless the date of the event changes or is cancelled due to Government restrictions.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do I need to bring ID?</div>
+            <div class="faq-answer">
+                Almost all venues we run events at operate a strict No ID No Entry Policy. So we recommend everyone brings Photo ID.
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// CONTACT FORM
+function showMessage(e) {
+    e.preventDefault();
+    document.getElementById("successPopup").style.display = "flex";
+    e.target.reset();
+}
+
+function closePopup() {
+    document.getElementById("successPopup").style.display = "none";
+}
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+        faqItems.forEach(i => { if(i !== item) i.classList.remove('active'); });
+        item.classList.toggle('active');
+    });
+});
+</script>
+
+</body>
+</html>

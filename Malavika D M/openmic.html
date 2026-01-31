@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open Mic Nights | Venzo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+}
+
+body{
+  background:#000;
+  color:white;
+}
+
+/* Banner */
+.header-banner{
+  height:280px;
+  background:url('images/mic.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.header-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+}
+
+.header-banner span{
+  position:relative;
+  z-index:2;
+  font-size:42px;
+  font-weight:700;
+}
+
+/* Cards Grid */
+.events-container{
+  width:85%;
+  margin:auto;
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+}
+
+/* Card */
+.event-card{
+  background:#0d0d0d;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.15);
+  overflow:hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height:380px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Hover effect */
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(255,0,120,0.35);
+}
+
+.event-card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  transition: transform 0.4s ease;
+}
+
+.event-card:hover img{
+  transform: scale(1.05);
+}
+
+/* Content */
+.event-info{
+  padding:16px;
+  flex-grow:1;
+}
+
+.tag{
+  background:linear-gradient(45deg,#ff007a,#ff3cac);
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:11px;
+  margin-bottom:6px;
+  display:inline-block;
+}
+
+.event-info h3{
+  font-size:17px;
+  margin:6px 0 8px 0;
+}
+
+/* Info Rows */
+.info{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  margin:4px 0;
+  opacity:.95;
+}
+
+.material-icons{
+  font-size:18px;
+}
+
+/* Divider */
+.line{
+  height:1px;
+  background:rgba(255,255,255,.18);
+  margin:10px 0;
+}
+
+/* Bottom */
+.bottom{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:10px;
+}
+
+.book-btn{
+  background:linear-gradient(45deg,#ff007a,#ff3cac);
+  color:white;
+  border:none;
+  padding:8px 18px;
+  border-radius:25px;
+  font-size:12px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.book-btn:hover{
+  opacity:.9;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .header-banner span{font-size:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header-banner">
+  <span>This Week in Open Mic</span>
+</div>
+
+<div class="events-container">
+
+  <!-- Event 1 -->
+  <div class="event-card">
+    <img src="images/poetry.jpg" alt="Poetry & Storytelling Night">
+    <div class="event-info">
+      <span class="tag">Open Mic</span>
+
+      <h3>Poetry & Storytelling Night</h3>
+
+      <div class="info">
+        <span class="material-icons">event</span>
+        <p>Today — 7:00 PM</p>
+      </div>
+
+      <div class="info">
+        <span class="material-icons">place</span>
+        <p>Fort Kochi Community Space</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="bottom">
+        <a class="book-btn">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event 2 -->
+  <div class="event-card">
+    <img src="images/comedy.jpg" alt="Comedy Open Mic">
+    <div class="event-info">
+      <span class="tag">Comedy</span>
+
+      <h3>Comedy Open Mic</h3>
+
+      <div class="info">
+        <span class="material-icons">event</span>
+        <p>Tomorrow — 6:30 PM</p>
+      </div>
+
+      <div class="info">
+        <span class="material-icons">place</span>
+        <p>Marine Drive Café Stage</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="bottom">
+        <a class="book-btn">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event 3 -->
+  <div class="event-card">
+    <img src="images/fusion.jpg" alt="Music & Poetry Fusion">
+    <div class="event-info">
+      <span class="tag">Music & Poetry</span>
+
+      <h3>Music & Poetry Fusion</h3>
+
+      <div class="info">
+        <span class="material-icons">event</span>
+        <p> Weekend — 5:00 PM</p>
+      </div>
+
+      <div class="info">
+        <span class="material-icons">place</span>
+        <p>Lulu Mall Rooftop Arena</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="bottom">
+        <a class="book-btn">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".event-card");
+
+  cards.forEach(card => {
+    const title = card.querySelector("h3").innerText;
+    const date = card.querySelectorAll(".info p")[0].innerText;
+    const btn = card.querySelector(".book-btn");
+
+    btn.href = `booking.html?name=${encodeURIComponent(title)}&date=${encodeURIComponent(date)}`;
+  });
+});
+</script>
+
+</body>
+</html>
